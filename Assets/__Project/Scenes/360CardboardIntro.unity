@@ -1095,6 +1095,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 399243893}
+  - 114: {fileID: 399243894}
   m_Layer: 0
   m_Name: PlayOptions
   m_TagString: Untagged
@@ -1109,7 +1110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 399243892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.81, z: 0}
+  m_LocalPosition: {x: 0, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1120,6 +1121,19 @@ Transform:
   - {fileID: 1862956649}
   m_Father: {fileID: 1088496867}
   m_RootOrder: 3
+--- !u!114 &399243894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 399243892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668890f60fcb0894986a26b26b4e7472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  onlyMe: 1
 --- !u!1 &533289053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1191,7 @@ MonoBehaviour:
   moveToPosition: {x: -1.5, y: 4, z: 0}
   moveToScaler: 0.7
   triggerNewUI: 1
-  newUI: {fileID: 1108549298}
+  newUI: {fileID: 399243892}
   isCurrentSelection: 0
 --- !u!114 &533289056
 MonoBehaviour:
@@ -1728,71 +1742,106 @@ MonoBehaviour:
   - nodeTitle: Video0(A)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/test
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 5
     choiceRotationToSummonAt: 90
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 1
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: 1
     rightChoiceElementNumber: 2
   - nodeTitle: Video1(AA)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level2-AA
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 3
     choiceRotationToSummonAt: -55
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 1
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: 3
     rightChoiceElementNumber: 4
   - nodeTitle: Video2(AB)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level2-AB
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: 5
     rightChoiceElementNumber: 6
   - nodeTitle: Video3(AAA)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-AAA
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
   - nodeTitle: Video4(AAB)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-AAB
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: 0
     rightChoiceElementNumber: 0
   - nodeTitle: Video5(ABA)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-ABA
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
   - nodeTitle: Video6(ABB)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-ABA
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
     choiceVideoLeft: EasyMovieTexture.mp4
     choiceVideoRight: EasyMovieTexture.mp4
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
 --- !u!4 &639039155
@@ -1819,7 +1868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0212c266c75594eb475e05eb49e082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceMax: 1
+  deviceMax: 0
   currentSelection: 0
 --- !u!1 &672138822
 GameObject:
@@ -2696,6 +2745,17 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1108549298}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1088496865}
           m_MethodName: OnClick
           m_Mode: 1
           m_Arguments:
@@ -3745,7 +3805,7 @@ MonoBehaviour:
   moveToPosition: {x: 1.5, y: 4, z: 0}
   moveToScaler: 0.7
   triggerNewUI: 1
-  newUI: {fileID: 1108549298}
+  newUI: {fileID: 399243892}
   isCurrentSelection: 0
 --- !u!114 &1603382803
 MonoBehaviour:

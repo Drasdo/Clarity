@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class BranchingStoryController : MonoBehaviour {
 
     public GameObject TextSelector;
     public GameObject videoSphere;
     public GameObject choiceRotator;
+    public AddBlur addBlur;
 
     private List<Node> videoStructure = new List<Node>(); 
 
@@ -51,6 +53,8 @@ public class BranchingStoryController : MonoBehaviour {
 
     public void UpdateTextSelectorForCurrentBranch(bool leftBranchSelected) //Run as a new video is loaded, so that all the paremeters are set and ready to go.
     {
+        //BEFORE WE DO THAT, LETS MAKE SURE THAT BLUR IS ADDED
+        setBlurOptions(leftBranchSelected);
         //we need to check if the element number of choice is -1 because that means we need to end)
         //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
         currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
@@ -68,6 +72,10 @@ public class BranchingStoryController : MonoBehaviour {
         spherePlayer.transform.Rotate(new Vector3(0, currentNode.startingRotationOfVideoDegrees, 0)); //rotate the video to correct orientation if need be. Hopefully this doesn't actually have to be used, but nice to have anyway.
         choiceRotator.transform.Rotate(new Vector3(0, currentNode.choiceRotationToSummonAt, 0));
         currentNode.toMilliseconds();
+        if(currentNode.resetBlur)
+        {
+            addBlur.updateBlurValues(-1);
+        }
         if(currentNode.choicesSecondsToShow == 0)
         {
             finalScene = true;
@@ -99,6 +107,18 @@ public class BranchingStoryController : MonoBehaviour {
         if (nodeTree.videoStructure.Count > 0)
         {
             videoStructure = nodeTree.videoStructure;
+        }
+    }
+
+    void setBlurOptions(bool leftSelected)
+    {
+        if(currentNode.choiceLeftAddBlur && leftSelected)
+        {
+            addBlur.updateBlurValues(addBlur.blurIntensity);
+        }
+        else if (currentNode.choiceRightAddBlur && !leftSelected)
+        {
+            addBlur.updateBlurValues(addBlur.blurIntensity);
         }
     }
 }

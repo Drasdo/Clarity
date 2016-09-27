@@ -14,7 +14,7 @@ public class GUIElementReaction : MonoBehaviour {
     public Vector3 moveToPosition;
     public float moveToScaler = 1;
     public bool triggerNewUI = false;
-    public GUIElementReaction newUI;
+    public GameObject newUI;
 
 
     private bool moving;
@@ -158,7 +158,8 @@ public class GUIElementReaction : MonoBehaviour {
             foreach (GUIElementReaction i in selectionSet)
             {
                 i.moveObjectToNewPosition(true);
-                newUI.Appear();
+                newUI.GetComponent<RevealOnVisible>().ResetVisibility();
+                newUI.GetComponent<RevealOnVisible>().beginReveal();
             }
         }
 
@@ -168,11 +169,5 @@ public class GUIElementReaction : MonoBehaviour {
     void UpdateScaler(float scaler)
     {
         currentMoveToScaler = new Vector3(transform.localScale.x * scaler, transform.localScale.y * scaler, transform.localScale.z * scaler);
-    }
-
-    public void Appear()
-    {
-        //possiblywait a second?
-        //TODO write this
     }
 }

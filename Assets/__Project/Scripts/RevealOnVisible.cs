@@ -4,6 +4,7 @@ using System.Collections;
 public class RevealOnVisible : MonoBehaviour
 {
     public float speed = 10f;
+    public bool onlyMe = false;
 
     Vector3 startSize;
     Vector3 currentSize;
@@ -23,8 +24,11 @@ public class RevealOnVisible : MonoBehaviour
 
         for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
         {
-            Transform child = gameObject.transform.GetChild(childIndex);
-            child.gameObject.AddComponent<RevealOnVisible>();
+            if (!onlyMe)
+            {
+                Transform child = gameObject.transform.GetChild(childIndex);
+                child.gameObject.AddComponent<RevealOnVisible>();
+            }
         }
         gameObject.SetActive(false);
     }
@@ -50,7 +54,7 @@ public class RevealOnVisible : MonoBehaviour
         currentSize = Vector3.Lerp(startSize, endSize, Mathf.Sin(t * Mathf.PI / speed)); //current size
         transform.localScale = currentSize;
 
-        if (Vector3Compare.V3Equal(currentSize, endSize, 0.000000001f))
+        if (Vector3Compare.V3Equal(currentSize, endSize, 0.000001f))
         {
             shouldReveal = false;
             startTime = 0.0f;
@@ -63,25 +67,27 @@ public class RevealOnVisible : MonoBehaviour
     public void beginReveal()
     {
         gameObject.SetActive(true);
-        if (transform.childCount > 0)
+        if (!onlyMe)
         {
-            for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+            if (transform.childCount > 0)
             {
-                gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().beginReveal();
-                shouldReveal = true;
+                for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+                {
+                    gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().beginReveal();
+                }
             }
         }
-        else
-        {
-            shouldReveal = true;
-        }
+        shouldReveal = true;
     }
 
     void makeChildrenActive()
     {
-        for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+        if (!onlyMe)
         {
-            gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().beginReveal();
+            for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+            {
+                gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().beginReveal();
+            }
         }
     }
 
@@ -90,9 +96,12 @@ public class RevealOnVisible : MonoBehaviour
         startSize = Vector3.zero;
         endSize = transform.localScale;
         startTime = 0.0f;
-        for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+        if (!onlyMe)
         {
-            gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().ResetVisibility();
+            for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+            {
+                gameObject.transform.GetChild(childIndex).GetComponent<RevealOnVisible>().ResetVisibility();
+            }
         }
         gameObject.SetActive(false);
 

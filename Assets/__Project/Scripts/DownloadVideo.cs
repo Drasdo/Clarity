@@ -28,20 +28,7 @@ public class DownloadVideo : MonoBehaviour
         //Add video strings from videoStructure too this list so we can load them in
         nodeTree = GameObject.FindGameObjectWithTag("NodeTree").GetComponent<NodeTree>();
         setVideoSizeString();
-        videos = new List<string>();
-        videoID = new List<string>();
-        foreach (Node videoNode in nodeTree.videoStructure)
-        {
-            if (videoNode.SphVidOnlineLoc == "")
-            {
-                videos.Add(videoNode.sphereVideo);
-            }
-            else
-            {
-                videos.Add((videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4"));
-            }
-            videoID.Add(videoNode.nodeTitle);
-        }
+        setVideosToDownload();
         //Set our video counter so we know how many videos we have downloaded so far
         currentDownload = 0;
         downloadingComplete = false;
@@ -93,6 +80,8 @@ public class DownloadVideo : MonoBehaviour
 
     public void InitateDownload()
     {
+        setVideoSizeString();
+        setVideosToDownload();
         print("Beginning download of " + videos[currentDownload]);
         print("Downloading to " + Application.persistentDataPath);
         StartCoroutine(downloadStreamingVideo(videos[currentDownload]));
@@ -141,6 +130,24 @@ public class DownloadVideo : MonoBehaviour
         // Start a download of the given URL
         request = new WWW(localPath);
         yield return request;
+    }
+
+    public void setVideosToDownload()
+    {
+        videos = new List<string>();
+        videoID = new List<string>();
+        foreach (Node videoNode in nodeTree.videoStructure)
+        {
+            if (videoNode.SphVidOnlineLoc == "")
+            {
+                videos.Add(videoNode.sphereVideo);
+            }
+            else
+            {
+                videos.Add((videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4")); // todo: CANT DO THIS UNTIL WE SAY TO ACTUALLY DOWNLOAD
+            }
+            videoID.Add(videoNode.nodeTitle);
+        }
     }
 
     public void setVideoSizeString()
