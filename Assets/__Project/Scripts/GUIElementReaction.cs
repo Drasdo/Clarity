@@ -9,6 +9,7 @@ public class GUIElementReaction : MonoBehaviour {
     public Sprite normal;
     public Sprite hover;
     public Sprite select;
+    public bool isMovieSprite = false;
 
     public bool moveToPositionOnSelect = false;
     public Vector3 moveToPosition;
@@ -26,6 +27,8 @@ public class GUIElementReaction : MonoBehaviour {
     private Vector3 currentMoveToScaler;
     private float speed = 5.0f;
 
+    private GazeLookSelection gazeLookHandler;
+
     [HideInInspector]
     public bool isCurrentSelection; //only public for access to other scripts, shouldn't be touched in editor
     private List<GUIElementReaction> selectionSet = new List<GUIElementReaction>();
@@ -34,10 +37,14 @@ public class GUIElementReaction : MonoBehaviour {
 
     void Start()
     {
-        ren = GetComponentInChildren<SpriteRenderer>();
+        if (!isMovieSprite)
+        {
+            ren = GetComponentInChildren<SpriteRenderer>();
+        }
         moving = false;
         UpdatePositions();
         UpdateScaler(1.0f);
+        gazeLookHandler = GameObject.Find("GvrReticle").GetComponent<GazeLookSelection>(); 
 
         //get each gameobject in this set so we know who to switch off if we need to
         foreach (Transform child in transform.parent.gameObject.GetComponentsInChildren<Transform>())
@@ -70,20 +77,21 @@ public class GUIElementReaction : MonoBehaviour {
 
     public void OnHover()
     {
-        ren.sprite = hover;
+        updateRenderer(hover);
         destination = highlightPosition;
         UpdateScaler(1.0f);
         moving = true;
+        gazeLookHandler.SetGazedAt(true, gameObject);
     }
 
     public void OnExit()
     {
         if (isCurrentSelection)
         {
-            ren.sprite = select;
+            updateRenderer(select);
         } else
         {
-            ren.sprite = normal;
+            updateRenderer(normal);
         }
         if (moveToPositionOnSelect && isCurrentSelection)
         {
@@ -94,11 +102,11 @@ public class GUIElementReaction : MonoBehaviour {
             destination = startingPosition;
         }
         moving = true;
+        gazeLookHandler.SetGazedAt(false, gameObject);
     }
 
     public void OnClick()
     {
-        //ren.sprite = select;
         foreach(GUIElementReaction i in selectionSet)
         {
             i.CancelSelection();
@@ -142,12 +150,11 @@ public class GUIElementReaction : MonoBehaviour {
     public void CancelSelection()
     {
         isCurrentSelection = false;
-        ren.sprite = normal;
+        updateRenderer(normal);
     }
 
     public void moveObjectToNewPosition(bool calledAlready = default(bool))
     {
-        //ren.sprite = hover;
         destination = moveToPosition;
         moving = true;
         UpdateScaler(moveToScaler);
@@ -169,5 +176,13 @@ public class GUIElementReaction : MonoBehaviour {
     void UpdateScaler(float scaler)
     {
         currentMoveToScaler = new Vector3(transform.localScale.x * scaler, transform.localScale.y * scaler, transform.localScale.z * scaler);
+    }
+
+    void updateRenderer(Sprite sprite)
+    {
+        if (!isMovieSprite)
+        {
+            ren.sprite = sprite;
+        }
     }
 }

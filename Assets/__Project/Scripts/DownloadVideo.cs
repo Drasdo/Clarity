@@ -156,17 +156,17 @@ public class DownloadVideo : MonoBehaviour
         switch(maxVidSize)
         {
             case DeviceVideoCapability.MaxVideoSize.FOURK:
-                VideoSizeToDownload = "4k";
+                VideoSizeToDownload = "4K";
                 break;
             case DeviceVideoCapability.MaxVideoSize.QHD:
-                VideoSizeToDownload = "qhd";
+                VideoSizeToDownload = "2K";
                 break;
             case DeviceVideoCapability.MaxVideoSize.Unset:
                 nodeTree.GetComponent<DeviceVideoCapability>().WakeUp();
                 setVideoSizeString();
                 break;
             default:
-                VideoSizeToDownload = "hd";
+                VideoSizeToDownload = "HD";
                 break;
         }
     }

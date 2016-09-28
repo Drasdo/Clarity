@@ -19,6 +19,8 @@ public class DeviceVideoCapability : MonoBehaviour {
 #else   //a catch just in case, go for lowest quality so we know it works
         deviceMax = MaxVideoSize.HD;
 #endif
+        //REMOVE THIS: and ignore all that and do this because i wanna test something
+        deviceMax = MaxVideoSize.FOURK;
         currentSelection = deviceMax;
     }
 

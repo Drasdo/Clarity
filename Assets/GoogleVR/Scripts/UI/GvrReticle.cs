@@ -93,7 +93,7 @@ public class GvrReticle : MonoBehaviour, IGvrGazePointer {
   public void OnGazeStart(Camera camera, GameObject targetObject, Vector3 intersectionPosition,
                           bool isInteractive) {
     SetGazeTarget(intersectionPosition, isInteractive);
-  }
+    }
 
   /// Called every frame the user is still looking at a valid GameObject. This
   /// can be a 3D or UI element.
@@ -227,7 +227,7 @@ public class GvrReticle : MonoBehaviour, IGvrGazePointer {
     if (interactive) {
       reticleInnerAngle = kReticleMinInnerAngle + kReticleGrowthAngle;
       reticleOuterAngle = kReticleMinOuterAngle + kReticleGrowthAngle;
-    } else {
+        } else {
       reticleInnerAngle = kReticleMinInnerAngle;
       reticleOuterAngle = kReticleMinOuterAngle;
     }

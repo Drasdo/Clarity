@@ -514,15 +514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb521e9ace49d8546a83f420a0debd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_strFileName: ed_1024_512kb.mp4
-  m_TargetMaterial:
-  - {fileID: 108466156}
+  m_strFileName: 
+  m_TargetMaterial: []
   m_bFullScreen: 0
   m_bSupportRockchip: 1
   m_ScaleValue: 0
-  m_objResize:
-  - {fileID: 108466156}
-  m_bLoop: 1
+  m_objResize: []
+  m_bLoop: 0
   m_bAutoPlay: 1
   m_bInit: 0
 --- !u!1 &189422634
@@ -1014,10 +1012,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: dlqual
+  setName: 
   normal: {fileID: 21300000, guid: a1261d820fa6c704b817a8319f9107cb, type: 3}
   hover: {fileID: 21300000, guid: a8dff19f407028944ba3687ca8171ae1, type: 3}
   select: {fileID: 21300000, guid: 896395d5a68e860468c623182a61eaa0, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1
@@ -1132,7 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668890f60fcb0894986a26b26b4e7472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   onlyMe: 1
 --- !u!1 &533289053
 GameObject:
@@ -1183,13 +1182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: character
+  setName: Character
   normal: {fileID: 21300000, guid: c7382bd59b259ce42afd9f56e2555dd9, type: 3}
   hover: {fileID: 21300000, guid: c7382bd59b259ce42afd9f56e2555dd9, type: 3}
   select: {fileID: 21300000, guid: c7382bd59b259ce42afd9f56e2555dd9, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 1
   moveToPosition: {x: -1.5, y: 4, z: 0}
-  moveToScaler: 0.7
+  moveToScaler: 0.8
   triggerNewUI: 1
   newUI: {fileID: 399243892}
   isCurrentSelection: 0
@@ -1422,10 +1422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: dl
+  setName: 
   normal: {fileID: 21300000, guid: c673dccb03f282b44911b64d91f3ee36, type: 3}
   hover: {fileID: 21300000, guid: c673dccb03f282b44911b64d91f3ee36, type: 3}
   select: {fileID: 21300000, guid: c673dccb03f282b44911b64d91f3ee36, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1
@@ -1739,44 +1740,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoStructure:
-  - nodeTitle: Video0(A)
+  - nodeTitle: Video1_1A(0)
     sphereVideo: 
-    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/test
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_1_
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
     choicesSecondsToShow: 5
-    choiceRotationToSummonAt: 90
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
     leftChoiceElementNumber: 1
     rightChoiceElementNumber: 2
-  - nodeTitle: Video1(AA)
+  - nodeTitle: Video2_1AA(1)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level2-AA
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 3
-    choiceRotationToSummonAt: -55
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
+    choicesSecondsToShow: 5
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
     leftChoiceElementNumber: 3
     rightChoiceElementNumber: 4
-  - nodeTitle: Video2(AB)
+  - nodeTitle: Video2_2AB(2)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level2-AB
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 0
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1784,14 +1785,14 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     leftChoiceElementNumber: 5
     rightChoiceElementNumber: 6
-  - nodeTitle: Video3(AAA)
+  - nodeTitle: Video3_1AAA(3)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-AAA
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 0
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1799,29 +1800,14 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
-  - nodeTitle: Video4(AAB)
+  - nodeTitle: Video3_1AAB(4)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-AAB
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 0
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    leftChoiceElementNumber: 0
-    rightChoiceElementNumber: 0
-  - nodeTitle: Video5(ABA)
-    sphereVideo: 
-    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-ABA
-    SphVidFadeOutLocal: 
-    SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 0
+    choiceVideoLeft: 
+    choiceVideoRight: 
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1829,14 +1815,29 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
-  - nodeTitle: Video6(ABB)
+  - nodeTitle: Video3_1ABA(5)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-ABA
     SphVidFadeOutLocal: 
     SphVidFadeOut: 
-    choiceVideoLeft: EasyMovieTexture.mp4
-    choiceVideoRight: EasyMovieTexture.mp4
-    choicesSecondsToShow: 0
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
+    choicesSecondsToShow: 5
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    resetBlur: 0
+    choiceLeftAddBlur: 0
+    choiceRightAddBlur: 0
+    leftChoiceElementNumber: -1
+    rightChoiceElementNumber: -1
+  - nodeTitle: Video3_1ABB(6)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Level3-ABB
+    SphVidFadeOutLocal: 
+    SphVidFadeOut: 
+    choiceVideoLeft: ed_1024_512kb
+    choiceVideoRight: ed_1024_512kb
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1963,6 +1964,22 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &682122722 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+  m_PrefabInternal: {fileID: 848404732}
+--- !u!114 &682122725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 682122722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb7b4c6ed6e0f74582c149022a5a75a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerDuration: 3
 --- !u!1 &753770174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2111,10 @@ Prefab:
     - target: {fileID: 482300, guid: 60270cf52a5e94998a5a335989159738, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11446276, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+      propertyPath: reticleSegments
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60270cf52a5e94998a5a335989159738, type: 2}
@@ -2607,7 +2628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff9b2923c021a444a1d0e5c83c335c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 3
 --- !u!114 &1088496865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2721,6 +2742,7 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: e440ddb4f4ba6d6418df3b0698833e2a, type: 3}
   hover: {fileID: 21300000, guid: e440ddb4f4ba6d6418df3b0698833e2a, type: 3}
   select: {fileID: 21300000, guid: e440ddb4f4ba6d6418df3b0698833e2a, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1
@@ -3638,10 +3660,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: dlqual
+  setName: 
   normal: {fileID: 21300000, guid: e68dfa589e771344c91041e582d7e00f, type: 3}
   hover: {fileID: 21300000, guid: dec039c3a0a737a40a95bc6d83cefc95, type: 3}
   select: {fileID: 21300000, guid: 8055c27659e66684c99b78885cf64c60, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1
@@ -3797,13 +3820,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: character
+  setName: Character
   normal: {fileID: 21300000, guid: cee9a01830cf95140b8a926cef5832b4, type: 3}
   hover: {fileID: 21300000, guid: cee9a01830cf95140b8a926cef5832b4, type: 3}
   select: {fileID: 21300000, guid: cee9a01830cf95140b8a926cef5832b4, type: 3}
-  moveToPositionOnSelect: 1
+  isMovieSprite: 0
+  moveToPositionOnSelect: 0
   moveToPosition: {x: 1.5, y: 4, z: 0}
-  moveToScaler: 0.7
+  moveToScaler: 0.8
   triggerNewUI: 1
   newUI: {fileID: 399243892}
   isCurrentSelection: 0
@@ -4036,10 +4060,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: dl
+  setName: 
   normal: {fileID: 21300000, guid: 5a1a04e1d67d0bb48ab505267b4a6984, type: 3}
   hover: {fileID: 21300000, guid: 5a1a04e1d67d0bb48ab505267b4a6984, type: 3}
   select: {fileID: 21300000, guid: 5a1a04e1d67d0bb48ab505267b4a6984, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1
@@ -4729,10 +4754,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4554439bde7848b78afa71f447950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setName: dlqual
+  setName: 
   normal: {fileID: 21300000, guid: b471817e2154a5d4f8e347d30d45a83e, type: 3}
   hover: {fileID: 21300000, guid: 3b20f8870c5d8884dac3284d5062207b, type: 3}
   select: {fileID: 21300000, guid: b1ebecaaf1fcfd74aa0975ef295be9f8, type: 3}
+  isMovieSprite: 0
   moveToPositionOnSelect: 0
   moveToPosition: {x: 0, y: 0, z: 0}
   moveToScaler: 1

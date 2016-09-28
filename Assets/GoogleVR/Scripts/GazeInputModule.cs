@@ -312,5 +312,6 @@ public class GazeInputModule : BaseInputModule {
 
     gazePointer.OnGazeDisabled();
   }
+
 }
 
