@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: 4c9bfba47d7291449a2111c604c4af40
   AndroidProfiler: 0
   defaultScreenOrientation: 3
-  targetDevice: 2
+  targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: IDEA Lab
@@ -43,7 +43,7 @@ PlayerSettings:
   defaultIsNativeResolution: 1
   runInBackground: 0
   captureSingleScreen: 0
-  Override IPod Music: 0
+  Override IPod Music: 1
   Prepare IOS For Recording: 0
   submitAnalytics: 1
   usePlayerLog: 1
@@ -120,7 +120,7 @@ PlayerSettings:
     serializedVersion: 2
     m_Bits: 238
   iPhoneSdkVersion: 988
-  iPhoneTargetOSVersion: 22
+  iPhoneTargetOSVersion: 40
   tvOSSdkVersion: 0
   tvOSTargetOSVersion: 900
   uIPrerenderedIcon: 0

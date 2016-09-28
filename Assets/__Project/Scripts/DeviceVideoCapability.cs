@@ -10,6 +10,7 @@ public class DeviceVideoCapability : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        /*
 #if UNITY_IOS
         iPhoneQuality();
 #elif UNITY_EDITOR_WIN
@@ -19,8 +20,9 @@ public class DeviceVideoCapability : MonoBehaviour {
 #else   //a catch just in case, go for lowest quality so we know it works
         deviceMax = MaxVideoSize.HD;
 #endif
-        //REMOVE THIS: and ignore all that and do this because i wanna test something
-        deviceMax = MaxVideoSize.FOURK;
+*/
+        //And we are just gonna do HD for now so... default to HD
+        deviceMax = MaxVideoSize.HD;
         currentSelection = deviceMax;
     }
 

@@ -1221,6 +1221,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1960242514}
+          m_MethodName: changeTexture
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 0
@@ -3738,7 +3749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1515010033
 Transform:
   m_ObjectHideFlags: 0
@@ -3851,6 +3862,17 @@ MonoBehaviour:
         - m_Target: {fileID: 1603382802}
           m_MethodName: OnClick
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1960242514}
+          m_MethodName: changeTexture
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4392,7 +4414,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1862956648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.62, z: 0}
+  m_LocalPosition: {x: 0, y: -2.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4490,6 +4512,28 @@ Transform:
   - {fileID: 1048904577}
   m_Father: {fileID: 959308593}
   m_RootOrder: 1
+--- !u!1 &1960242513 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010232025212, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1355762571}
+--- !u!114 &1960242514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1960242513}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76334bb864ed93540b081bff7c1d0725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initTexture: {fileID: 2800000, guid: 3dd07e17f2d1d274aa6f0dc746d84e46, type: 3}
+  leftChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
+  rightChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
+  currentMat: {fileID: 2100000, guid: f170bbdc523789047acd3b6c5c28ae85, type: 2}
+  futureMat: {fileID: 2100000, guid: a8128d513d534124387797c636ea5723, type: 2}
+  duration: 2
 --- !u!1 &2090429932
 GameObject:
   m_ObjectHideFlags: 0
