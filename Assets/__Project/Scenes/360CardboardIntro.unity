@@ -4523,7 +4523,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1960242513}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76334bb864ed93540b081bff7c1d0725, type: 3}
   m_Name: 
@@ -4531,9 +4531,7 @@ MonoBehaviour:
   initTexture: {fileID: 2800000, guid: 3dd07e17f2d1d274aa6f0dc746d84e46, type: 3}
   leftChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
   rightChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
-  currentMat: {fileID: 2100000, guid: f170bbdc523789047acd3b6c5c28ae85, type: 2}
-  futureMat: {fileID: 2100000, guid: a8128d513d534124387797c636ea5723, type: 2}
-  duration: 2
+  duration: 5
 --- !u!1 &2090429932
 GameObject:
   m_ObjectHideFlags: 0
