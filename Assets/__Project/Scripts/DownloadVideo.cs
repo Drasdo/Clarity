@@ -135,13 +135,18 @@ public class DownloadVideo : MonoBehaviour
             if (checking)
             {
                 nodeTree.videoStructure[currentDownload].sphereVideo = localPath;
+                currentDownload++;
             }
             loadedVideoCounter++;
-            if (loadedVideoCounter < videos.Count) //check
+            if (loadedVideoCounter >= videos.Count) //check
             {
                 downloadingComplete = true;
                 print("Downloading is complete! You can press play now!");
             }
+        }
+        else //if the file doesn't exist we want to stop?
+        {
+            return;
         }
     }
 
