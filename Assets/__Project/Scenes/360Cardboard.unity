@@ -745,6 +745,11 @@ Prefab:
       propertyPath: m_objResize.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_TargetMaterial.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013528345886, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -806,6 +811,35 @@ Prefab:
       propertyPath: m_bAutoPlay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_TargetMaterial.Array.data[0]
+      value: 
+      objectReference: {fileID: 2041604286}
+    - target: {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_bSupportRockchip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012867442420, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013528345886, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33000011946550656, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 1d50cc230c341074994f76337d1af082, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
   m_IsPrefabParent: 0

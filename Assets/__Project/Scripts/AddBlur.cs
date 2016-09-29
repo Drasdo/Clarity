@@ -67,8 +67,11 @@ public class AddBlur : MonoBehaviour {
 
     void SwitchOffDirectRender()
     {
-        SC = gameObject.GetComponent<StereoController>();
-        SC.directRender = false;
-        SC.UpdateStereoValues();
+        if (gameObject.GetComponent<StereoController>() != null)
+        {
+            SC = gameObject.GetComponent<StereoController>();
+            SC.directRender = false;
+            SC.UpdateStereoValues();
+        }
     }
 }

@@ -14,11 +14,12 @@ public class DownloadVideo : MonoBehaviour
 
     private List<string> videos;     //list of videos to load in
     private List<string> videoID;   //the identifier of the video
-    private bool downloadingComplete;
+    public bool downloadingComplete;
 
     private NodeTree nodeTree;
     private string VideoSizeToDownload;
     private DeviceVideoCapability.MaxVideoSize maxVidSize;
+    private float loadedVideoCounter = 0f;
 
     WWW request;
     byte[] fileData;
@@ -32,6 +33,12 @@ public class DownloadVideo : MonoBehaviour
         //Set our video counter so we know how many videos we have downloaded so far
         currentDownload = 0;
         downloadingComplete = false;
+
+        //when we start we should look in the file structure and see if there is anything already in there, and have em ready to go if we do
+        foreach(string vid in videos)
+        {
+            checkforDownloadedVideo(vid, true);
+        }
     }
 
     // Update is called once per frame
@@ -91,7 +98,7 @@ public class DownloadVideo : MonoBehaviour
     {
         if(downloadingComplete)
         {
-            return "Downloads Complete";
+            return "Videos Ready";
         }
         else if (request != null)
         {
@@ -100,7 +107,7 @@ public class DownloadVideo : MonoBehaviour
         }
         else
         {
-            return "Error: Some sort of Error";
+            return " ";
         }
     }
 
@@ -115,7 +122,7 @@ public class DownloadVideo : MonoBehaviour
 #endif
     }
 
-    IEnumerator downloadStreamingVideo(string videoPath)
+    void checkforDownloadedVideo(string videoPath, bool checking)
     {
         //Will need to have an identifier number for each video passed in so we know which video we are loading
         localPath = videoPath;
@@ -125,7 +132,22 @@ public class DownloadVideo : MonoBehaviour
         {
             print("file://" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4 exists");
             SaveCorrectPath();
+            if (checking)
+            {
+                nodeTree.videoStructure[currentDownload].sphereVideo = localPath;
+            }
+            loadedVideoCounter++;
+            if (loadedVideoCounter < videos.Count) //check
+            {
+                downloadingComplete = true;
+                print("Downloading is complete! You can press play now!");
+            }
         }
+    }
+
+    IEnumerator downloadStreamingVideo(string videoPath)
+    {
+        checkforDownloadedVideo(videoPath, false);
 
         // Start a download of the given URL
         request = new WWW(localPath);
@@ -168,6 +190,23 @@ public class DownloadVideo : MonoBehaviour
             default:
                 VideoSizeToDownload = "HD";
                 break;
+        }
+    }
+
+    public void deleteFiles()
+    {
+        foreach (string vid in videoID)
+        {
+            FileInfo info = new FileInfo(Application.persistentDataPath + "/" + vid + VideoSizeToDownload + ".mp4");
+            if (info.Exists == true)
+            {
+                info.Delete();
+            }
+            //all files deleted, lets reset all these values to their starting state
+            currentDownload = 0;
+            downloadingComplete = false;
+            request = null;
+            //TODO:  play button needs to reset when this happens
         }
     }
 }

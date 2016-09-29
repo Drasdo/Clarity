@@ -9,6 +9,8 @@ public class GUIElementReaction : MonoBehaviour {
     public Sprite normal;
     public Sprite hover;
     public Sprite select;
+    public Sprite selectHover;
+    public Sprite off;
     public bool isMovieSprite = false;
 
     public bool moveToPositionOnSelect = false;
@@ -16,6 +18,9 @@ public class GUIElementReaction : MonoBehaviour {
     public float moveToScaler = 1;
     public bool triggerNewUI = false;
     public GameObject newUI;
+
+    public bool isEnabled = true;
+    public bool disableUntilDownloaded = false;
 
 
     private bool moving;
@@ -26,6 +31,8 @@ public class GUIElementReaction : MonoBehaviour {
     private Vector3 destination;
     private Vector3 currentMoveToScaler;
     private float speed = 5.0f;
+
+    private DownloadVideo DV;
 
     private GazeLookSelection gazeLookHandler;
 
@@ -44,7 +51,13 @@ public class GUIElementReaction : MonoBehaviour {
         moving = false;
         UpdatePositions();
         UpdateScaler(1.0f);
-        gazeLookHandler = GameObject.Find("GvrReticle").GetComponent<GazeLookSelection>(); 
+        gazeLookHandler = GameObject.Find("GvrReticle").GetComponent<GazeLookSelection>();
+        if (disableUntilDownloaded)
+        {
+            DV = GameObject.Find("VideoDownloader").GetComponent<DownloadVideo>();
+            updateRenderer(off);
+            isEnabled = false;
+        }
 
         //get each gameobject in this set so we know who to switch off if we need to
         foreach (Transform child in transform.parent.gameObject.GetComponentsInChildren<Transform>())
@@ -69,53 +82,89 @@ public class GUIElementReaction : MonoBehaviour {
 
     void Update()
     {
-        if(moving)
+        if (enabled) //i dont think this is neccessary? why is it here?
         {
-            MoveTowardsDestination();
+            if (moving)
+            {
+                MoveTowardsDestination();
+            }
         }
+        if (disableUntilDownloaded)
+        {
+            if (!DV.downloadingComplete)
+            {
+                isEnabled = false;
+                updateRenderer(off);
+            }
+            else
+            {
+                enableWhenDownloadsComplete();
+            }
+        }
+
     }
 
     public void OnHover()
     {
-        updateRenderer(hover);
-        destination = highlightPosition;
-        UpdateScaler(1.0f);
+        if (isEnabled)
+        {
+            updateRenderer(hover);
+        }
+        if (!moving)
+        {
+            destination = highlightPosition;
+            UpdateScaler(1.0f);
+        }
         moving = true;
         gazeLookHandler.SetGazedAt(true, gameObject);
     }
 
     public void OnExit()
     {
-        if (isCurrentSelection)
+        if (isEnabled)
         {
-            updateRenderer(select);
-        } else
-        {
-            updateRenderer(normal);
+            if (isCurrentSelection)
+            {
+                updateRenderer(select);
+            }
+            else
+            {
+                updateRenderer(normal);
+            }
         }
-        if (moveToPositionOnSelect && isCurrentSelection)
+        if (!moving)
         {
-            destination = moveToPosition;
-        }
-        else
-        {
-            destination = startingPosition;
+            if (moveToPositionOnSelect && isCurrentSelection)
+            {
+                destination = moveToPosition;
+            }
+            else
+            {
+                destination = startingPosition;
+            }
         }
         moving = true;
         gazeLookHandler.SetGazedAt(false, gameObject);
+
     }
 
     public void OnClick()
     {
-        foreach(GUIElementReaction i in selectionSet)
+        if (isEnabled) //this is if i've enabled the object
         {
-            i.CancelSelection();
-        }
-        isCurrentSelection = true;
-        UpdateScaler(1.0f);
-        if(moveToPositionOnSelect)
+            foreach (GUIElementReaction i in selectionSet)
+            {
+                i.CancelSelection();
+            }
+            isCurrentSelection = true;
+            UpdateScaler(1.0f);
+            if (moveToPositionOnSelect)
+            {
+                moveObjectToNewPosition();
+            }
+        } else
         {
-            moveObjectToNewPosition();
+            //i feel like we should indicate that it won't work until you download, but i don't know how?
         }
     }
 
@@ -129,10 +178,11 @@ public class GUIElementReaction : MonoBehaviour {
         }
         else
         {
+            //moving complete
             transform.localPosition = destination;
             moving = false;
-            t = 0;
-            if(destination.Equals(moveToPosition))
+            t = 0; 
+            if (destination.Equals(moveToPosition))
             {
                 UpdatePositions();
             }
@@ -158,7 +208,8 @@ public class GUIElementReaction : MonoBehaviour {
         destination = moveToPosition;
         moving = true;
         UpdateScaler(moveToScaler);
-        speed = 2.0f;
+        speed = 0.7f;
+        moveToPositionOnSelect = false; //we only wanna do this once, so once we trigger we can make this false
         //somehow need to lock clicking while this happens
         if (!calledAlready)
         {
@@ -182,7 +233,16 @@ public class GUIElementReaction : MonoBehaviour {
     {
         if (!isMovieSprite)
         {
-            ren.sprite = sprite;
+           ren.sprite = sprite;
+        }
+    }
+
+    void enableWhenDownloadsComplete()
+    {
+        if(DV.downloadingComplete)
+        {
+            isEnabled = true;
+            updateRenderer(normal);
         }
     }
 }

@@ -5,7 +5,7 @@
 		_Blend("Blend", Range(0, 1)) = 0.5
 		_Color("Main Color", Color) = (1, 1, 1, 1)
 		_TexMat1("Texture 1", 2D) = "white" {}
-	_TexMat2("Texture 2", 2D) = ""
+		_TexMat2("Texture 2", 2D) = ""
 	}
 		SubShader
 	{
