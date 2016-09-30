@@ -78,11 +78,24 @@ public class DownloadVideo : MonoBehaviour
         Size = fileData.Length;
         if (fileData.Length > 0)
         {
-            File.WriteAllBytes(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4", fileData);
+            if (currentDownload % 2 == 0) //if we are on a main video
+            {
+                File.WriteAllBytes(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4", fileData);
+            }
+            else
+            {
+                File.WriteAllBytes(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + "fade" + ".mp4", fileData);
+            }
             print("Saving mp4 to " + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4");
             SaveCorrectPath();
         }
-        nodeTree.videoStructure[currentDownload].sphereVideo = localPath;
+        if (currentDownload % 2 == 0) //if we are on a main video
+        {
+            nodeTree.videoStructure[(int)currentDownload/2].sphereVideo = localPath;
+        } else
+        {
+            nodeTree.videoStructure[(int)currentDownload/2].SphVidFadeOutLocal = localPath;
+        }
     }
 
     public void InitateDownload()
@@ -127,16 +140,30 @@ public class DownloadVideo : MonoBehaviour
         //Will need to have an identifier number for each video passed in so we know which video we are loading
         localPath = videoPath;
         currentVideo = videoPath;
-        FileInfo info = new FileInfo(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4");
+        FileInfo info;
+        if (currentDownload % 2 == 0) //if we are on a main video
+        {
+            info = new FileInfo(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4");
+        } else //a fade video
+        {
+            info = new FileInfo(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload +  "fade" + ".mp4");
+        }
         if (info.Exists == true)
         {
             print("file://" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4 exists");
             SaveCorrectPath();
             if (checking)
             {
-                nodeTree.videoStructure[currentDownload].sphereVideo = localPath;
-                currentDownload++;
+                if (currentDownload % 2 == 0) //if we are on a main video
+                {
+                    nodeTree.videoStructure[(int)currentDownload/5].sphereVideo = localPath;
+                }
+                else //a fade video
+                {
+                    nodeTree.videoStructure[(int)currentDownload/5].SphVidFadeOutLocal = localPath;
+                }
             }
+            currentDownload++;
             loadedVideoCounter++;
             if (loadedVideoCounter >= videos.Count) //check
             {
@@ -167,13 +194,16 @@ public class DownloadVideo : MonoBehaviour
         {
             if (videoNode.SphVidOnlineLoc == "")
             {
-                videos.Add(videoNode.sphereVideo);
+                videos.Add(videoNode.sphereVideo + ".mp4");
+                videos.Add(videoNode.sphereVideo + "fade" + ".mp4");
             }
             else
             {
-                videos.Add((videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4")); // todo: CANT DO THIS UNTIL WE SAY TO ACTUALLY DOWNLOAD
+                videos.Add(videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4");
+                videos.Add(videoNode.SphVidOnlineLoc + VideoSizeToDownload + "fade" + ".mp4");
             }
             videoID.Add(videoNode.nodeTitle);
+            videoID.Add(videoNode.nodeTitle + "fade");
         }
     }
 

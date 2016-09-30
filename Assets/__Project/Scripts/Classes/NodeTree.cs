@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class NodeTree : MonoBehaviour
 {
+    public string structureName;
     public List<Node> videoStructure = new List<Node>();
 
     void Awake()

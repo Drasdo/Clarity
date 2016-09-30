@@ -40,5 +40,6 @@ public class BasicTimer : MonoBehaviour
     {
         timerCurrentlyOn = false;
         timerIsDone = false;
+        targetTime = 60.0f;
     }
 }

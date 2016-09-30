@@ -66,6 +66,7 @@ public class RevealOnVisible : MonoBehaviour
 
     public void beginReveal()
     {
+        transform.localScale = startSize;
         gameObject.SetActive(true);
         if (!onlyMe)
         {
@@ -96,6 +97,7 @@ public class RevealOnVisible : MonoBehaviour
         startSize = Vector3.zero;
         endSize = transform.localScale;
         startTime = 0.0f;
+        shouldReveal = false;
         if (!onlyMe)
         {
             for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
@@ -105,6 +107,6 @@ public class RevealOnVisible : MonoBehaviour
         }
         gameObject.SetActive(false);
 
-        transform.localScale = startSize; //reset the size after it is hidden so that the player doesn't see
+        //transform.localScale = startSize; //reset the size after it is hidden so that the player doesn't see
     }
 }

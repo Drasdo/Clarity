@@ -1856,16 +1856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structureName: Elle
   videoStructure:
   - nodeTitle: Video1_1A(0)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_1_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
-    choiceVideoLeft: ed_1024_512kb
-    choiceVideoRight: ed_1024_512kb
-    choicesSecondsToShow: 39
-    choiceRotationToSummonAt: 0
+    choiceVideoLeft: Have a Drink
+    choiceVideoRight: Refuse Drink
+    choiceIsVideo: 0
+    choicesSecondsToShow: 5
+    choiceRotationToSummonAt: 40
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 1
@@ -1876,10 +1877,10 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_2_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
-    choiceVideoLeft: ed_1024_512kb
-    choiceVideoRight: ed_1024_512kb
-    choicesSecondsToShow: 40
+    choiceVideoLeft: Have a Drink
+    choiceVideoRight: Refuse Drink
+    choiceIsVideo: 0
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1891,10 +1892,10 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_3_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
-    choiceVideoLeft: ed_1024_512kb
-    choiceVideoRight: ed_1024_512kb
-    choicesSecondsToShow: 20
+    choiceVideoLeft: Skull Sparkling
+    choiceVideoRight: Refuse Drink
+    choiceIsVideo: 0
+    choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1906,9 +1907,9 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/2_5_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
     choiceVideoLeft: ed_1024_512kb
     choiceVideoRight: ed_1024_512kb
+    choiceIsVideo: 1
     choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
@@ -1921,9 +1922,9 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/6_10_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
     choiceVideoLeft: 
     choiceVideoRight: 
+    choiceIsVideo: 1
     choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
@@ -1936,9 +1937,9 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     SphVidFadeOutLocal: 
-    SphVidFadeOut: 
     choiceVideoLeft: ed_1024_512kb
     choiceVideoRight: ed_1024_512kb
+    choiceIsVideo: 1
     choicesSecondsToShow: 5
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
@@ -2485,6 +2486,10 @@ Prefab:
     - target: {fileID: 11446276, guid: 60270cf52a5e94998a5a335989159738, type: 2}
       propertyPath: reticleSegments
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301146, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60270cf52a5e94998a5a335989159738, type: 2}
@@ -4979,7 +4984,7 @@ MonoBehaviour:
   initTexture: {fileID: 2800000, guid: 75f202ffed0c346499615e62312198f7, type: 3}
   leftChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
   rightChoice: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
-  duration: 5
+  duration: 2.5
 --- !u!114 &1960242515
 MonoBehaviour:
   m_ObjectHideFlags: 0

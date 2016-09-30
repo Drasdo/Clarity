@@ -15,9 +15,10 @@ public class BranchingStoryController : MonoBehaviour {
 
     private Node currentNode;
     private MediaPlayerCtrl spherePlayer;   //player of the sphere video
-    private MediaPlayerCtrl[] choicePlayer; //will point to the video players for each choice, right then left
+    private GameObject[] choiceGameObject; //will point to the video players for each choice, right then left
     private bool notRevealedChoices;        //so we know when the choices has begun revealing so we can only trigger that once
-    private bool finalScene;                //flag so we know if we need to show choices or not  
+    private bool finalScene;//flag so we know if we need to show choices or not  
+    private GameObject reticle; //the reticle, so we can turn it off when not showing options
 
     private NodeTree nodeTree; 
                                                 
@@ -26,12 +27,18 @@ public class BranchingStoryController : MonoBehaviour {
 	void Start () {
         spherePlayer = videoSphere.GetComponent<MediaPlayerCtrl>();
         changeVideo = TextSelector.GetComponent<ChangeVideo>();
-        choicePlayer = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is right is first, will need to check
+        reticle = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject; 
+
+        choiceGameObject = new GameObject[2];
+        MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
+        choiceGameObject[0] = temp[0].gameObject;
+        choiceGameObject[1] = temp[1].gameObject; //this is bad, but anyway
         nodeTree = GameObject.FindGameObjectWithTag("NodeTree").GetComponent<NodeTree>();
         finalScene = false;
     
         LoadInTreeStructure();
         currentNode = videoStructure[0]; ; //0 will be our starting video;
+        reticle.GetComponent<Renderer>().enabled = false;
         assignEnvironmentProperties();
     }
 	
@@ -53,20 +60,25 @@ public class BranchingStoryController : MonoBehaviour {
 
     public void UpdateTextSelectorForCurrentBranch(bool leftBranchSelected) //Run as a new video is loaded, so that all the paremeters are set and ready to go.
     {
-        //BEFORE WE DO THAT, LETS MAKE SURE THAT BLUR IS ADDED
-        setBlurOptions(leftBranchSelected);
-        //we need to check if the element number of choice is -1 because that means we need to end)
-        //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
-        currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
-        TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
-        assignEnvironmentProperties();
+        if (!notRevealedChoices) //why did I make this variable so confusing? if Not Not Revealed Choices... so if the choices have been revealed
+        {
+            //BEFORE WE DO THAT, LETS MAKE SURE THAT BLUR IS ADDED
+            reticle.GetComponent<Renderer>().enabled = false; //disable reticle
+            setBlurOptions(leftBranchSelected);
+            //we need to check if the element number of choice is -1 because that means we need to end)
+            //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
+            currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
+            TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
+            assignEnvironmentProperties();
+            //is there anything else that needs to be reset?
+        }
     }
 
     void assignEnvironmentProperties()
     {
         changeVideo.videoToChangeTo = currentNode.sphereVideo;
-        choicePlayer[0].m_strFileName = currentNode.choiceVideoLeft; //Left
-        choicePlayer[1].m_strFileName = currentNode.choiceVideoRight; //Right
+        setupTextSelectOptions();
+
         changeVideo.ChangeToNewVideo();
         notRevealedChoices = false;
         spherePlayer.transform.Rotate(new Vector3(0, currentNode.startingRotationOfVideoDegrees, 0)); //rotate the video to correct orientation if need be. Hopefully this doesn't actually have to be used, but nice to have anyway.
@@ -86,6 +98,7 @@ public class BranchingStoryController : MonoBehaviour {
     void revealTextChoices()
     {
         TextSelector.GetComponent<RevealOnVisible>().beginReveal();
+        reticle.GetComponent<Renderer>().enabled = true;
     }
 
     void finalSceneChecker()
@@ -119,6 +132,34 @@ public class BranchingStoryController : MonoBehaviour {
         else if (currentNode.choiceRightAddBlur && !leftSelected)
         {
             addBlur.updateBlurValues(addBlur.blurIntensity);
+        }
+    }
+
+    void setupTextSelectOptions()
+    {
+        if (currentNode.choiceIsVideo)
+        {
+            choiceGameObject[0].transform.GetChild(0).GetComponent<GUIElementReaction>().isMovieSprite = true; //Movie sprite, so lets tell the gui that
+            choiceGameObject[1].transform.GetChild(0).GetComponent<GUIElementReaction>().isMovieSprite = true;
+            choiceGameObject[0].GetComponent<MediaPlayerCtrl>().enabled = true;
+            choiceGameObject[1].GetComponent<MediaPlayerCtrl>().enabled = true;
+            choiceGameObject[0].GetComponent<MediaPlayerCtrl>().m_strFileName = currentNode.choiceVideoRight; //Right
+            choiceGameObject[1].GetComponent<MediaPlayerCtrl>().m_strFileName = currentNode.choiceVideoLeft; //Left
+            //disable GUI renderers
+            choiceGameObject[0].transform.GetChild(0).gameObject.SetActive(false); //no longer playing movie, so disable
+            choiceGameObject[1].transform.GetChild(0).gameObject.SetActive(false);
+
+        }
+        else //choices are icons, so we need to somehow set that up
+        {
+            choiceGameObject[0].GetComponent<MediaPlayerCtrl>().enabled = false; //disable the video player cause fuck that shit
+            choiceGameObject[1].GetComponent<MediaPlayerCtrl>().enabled = false;
+            choiceGameObject[0].GetComponent<Renderer>().enabled = false; //disable the video player cause fuck that shit
+            choiceGameObject[1].GetComponent<Renderer>().enabled = false;
+            choiceGameObject[0].transform.GetChild(0).GetComponent<GUIElementReaction>().isMovieSprite = false; //no longer playing movie, so disable
+            choiceGameObject[1].transform.GetChild(0).GetComponent<GUIElementReaction>().isMovieSprite = false;
+            choiceGameObject[0].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoRight; //set the text for the choice
+            choiceGameObject[1].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoLeft; //this is such bad code i am so sorry
         }
     }
 }

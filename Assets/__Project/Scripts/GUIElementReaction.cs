@@ -21,8 +21,7 @@ public class GUIElementReaction : MonoBehaviour {
 
     public bool isEnabled = true;
     public bool disableUntilDownloaded = false;
-
-
+    
     private bool moving;
     private Vector3 startingPosition;
     private Vector3 selectedPosition;
@@ -216,7 +215,6 @@ public class GUIElementReaction : MonoBehaviour {
             foreach (GUIElementReaction i in selectionSet)
             {
                 i.moveObjectToNewPosition(true);
-                newUI.GetComponent<RevealOnVisible>().ResetVisibility();
                 newUI.GetComponent<RevealOnVisible>().beginReveal();
             }
         }
