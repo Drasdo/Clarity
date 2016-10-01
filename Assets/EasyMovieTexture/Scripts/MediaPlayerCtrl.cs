@@ -843,6 +843,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 
     public void Load(string strFileName)
     {
+
         if (GetCurrentState() != MEDIAPLAYER_STATE.NOT_READY)
             UnLoad();
 
@@ -856,7 +857,6 @@ public class MediaPlayerCtrl : MonoBehaviour
 
         if (m_bInit == false)
             return;
-
 
         m_CurrentState = MEDIAPLAYER_STATE.NOT_READY;
     }

@@ -12,7 +12,7 @@ public class GazeLookSelection : MonoBehaviour
     private float startingSizeDown = 0.21f;
     private EventTrigger currentGazeObject; // My renderer so I can set _Cutoff value
     private bool isLookedAt = false; // Is player looking at me?
-    private bool hasBeenClicked = false;
+    public bool hasBeenClicked = false;
     private Renderer retMaterial; //Renderer for the reticle
 
     void Start()

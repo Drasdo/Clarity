@@ -42,4 +42,9 @@ public class BasicTimer : MonoBehaviour
         timerIsDone = false;
         targetTime = 60.0f;
     }
+
+    public float timeRemaining()
+    {
+        return targetTime;
+    }
 }

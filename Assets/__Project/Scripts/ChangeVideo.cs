@@ -24,7 +24,6 @@ public class ChangeVideo : MonoBehaviour {
             Start();
         }
         SphereMediaPlayer.Load(videoToChangeTo);
-        SphereMediaPlayer.Play();
         print("Playing Video " + videoToChangeTo);
     }
 }

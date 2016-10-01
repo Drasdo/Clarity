@@ -565,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVideo: 
   Size: 0
+  videosComplete: 0
   downloadingComplete: 0
 --- !u!1 &250185370
 GameObject:
@@ -1862,11 +1863,12 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_1_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: Have a Drink
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 5
-    choiceRotationToSummonAt: 40
+    choicesSecondsToShow: 40
+    choiceRotationToSummonAt: 53
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 1
@@ -1877,10 +1879,11 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_2_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: Have a Drink
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 5
+    choicesSecondsToShow: 30
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1892,10 +1895,11 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_3_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: Skull Sparkling
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 5
+    choicesSecondsToShow: 41
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1907,10 +1911,11 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/2_5_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: ed_1024_512kb
     choiceVideoRight: ed_1024_512kb
     choiceIsVideo: 1
-    choicesSecondsToShow: 5
+    choicesSecondsToShow: 41
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 1
@@ -1922,6 +1927,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/6_10_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: 
     choiceVideoRight: 
     choiceIsVideo: 1
@@ -1937,6 +1943,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     SphVidFadeOutLocal: 
+    TailendAudio: {fileID: 0}
     choiceVideoLeft: ed_1024_512kb
     choiceVideoRight: ed_1024_512kb
     choiceIsVideo: 1
@@ -2351,6 +2358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDuration: 3
+  hasBeenClicked: 0
 --- !u!1 &753770174
 GameObject:
   m_ObjectHideFlags: 0

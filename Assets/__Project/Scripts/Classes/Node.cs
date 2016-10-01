@@ -7,6 +7,7 @@ public class Node : System.Object {
     public string sphereVideo;                  //where the spherevideo is located locally, either as it always been or downloaded
     public string SphVidOnlineLoc;              //online location of video
     public string SphVidFadeOutLocal;           //where the fadout for this clip is located locally, after download
+    public AudioClip TailendAudio;                 //audio to play while the user makes a choice
     public string choiceVideoLeft;
     public string choiceVideoRight;
     public bool choiceIsVideo = true;             //because they dont seem to be giving me videos, we need an option to set the choices as text for icons

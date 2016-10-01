@@ -19,15 +19,24 @@ public class BranchingStoryController : MonoBehaviour {
     private bool notRevealedChoices;        //so we know when the choices has begun revealing so we can only trigger that once
     private bool finalScene;//flag so we know if we need to show choices or not  
     private GameObject reticle; //the reticle, so we can turn it off when not showing options
+    private AudioClip tailendClip;
+    private NodeTree nodeTree;
+    private bool fadingOut = false;
+    private bool leftBranchSelected = false;
 
-    private NodeTree nodeTree; 
+    private BasicTimer timer;       //for fade
+    private BasicTimer sceneTimer;  //for scene length and playing audio
+    private bool mainSceneComplete = false;
+    private bool tryPlaySound = false;
                                                 
     private ChangeVideo changeVideo;
 
 	void Start () {
         spherePlayer = videoSphere.GetComponent<MediaPlayerCtrl>();
         changeVideo = TextSelector.GetComponent<ChangeVideo>();
-        reticle = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject; 
+        reticle = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject;
+        timer = gameObject.AddComponent<BasicTimer>();
+        sceneTimer = gameObject.AddComponent<BasicTimer>();
 
         choiceGameObject = new GameObject[2];
         MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
@@ -51,14 +60,61 @@ public class BranchingStoryController : MonoBehaviour {
                 revealTextChoices();
                 notRevealedChoices = false;
             }
+            float duration = spherePlayer.GetDuration() / 1000f;
+            if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
+            {
+                sceneTimer.StartTimer(duration); //start timer of length of video
+            } else if(sceneTimer.IsTimerFinished())
+            {
+                tryPlaySound = true; //this works but only if i breakpoint it? so it needs that tiny bit longer to play?
+                sceneTimer.ResetOrCancelTimer();
+                mainSceneComplete = true;
+            }
+
+            if(tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
+            {
+                if (!GetComponent<AudioSource>().isPlaying) //if we aren't playing TRY PLAYING
+                {
+                    GetComponent<AudioSource>().Play();
+                } else
+                {
+                    tryPlaySound = true;
+                }
+            }
         }
         else
         {
             finalSceneChecker();
         }
+        if (fadingOut)
+        {
+            FadeOutMusic();
+            if (timer.IsTimerFinished()) //3 second timer because all the fades are 3 seconds
+            {
+                fadingOut = false;
+                UpdateTextSelectorForCurrentBranch();
+                timer.ResetOrCancelTimer();
+                
+            }
+        }
     }
 
-    public void UpdateTextSelectorForCurrentBranch(bool leftBranchSelected) //Run as a new video is loaded, so that all the paremeters are set and ready to go.
+    void FadeOutMusic()
+    {
+        GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / 2.8f);
+    }
+
+    public void fadeOut(bool leftBranchSel)
+    {
+        changeVideo.videoToChangeTo = currentNode.SphVidFadeOutLocal;
+        changeVideo.ChangeToNewVideo();
+        leftBranchSelected = leftBranchSel;
+        fadingOut = true;
+        TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
+        timer.StartTimer(2.8f);
+    }
+
+    void UpdateTextSelectorForCurrentBranch() //Run as a new video is loaded, so that all the paremeters are set and ready to go.
     {
         if (!notRevealedChoices) //why did I make this variable so confusing? if Not Not Revealed Choices... so if the choices have been revealed
         {
@@ -68,7 +124,7 @@ public class BranchingStoryController : MonoBehaviour {
             //we need to check if the element number of choice is -1 because that means we need to end)
             //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
             currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
-            TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
+
             assignEnvironmentProperties();
             //is there anything else that needs to be reset?
         }
@@ -78,6 +134,10 @@ public class BranchingStoryController : MonoBehaviour {
     {
         changeVideo.videoToChangeTo = currentNode.sphereVideo;
         setupTextSelectOptions();
+        tailendClip = currentNode.TailendAudio;
+        GetComponent<AudioSource>().clip = tailendClip;
+        mainSceneComplete = false;
+        tryPlaySound = false;
 
         changeVideo.ChangeToNewVideo();
         notRevealedChoices = false;
