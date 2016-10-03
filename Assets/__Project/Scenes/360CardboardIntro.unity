@@ -1867,7 +1867,7 @@ MonoBehaviour:
     choiceVideoLeft: Have a Drink
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 40
+    choicesSecondsToShow: 1
     choiceRotationToSummonAt: 53
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1883,8 +1883,8 @@ MonoBehaviour:
     choiceVideoLeft: Have a Drink
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 30
-    choiceRotationToSummonAt: 0
+    choicesSecondsToShow: 1
+    choiceRotationToSummonAt: 35
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 1
@@ -1899,30 +1899,30 @@ MonoBehaviour:
     choiceVideoLeft: Skull Sparkling
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 41
-    choiceRotationToSummonAt: 0
+    choicesSecondsToShow: 1
+    choiceRotationToSummonAt: 1
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     leftChoiceElementNumber: 3
-    rightChoiceElementNumber: 3
+    rightChoiceElementNumber: 4
   - nodeTitle: Video3_1AAA(3)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/2_5_
     SphVidFadeOutLocal: 
     TailendAudio: {fileID: 0}
-    choiceVideoLeft: ed_1024_512kb
-    choiceVideoRight: ed_1024_512kb
-    choiceIsVideo: 1
-    choicesSecondsToShow: 41
-    choiceRotationToSummonAt: 0
+    choiceVideoLeft: Left Choice
+    choiceVideoRight: Right Choice
+    choiceIsVideo: 0
+    choicesSecondsToShow: 2
+    choiceRotationToSummonAt: 2
     startingRotationOfVideoDegrees: 0
     resetBlur: 1
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
-    leftChoiceElementNumber: 4
-    rightChoiceElementNumber: 5
+    leftChoiceElementNumber: 5
+    rightChoiceElementNumber: 6
   - nodeTitle: Video3_1AAB(4)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/6_10_
@@ -1930,8 +1930,8 @@ MonoBehaviour:
     TailendAudio: {fileID: 0}
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
-    choicesSecondsToShow: 5
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 1
@@ -1944,17 +1944,17 @@ MonoBehaviour:
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     SphVidFadeOutLocal: 
     TailendAudio: {fileID: 0}
-    choiceVideoLeft: ed_1024_512kb
-    choiceVideoRight: ed_1024_512kb
+    choiceVideoLeft: 
+    choiceVideoRight: 
     choiceIsVideo: 1
-    choicesSecondsToShow: 5
+    choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
-    leftChoiceElementNumber: 4
-    rightChoiceElementNumber: 5
+    leftChoiceElementNumber: -1
+    rightChoiceElementNumber: -1
 --- !u!4 &639039155
 Transform:
   m_ObjectHideFlags: 0

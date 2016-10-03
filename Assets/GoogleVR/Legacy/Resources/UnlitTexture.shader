@@ -15,7 +15,9 @@
 Shader "GoogleVR/UnlitTexture" {
  Properties {
 	_Color ("Color", Color) = (1,1,1,1)
-	_MainTex ("Texture", 2D) = "white" {}
+	
+	
+	Tex ("Texture", 2D) = "white" {}
 	 _TexMat1("Base (RGB)", 2D) = "white" {}
 	 _TexMat2("Base (RGB)", 2D) = "white" {}
 	 _Blend("Blend", Range(0.0,1.0)) = 0.0

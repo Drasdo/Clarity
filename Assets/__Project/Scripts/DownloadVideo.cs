@@ -20,10 +20,14 @@ public class DownloadVideo : MonoBehaviour
     public bool videosComplete;     //so we know when the video files are finished.
     public bool downloadingComplete;
 
+    private bool areWeChecking = true;
+    private int checkingNumber = 0;
+
     private NodeTree nodeTree;
     private string VideoSizeToDownload;
     private DeviceVideoCapability.MaxVideoSize maxVidSize;
     private float loadedVideoCounter = 0f;
+    private int SoundClipsLoaded = 0;
 
     WWW request;
     WWW requestSound;
@@ -49,11 +53,7 @@ public class DownloadVideo : MonoBehaviour
         {
             checkforDownloadedVideo(vid, true);
         }
-        foreach (string sou in sounds)
-        {
-            StartCoroutine(checkforDownloadedSounds(sou, true));
-        }
-
+        InitateSoundDownload(areWeChecking);
     }
 
     // Update is called once per frame
@@ -84,7 +84,7 @@ public class DownloadVideo : MonoBehaviour
                             videosComplete = true;
                             print("Videos downloaded");
                             request = null;
-                            InitateSoundDownload(); //start our first sound download
+                            InitateSoundDownload(areWeChecking); //start our first sound download
                         }
                     }
                 }
@@ -94,12 +94,12 @@ public class DownloadVideo : MonoBehaviour
                 if (requestSound.isDone)
                 {
                     //do sounds
-                    DownloadingSoundComplete();
+                    DownloadingSoundComplete(requestSound);
                     currentSoundDownload++;
                     //if there are more sounds to download, start the next download
                     if (currentSoundDownload < sounds.Count) //check
                     {
-                        InitateSoundDownload();
+                        InitateSoundDownload(areWeChecking);
                     }
                     else
                     {
@@ -109,7 +109,6 @@ public class DownloadVideo : MonoBehaviour
                 }
             }
         }
-
     }
 
     void DownloadComplete()
@@ -120,7 +119,7 @@ public class DownloadVideo : MonoBehaviour
         {
             File.WriteAllBytes(Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4", fileData);
             print("Saving mp4 to " + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4");
-            SaveCorrectPath(".mp4");
+            SaveCorrectPath(".mp4", currentDownload);
         }
         if (currentDownload % 2 == 0) //if we are on a main video
         {
@@ -132,16 +131,17 @@ public class DownloadVideo : MonoBehaviour
         }
     }
 
-    void DownloadingSoundComplete()
+    void DownloadingSoundComplete(WWW process)
     {
-        fileData = requestSound.bytes;
+        fileData = process.bytes;
         Size = fileData.Length;
         if (fileData.Length > 0)
         {
             File.WriteAllBytes(Application.persistentDataPath + "/" + soundID[currentSoundDownload] + ".wav", fileData);
-            SaveCorrectPath(".wav");
+            SaveCorrectPath(".wav", currentSoundDownload);
         }
-        nodeTree.videoStructure[currentSoundDownload].TailendAudio = requestSound.audioClip;
+        nodeTree.videoStructure[currentSoundDownload].TailendAudio = process.audioClip;
+        nodeTree.videoStructure[currentSoundDownload].TailendAudio.name = soundID[currentSoundDownload];
     }
 
     public void InitateDownload()
@@ -156,15 +156,15 @@ public class DownloadVideo : MonoBehaviour
         }
         else if (!downloadingComplete)
         {
-            InitateSoundDownload();
+            InitateSoundDownload(false);
         }
     }
 
-    public void InitateSoundDownload()
+    public void InitateSoundDownload(bool checking)
     {
         setVideoSizeString();
         setSoundsToDownload();
-        StartCoroutine(downloadAudioFile(sounds[currentSoundDownload]));
+        StartCoroutine(downloadAudioFile(sounds[currentSoundDownload], checking));
     }
 
     public string GetProgress()
@@ -189,7 +189,7 @@ public class DownloadVideo : MonoBehaviour
         {
             if (currentDownload + 1 > videos.Count)
             {
-                return "Finalising Downloads";
+                return "Checking for Files";
             }
             else
             {
@@ -198,26 +198,26 @@ public class DownloadVideo : MonoBehaviour
         }
     }
 
-    void SaveCorrectPath(string fileFormat)
+    void SaveCorrectPath(string fileFormat, int val)
     {
         if (fileFormat == ".mp4")
         {
 #if UNITY_EDITOR_WIN
-            localPath = "file://" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + fileFormat;
+            localPath = "file://" + Application.persistentDataPath + "/" + videoID[val] + VideoSizeToDownload + fileFormat;
 #elif UNITY_IOS
-                 localPath = "file://" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + fileFormat;
+                 localPath = "file://" + Application.persistentDataPath + "/" + videoID[val] + VideoSizeToDownload + fileFormat;
 #else
-                localPath = "file:///" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + fileFormat;
+                localPath = "file:///" + Application.persistentDataPath + "/" + videoID[val] + VideoSizeToDownload + fileFormat;
 #endif
         }
         else if (fileFormat == ".wav")
         {
 #if UNITY_EDITOR_WIN
-            localPath = "file://" + Application.persistentDataPath + "/" + soundID[currentSoundDownload] + fileFormat;
+            localPath = "file://" + Application.persistentDataPath + "/" + soundID[val] + fileFormat;
 #elif UNITY_IOS
-                localPath = "file://" + Application.persistentDataPath + "/" + soundID[currentSoundDownload] + fileFormat;
+                localPath = "file://" + Application.persistentDataPath + "/" + soundID[val] + fileFormat;
 #else
-                localPath = "file:///" + Application.persistentDataPath + "/" + soundID[currentSoundDownload] + fileFormat;
+                localPath = "file:///" + Application.persistentDataPath + "/" + soundID[val] + fileFormat;
 #endif
         }
     }
@@ -232,7 +232,7 @@ public class DownloadVideo : MonoBehaviour
         if (info.Exists == true)
         {
             print("file://" + Application.persistentDataPath + "/" + videoID[currentDownload] + VideoSizeToDownload + ".mp4 exists");
-            SaveCorrectPath(".mp4");
+            SaveCorrectPath(".mp4", currentDownload);
             if (checking)
             {
                 if (currentDownload % 2 == 0) //if we are on a main video
@@ -267,14 +267,12 @@ public class DownloadVideo : MonoBehaviour
         info = new FileInfo(Application.persistentDataPath + "/" + soundID[currentSoundDownload] + ".wav");
         if (info.Exists == true)
         {
-            SaveCorrectPath(".wav");
+            SaveCorrectPath(".wav", currentSoundDownload);
             if (checking)
             {
                 //so the file exists... but we still need to turn it into a audioclip
-                yield return StartCoroutine(LoadClip(localPath));
-                //currentSoundDownload++;
+                yield return StartCoroutine(LoadClip(localPath, currentSoundDownload++));
                 //return;
-                currentSoundDownload++;
             }
             if (currentSoundDownload >= sounds.Count) //check
             {
@@ -297,10 +295,13 @@ public class DownloadVideo : MonoBehaviour
         yield return request;
     }
 
-    IEnumerator downloadAudioFile(string path)
+    IEnumerator downloadAudioFile(string path, bool checking)
     {
-        checkforDownloadedSounds(path, false);
-
+        checkforDownloadedSounds(path, checking);
+        if(checking)
+        {
+            checkingNumber++;
+        }
         // Start a download of the given URL
         requestSound = new WWW(path);
         yield return requestSound;
@@ -391,12 +392,24 @@ public class DownloadVideo : MonoBehaviour
         }
     }
 
-    IEnumerator LoadClip(string path)
+    IEnumerator LoadClip(string path, int currentVal)
     {
         www = new WWW(path);
         yield return www;
-        AudioClip clip = www.GetAudioClip(false, false, AudioType.WAV);
-        nodeTree.videoStructure[currentSoundDownload].TailendAudio = clip;
-        nodeTree.videoStructure[currentSoundDownload].TailendAudio.name = soundID[currentSoundDownload];
+        //AudioClip clip = www.GetAudioClip(false, false, AudioType.WAV);
+        byte[] fileData = www.bytes;
+        Size = fileData.Length;
+        if (fileData.Length > 0)
+        {
+            File.WriteAllBytes(Application.persistentDataPath + "/" + soundID[currentVal] + ".wav", fileData);
+            SaveCorrectPath(".wav", currentVal);
+        }
+        nodeTree.videoStructure[currentVal].TailendAudio = www.audioClip;
+        nodeTree.videoStructure[currentVal].TailendAudio.name = soundID[currentVal];
+    }
+
+    void checkForLocalFiles()
+    {
+        StartCoroutine(checkforDownloadedSounds(sounds[currentSoundDownload], true));
     }
 }

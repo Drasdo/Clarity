@@ -10,6 +10,8 @@ public class BranchingStoryController : MonoBehaviour {
     public GameObject videoSphere;
     public GameObject choiceRotator;
     public AddBlur addBlur;
+    public GameObject fadeSphere;
+    public float fadeTimerLength = 0.5f;
 
     private List<Node> videoStructure = new List<Node>(); 
 
@@ -30,6 +32,7 @@ public class BranchingStoryController : MonoBehaviour {
     private bool tryPlaySound = false;
                                                 
     private ChangeVideo changeVideo;
+    private Color blackAllAlpha;
 
 	void Start () {
         spherePlayer = videoSphere.GetComponent<MediaPlayerCtrl>();
@@ -49,6 +52,8 @@ public class BranchingStoryController : MonoBehaviour {
         currentNode = videoStructure[0]; ; //0 will be our starting video;
         reticle.GetComponent<Renderer>().enabled = false;
         assignEnvironmentProperties();
+
+        blackAllAlpha = new Color(0, 0, 0, 0);
     }
 	
 	void Update () {
@@ -60,37 +65,44 @@ public class BranchingStoryController : MonoBehaviour {
                 revealTextChoices();
                 notRevealedChoices = false;
             }
-            float duration = spherePlayer.GetDuration() / 1000f;
-            if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
+        }
+        float duration = spherePlayer.GetDuration() / 1000f;
+        if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
+        {
+            sceneTimer.StartTimer(duration - 0.5f); //start timer of length of video
+            StartCoroutine(delayFade());
+        }
+        else if (sceneTimer.IsTimerFinished())
+        {
+            tryPlaySound = true;
+            sceneTimer.ResetOrCancelTimer();
+            mainSceneComplete = true;
+            spherePlayer.Pause();
+            if(finalScene)
             {
-                sceneTimer.StartTimer(duration); //start timer of length of video
-            } else if(sceneTimer.IsTimerFinished())
-            {
-                tryPlaySound = true; //this works but only if i breakpoint it? so it needs that tiny bit longer to play?
-                sceneTimer.ResetOrCancelTimer();
-                mainSceneComplete = true;
+                fadeOut(true);
             }
+        }
 
-            if(tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
+        if (tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
             {
-                if (!GetComponent<AudioSource>().isPlaying) //if we aren't playing TRY PLAYING
-                {
-                    GetComponent<AudioSource>().Play();
-                } else
+            if (!GetComponent<AudioSource>().isPlaying && GetComponent<AudioSource>().clip.loadState == AudioDataLoadState.Loaded)
+            {
+                GetComponent<AudioSource>().Play();
+            } else
                 {
                     tryPlaySound = true;
                 }
-            }
-        }
-        else
-        {
-            finalSceneChecker();
-        }
+           }
         if (fadingOut)
         {
             FadeOutMusic();
             if (timer.IsTimerFinished()) //3 second timer because all the fades are 3 seconds
             {
+                if(finalScene)
+                {
+                    SceneManager.LoadScene(0);
+                }
                 fadingOut = false;
                 UpdateTextSelectorForCurrentBranch();
                 timer.ResetOrCancelTimer();
@@ -101,17 +113,20 @@ public class BranchingStoryController : MonoBehaviour {
 
     void FadeOutMusic()
     {
-        GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / 2.8f);
+        GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
+        spherePlayer.GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
+        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(1.0f, 0.0f, timer.timeRemaining() / fadeTimerLength)));
     }
 
     public void fadeOut(bool leftBranchSel)
     {
-        changeVideo.videoToChangeTo = currentNode.SphVidFadeOutLocal;
-        changeVideo.ChangeToNewVideo();
+        //spherePlayer.Pause();
+        //changeVideo.videoToChangeTo = currentNode.SphVidFadeOutLocal;
+        //changeVideo.ChangeToNewVideo();
         leftBranchSelected = leftBranchSel;
-        fadingOut = true;
         TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
-        timer.StartTimer(2.8f);
+        fadingOut = true;
+        timer.StartTimer(fadeTimerLength);
     }
 
     void UpdateTextSelectorForCurrentBranch() //Run as a new video is loaded, so that all the paremeters are set and ready to go.
@@ -124,7 +139,7 @@ public class BranchingStoryController : MonoBehaviour {
             //we need to check if the element number of choice is -1 because that means we need to end)
             //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
             currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
-
+            sceneTimer.ResetOrCancelTimer();
             assignEnvironmentProperties();
             //is there anything else that needs to be reset?
         }
@@ -136,6 +151,8 @@ public class BranchingStoryController : MonoBehaviour {
         setupTextSelectOptions();
         tailendClip = currentNode.TailendAudio;
         GetComponent<AudioSource>().clip = tailendClip;
+        GetComponent<AudioSource>().volume = 1.0f;
+        //spherePlayer.GetComponent<AudioSource>().volume = 1.0f;
         mainSceneComplete = false;
         tryPlaySound = false;
 
@@ -170,7 +187,8 @@ public class BranchingStoryController : MonoBehaviour {
             if (seekPos >= totalDur)
             {
                 //oh gosh we hhave ended! What do?
-                SceneManager.LoadScene(0);
+                //trigger final fade out
+                
             }
         }
     }
@@ -221,5 +239,12 @@ public class BranchingStoryController : MonoBehaviour {
             choiceGameObject[0].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoRight; //set the text for the choice
             choiceGameObject[1].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoLeft; //this is such bad code i am so sorry
         }
+    }
+
+    IEnumerator delayFade()
+    {
+        yield return new WaitForSeconds(0.9f);
+        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
+        spherePlayer.GetComponent<AudioSource>().volume = 1.0f;
     }
 }

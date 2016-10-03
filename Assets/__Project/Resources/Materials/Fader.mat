@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: UVSphere
-  m_Shader: {fileID: 4800000, guid: 74dfb5945dd93644fb16440a7fa84859, type: 3}
+  m_Name: Fader
+  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 3dd07e17f2d1d274aa6f0dc746d84e46, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -69,37 +69,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecGlossMap
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _TexMat1
-      second:
-        m_Texture: {fileID: 2800000, guid: 75f202ffed0c346499615e62312198f7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _TexMat2
-      second:
-        m_Texture: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Texture2
-      second:
-        m_Texture: {fileID: 2800000, guid: 0154e6a881192ab4fa93ef6b90e83da7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
-        name: _Blend
+        name: PixelSnap
       second: 0
     - first:
         name: _BumpScale
       second: 1
+    - first:
+        name: _ColorMask
+      second: 15
     - first:
         name: _Cutoff
       second: 1
@@ -114,7 +93,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.65
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
@@ -131,6 +110,9 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _Scale
+      second: 1
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
@@ -140,6 +122,21 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
+        name: _Stencil
+      second: 0
+    - first:
+        name: _StencilComp
+      second: 8
+    - first:
+        name: _StencilOp
+      second: 0
+    - first:
+        name: _StencilReadMask
+      second: 255
+    - first:
+        name: _StencilWriteMask
+      second: 255
+    - first:
         name: _UVSec
       second: 0
     - first:
@@ -148,13 +145,10 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.591, g: 0.591, b: 0.591, a: 0}
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
+        name: _Color2
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 0.13725491, g: 0.13725491, b: 0.13725491, a: 1}
-    - first:
-        name: _Tint
       second: {r: 0, g: 0, b: 0, a: 1}

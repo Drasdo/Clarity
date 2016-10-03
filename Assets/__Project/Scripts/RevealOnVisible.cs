@@ -95,8 +95,8 @@ public class RevealOnVisible : MonoBehaviour
     public void ResetVisibility()
     {
         startSize = Vector3.zero;
-        endSize = transform.localScale;
         startTime = 0.0f;
+        t = 0.0f;
         shouldReveal = false;
         if (!onlyMe)
         {
