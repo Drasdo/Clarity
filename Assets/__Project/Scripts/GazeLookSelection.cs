@@ -29,6 +29,7 @@ public class GazeLookSelection : MonoBehaviour
             if (lookTimer / timerDuration2 < timerDuration2) //before a 1/10th of the duration has passed, size up to the right size
             {
                 lookTimer += Time.deltaTime;
+                float temp = retMaterial.material.GetFloat("_InnerDiameter");
                 retMaterial.material.SetFloat("_InnerDiameter", Mathf.Lerp(0f, startingSizeUp, lookTimer / timerDuration2));
                 startingSizeDown = startingSizeUp;
             }

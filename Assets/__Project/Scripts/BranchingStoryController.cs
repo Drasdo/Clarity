@@ -9,7 +9,6 @@ public class BranchingStoryController : MonoBehaviour {
     public GameObject TextSelector;
     public GameObject videoSphere;
     public GameObject choiceRotator;
-    public AddBlur addBlur;
     public GameObject fadeSphere;
     public float fadeTimerLength = 0.5f;
 
@@ -25,6 +24,7 @@ public class BranchingStoryController : MonoBehaviour {
     private NodeTree nodeTree;
     private bool fadingOut = false;
     private bool leftBranchSelected = false;
+    private AddBlur addBlur;
 
     private BasicTimer timer;       //for fade
     private BasicTimer sceneTimer;  //for scene length and playing audio
@@ -40,6 +40,7 @@ public class BranchingStoryController : MonoBehaviour {
         reticle = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject;
         timer = gameObject.AddComponent<BasicTimer>();
         sceneTimer = gameObject.AddComponent<BasicTimer>();
+        addBlur = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AddBlur>();
 
         choiceGameObject = new GameObject[2];
         MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
@@ -52,7 +53,7 @@ public class BranchingStoryController : MonoBehaviour {
         currentNode = videoStructure[0]; ; //0 will be our starting video;
         reticle.GetComponent<Renderer>().enabled = false;
         assignEnvironmentProperties();
-
+       
         blackAllAlpha = new Color(0, 0, 0, 0);
     }
 	
@@ -113,16 +114,12 @@ public class BranchingStoryController : MonoBehaviour {
 
     void FadeOutMusic()
     {
-        GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
-        spherePlayer.GetComponent<AudioSource>().volume = Mathf.Lerp(0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
+        AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(1.0f, 0.0f, timer.timeRemaining() / fadeTimerLength)));
     }
 
     public void fadeOut(bool leftBranchSel)
     {
-        //spherePlayer.Pause();
-        //changeVideo.videoToChangeTo = currentNode.SphVidFadeOutLocal;
-        //changeVideo.ChangeToNewVideo();
         leftBranchSelected = leftBranchSel;
         TextSelector.GetComponent<RevealOnVisible>().ResetVisibility();
         fadingOut = true;
@@ -151,14 +148,15 @@ public class BranchingStoryController : MonoBehaviour {
         setupTextSelectOptions();
         tailendClip = currentNode.TailendAudio;
         GetComponent<AudioSource>().clip = tailendClip;
-        GetComponent<AudioSource>().volume = 1.0f;
-        //spherePlayer.GetComponent<AudioSource>().volume = 1.0f;
+        AudioListener.volume = 1.0f;
         mainSceneComplete = false;
         tryPlaySound = false;
 
         changeVideo.ChangeToNewVideo();
         notRevealedChoices = false;
+        spherePlayer.transform.rotation = Quaternion.identity;
         spherePlayer.transform.Rotate(new Vector3(0, currentNode.startingRotationOfVideoDegrees, 0)); //rotate the video to correct orientation if need be. Hopefully this doesn't actually have to be used, but nice to have anyway.
+        choiceRotator.transform.rotation = Quaternion.identity;
         choiceRotator.transform.Rotate(new Vector3(0, currentNode.choiceRotationToSummonAt, 0));
         currentNode.toMilliseconds();
         if(currentNode.resetBlur)
@@ -245,6 +243,6 @@ public class BranchingStoryController : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.9f);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
-        spherePlayer.GetComponent<AudioSource>().volume = 1.0f;
+        AudioListener.volume = 1.0f;
     }
 }

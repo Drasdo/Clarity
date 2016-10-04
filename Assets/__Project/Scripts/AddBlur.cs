@@ -60,9 +60,9 @@ public class AddBlur : MonoBehaviour {
         {
             addBlurIntensity = -eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount;
         }
-        eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
+        //eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
         eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount += addBlurIntensity;
-        eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
+        //eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
         eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount += addBlurIntensity;
     }
 

@@ -1955,6 +1955,7 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
+  initializationTime: 0
 --- !u!4 &639039155
 Transform:
   m_ObjectHideFlags: 0
@@ -2840,9 +2841,33 @@ Prefab:
       propertyPath: screenSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 177758, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 177758, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
+      propertyPath: m_TagString
+      value: GvrViewerMain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &946975181 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 177758, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
+  m_PrefabInternal: {fileID: 946975180}
+--- !u!114 &946975182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946975181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7100322ff1b45839c2119a8fcd8903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializationTime: 0
 --- !u!1 &947714058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,6 +2944,8 @@ GameObject:
   - 81: {fileID: 959308589}
   - 114: {fileID: 959308588}
   - 114: {fileID: 959308594}
+  - 114: {fileID: 959308595}
+  - 114: {fileID: 959308596}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3032,6 +3059,31 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 4294967289
+--- !u!114 &959308595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959308587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7100322ff1b45839c2119a8fcd8903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializationTime: 0
+--- !u!114 &959308596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959308587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aae82e133f6e747bb12c4eed6d8b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blurShader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
+  blurIntensity: 0.3
 --- !u!1 &1048904576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,9 +3895,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1243613017}
+  - 114: {fileID: 1243613018}
   m_Layer: 0
   m_Name: CardboardViewer
-  m_TagString: Untagged
+  m_TagString: CardboardViewer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3864,6 +3917,18 @@ Transform:
   - {fileID: 1113738068}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1243613018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243613016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7100322ff1b45839c2119a8fcd8903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializationTime: 0
 --- !u!1 &1273865823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,7 +5018,7 @@ GameObject:
   - 4: {fileID: 1926979981}
   m_Layer: 0
   m_Name: SelectionOptionLocation
-  m_TagString: Untagged
+  m_TagString: SelectionOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

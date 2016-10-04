@@ -16,7 +16,7 @@ public class MoveToFrontOfCamera : MonoBehaviour {
     void Start () {
         timer = gameObject.AddComponent<BasicTimer>();
         yAxisVal = transform.position.y;
-
+        desiredLocation = GameObject.FindGameObjectWithTag("SelectionOption");
     }
 	
 	// Update is called once per frame

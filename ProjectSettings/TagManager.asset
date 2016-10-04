@@ -7,6 +7,9 @@ TagManager:
   - NodeTree
   - ImageSphere
   - VideoSphere
+  - CardboardViewer
+  - GvrViewerMain
+  - SelectionOption
   layers:
   - Default
   - TransparentFX
