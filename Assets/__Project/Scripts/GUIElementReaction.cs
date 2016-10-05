@@ -165,6 +165,7 @@ public class GUIElementReaction : MonoBehaviour {
         {
             //i feel like we should indicate that it won't work until you download, but i don't know how?
         }
+        gazeLookHandler.SetGazedAt(false, gameObject);
         gazeLookHandler.hasBeenClicked = true;
     }
 

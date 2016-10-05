@@ -13,10 +13,12 @@ public class Vector3Compare : MonoBehaviour {
     }
 
     //same thing, but ignores the Y axis cause fuck the Y axis.
-    public static bool V3EqualWithoutY(Vector3 a, Vector3 b, float howClose, float yVal)
+    public static bool V3EqualWithoutY(Vector3 a, Vector3 b, int howClose, float yVal)
     {
-        a = new Vector3(a.x, yVal, a.z);
-        b = new Vector3(b.x, yVal, b.z);
-        return Vector3.SqrMagnitude(a - b) < howClose;
+        a = new Vector3((float)System.Math.Round((double)a.x, howClose), yVal, (float)System.Math.Round((double)a.z, howClose));
+        b = new Vector3((float)System.Math.Round((double)b.x, howClose), yVal, (float)System.Math.Round((double)b.z, howClose));
+        float temp = Vector3.SqrMagnitude(a - b);
+        bool temp2 = temp < 0.01f;
+        return temp2;
     }
 }

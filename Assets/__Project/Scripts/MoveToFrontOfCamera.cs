@@ -3,10 +3,10 @@ using System.Collections;
 
 public class MoveToFrontOfCamera : MonoBehaviour {
 
-    public GameObject desiredLocation;
     public GameObject locationRepresenter;
     public float speed = 2.0f; //Speed at which the object rotates towards the camera.
 
+    private GameObject desiredLocation;
     private bool currentlyMoving = false;
     private BasicTimer timer;
     private float timeForTimer = 2.0f;
@@ -70,10 +70,11 @@ public class MoveToFrontOfCamera : MonoBehaviour {
     bool CheckIfBackInPosition()
     {   
         //we want to ignore the Y axis because we aren't moving the object along the Y axis. Otherwise it will never be close.
-        if (Vector3Compare.V3EqualWithoutY(transform.position, desiredLocation.transform.position, 0.01f, yAxisVal))
+        if (Vector3Compare.V3EqualWithoutY(transform.position, desiredLocation.transform.position, 2, yAxisVal))
         {
             //We are back in the right position! isn't that nice. reset everything
             currentlyMoving = false;
+            timer.ResetOrCancelTimer();
             return true;
         }
         return false;

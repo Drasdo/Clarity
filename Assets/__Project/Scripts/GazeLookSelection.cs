@@ -45,14 +45,16 @@ public class GazeLookSelection : MonoBehaviour
                 lookTimer2 = 0f;
                 Debug.Log("BUTTON HAS BEEN SELECTED!"); // Do something
                 currentGazeObject.OnPointerClick(null);
-                hasBeenClicked = true;
+                if (!isLookedAt)
+                {
+                    hasBeenClicked = true;
+                }
             }
         }
         else
         {
             lookTimer = 0f; // Reset Timer
             lookTimer2 = 0f;
-            //retMaterial.material.SetFloat("_InnerDiameter", startingSize);
         }
     }
 
@@ -62,5 +64,9 @@ public class GazeLookSelection : MonoBehaviour
         hasBeenClicked = false;
         isLookedAt = gazedAt; // Set the local bool to the one passed from Event Trigger
         currentGazeObject = currentGUI.GetComponent<EventTrigger>();
+        if (!gazedAt)
+        {
+            GetComponent<GvrReticle>().OnGazeExit(null, currentGUI);
+        }
     }
 }

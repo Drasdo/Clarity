@@ -16,7 +16,7 @@ public class DontDestroy : MonoBehaviour {
             if (dontDoIt.tag == gameObject.tag)
             {
                 DestroyImmediate(gameObject);
-                break;
+                return;
             }
         }
         //if we get to the end, does that mean we are ok, add the object?

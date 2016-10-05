@@ -51,7 +51,7 @@ public class BranchingStoryController : MonoBehaviour {
     
         LoadInTreeStructure();
         currentNode = videoStructure[0]; ; //0 will be our starting video;
-        reticle.GetComponent<Renderer>().enabled = false;
+        //reticle.GetComponent<Renderer>().enabled = false;
         assignEnvironmentProperties();
        
         blackAllAlpha = new Color(0, 0, 0, 0);

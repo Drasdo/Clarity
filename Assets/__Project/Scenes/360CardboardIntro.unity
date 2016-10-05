@@ -5016,6 +5016,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1926979981}
+  - 114: {fileID: 1926979982}
   m_Layer: 0
   m_Name: SelectionOptionLocation
   m_TagString: SelectionOption
@@ -5030,7 +5031,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1926979980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -5038,6 +5039,17 @@ Transform:
   - {fileID: 1048904577}
   m_Father: {fileID: 959308593}
   m_RootOrder: 1
+--- !u!114 &1926979982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1926979980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0953cc40948a246a527702028f5d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1960242513 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010232025212, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
