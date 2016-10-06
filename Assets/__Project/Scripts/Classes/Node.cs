@@ -4,13 +4,15 @@ using System.Collections;
 [System.Serializable]
 public class Node : System.Object {
     public string nodeTitle;
+    public string nodeID;
     public string sphereVideo;                  //where the spherevideo is located locally, either as it always been or downloaded
+    [HideInInspector]
     public string SphVidOnlineLoc;              //online location of video
-    public string SphVidFadeOutLocal;           //where the fadout for this clip is located locally, after download
+    public bool isThereEndAudio = true;
     public AudioClip TailendAudio;                 //audio to play while the user makes a choice
-    public string choiceVideoLeft;
-    public string choiceVideoRight;
-    public bool choiceIsVideo = true;             //because they dont seem to be giving me videos, we need an option to set the choices as text for icons
+    public string choiceVideoLeft = "Left Choice";
+    public string choiceVideoRight = "Right Choice";
+    public bool choiceIsVideo = false;             //because they dont seem to be giving me videos, we need an option to set the choices as text for icons
     public int choicesSecondsToShow;
     public int choiceRotationToSummonAt;
     public int startingRotationOfVideoDegrees;

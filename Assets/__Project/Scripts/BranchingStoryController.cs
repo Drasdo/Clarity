@@ -46,10 +46,13 @@ public class BranchingStoryController : MonoBehaviour {
         MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
         choiceGameObject[0] = temp[0].gameObject;
         choiceGameObject[1] = temp[1].gameObject; //this is bad, but anyway
-        nodeTree = GameObject.FindGameObjectWithTag("NodeTree").GetComponent<NodeTree>();
         finalScene = false;
-    
+
+        //We need to get the correct tree structure and then load it in
+        getCorrectNodeTree();
         LoadInTreeStructure();
+
+
         currentNode = videoStructure[0]; ; //0 will be our starting video;
         //reticle.GetComponent<Renderer>().enabled = false;
         assignEnvironmentProperties();
@@ -244,5 +247,19 @@ public class BranchingStoryController : MonoBehaviour {
         yield return new WaitForSeconds(0.9f);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
         AudioListener.volume = 1.0f;
+    }
+
+    void getCorrectNodeTree()
+    {
+        GameObject treeStructure = GameObject.FindGameObjectWithTag("NodeTree");
+        NodeTree[] NTs = treeStructure.GetComponents<NodeTree>();
+        foreach (NodeTree nt in NTs)
+        {
+            if(nt.structureName == NodeTree.currentTree)
+            {
+                nodeTree = nt;
+            }
+        }
+
     }
 }
