@@ -17,6 +17,7 @@ public class DownloadVideo : MonoBehaviour
     private List<string> videoID;   //the identifier of the video
     private List<string> sounds;  //list of the wav files to download as well
     private List<string> soundID;
+    private List<string> downloadedFiles; //a list of downloaded files so we can easily delete
     public bool videosComplete;     //so we know when the video files are finished.
     public bool soundsComplete;
     public bool downloadingComplete;
@@ -40,6 +41,7 @@ public class DownloadVideo : MonoBehaviour
 
     void Start()
     {
+        downloadedFiles = new List<string>();
         //Set our video counter so we know how many videos we have downloaded so far
         currentDownload = 0;
         currentSoundDownload = 0;
@@ -117,6 +119,7 @@ public class DownloadVideo : MonoBehaviour
         {
             localPath = correctLocalPath(".mp4", videoID[currentDownload]);
             File.WriteAllBytes(localPath, fileData);
+            addFileToListOfDownloadedFiles(localPath);
             SaveCorrectPath(localPath);
         }
         nodeTree.videoStructure[currentDownload].sphereVideo = localPath;
@@ -130,6 +133,7 @@ public class DownloadVideo : MonoBehaviour
         {
             localPath = correctLocalPath(".wav", soundID[currentSoundDownload]);
             File.WriteAllBytes(localPath, fileData);
+            addFileToListOfDownloadedFiles(localPath);
             SaveCorrectPath(localPath);
         }
         while(nodeTree.videoStructure[currentSoundDownload+(skipLoggerTotal-skipLogger)].nodeTitle + "tailend" != soundID[currentSoundDownload])
@@ -167,15 +171,8 @@ public class DownloadVideo : MonoBehaviour
         }
         else if (request != null)
         {
-            if (currentDownload % 2 == 0)
-            {
-                int temp = (int)(request.progress * 100);
-                return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; " + temp + "% Complete";
-            }
-            else
-            {
-                return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; Saving File";
-            }
+            int temp = (int)(request.progress * 100);
+            return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; " + temp + "% Complete";
         }
         else
         {
@@ -211,6 +208,7 @@ public class DownloadVideo : MonoBehaviour
         info = new FileInfo(localPath);
         if (info.Exists == true)
         {
+            addFileToListOfDownloadedFiles(localPath);
             SaveCorrectPath(localPath);
             if (checking)
             {
@@ -332,33 +330,24 @@ public class DownloadVideo : MonoBehaviour
 
     public void deleteFiles()
     {
-        foreach (string vid in videoID)
+        foreach (string file in downloadedFiles)
         {
             FileInfo info;
-            info = new FileInfo(correctLocalPath(".mp4", vid));
+            info = new FileInfo(file);
             if (info.Exists == true)
             {
                 info.Delete();
-            }
-            //all files deleted, lets reset all these values to their starting state
-            currentDownload = 0;
-            videosComplete = false;
-            request = null;
+            }  
         }
-        foreach (string sound in soundID)
-        {
-            FileInfo info;
-            info = new FileInfo(correctLocalPath(".wav", sound));
-            if (info.Exists == true)
-            {
-                info.Delete();
-            }
-            //all files deleted, lets reset all these values to their starting state
-            currentDownload = 0;
-            currentSoundDownload = 0;
-            soundsComplete = false;
-            requestSound = null;
-        }
+        //all files deleted, lets reset all these values to their starting state
+        currentDownload = 0;
+        videosComplete = false;
+        request = null;
+        currentDownload = 0;
+        currentSoundDownload = 0;
+        soundsComplete = false;
+        requestSound = null;
+        downloadedFiles = new List<string>();
     }
 
     IEnumerator LoadClip(string path, int currentVal)
@@ -372,6 +361,7 @@ public class DownloadVideo : MonoBehaviour
         {
             localPath = correctLocalPath(".wav", soundID[currentVal]);
             File.WriteAllBytes(localPath, fileData);
+            addFileToListOfDownloadedFiles(localPath);
             SaveCorrectPath(localPath);
         }
         nodeTree.videoStructure[currentVal].TailendAudio = www.audioClip;
@@ -423,6 +413,14 @@ public class DownloadVideo : MonoBehaviour
         {
             print("Error in creating localpath");
             return "There has been an Error";
+        }
+    }
+
+    void addFileToListOfDownloadedFiles(string location)
+    {
+        if(!downloadedFiles.Contains(location))
+        {
+            downloadedFiles.Add(location);
         }
     }
 }

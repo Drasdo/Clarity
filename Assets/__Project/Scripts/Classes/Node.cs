@@ -10,6 +10,7 @@ public class Node : System.Object {
     public string SphVidOnlineLoc;              //online location of video
     public bool isThereEndAudio = true;
     public AudioClip TailendAudio;                 //audio to play while the user makes a choice
+    public bool endingVideo = false;
     public string choiceVideoLeft = "Left Choice";
     public string choiceVideoRight = "Right Choice";
     public bool choiceIsVideo = false;             //because they dont seem to be giving me videos, we need an option to set the choices as text for icons
@@ -22,6 +23,7 @@ public class Node : System.Object {
 
     public int leftChoiceElementNumber;
     public int rightChoiceElementNumber;
+    public int blurExceedsMaxMoveTo = -1;
 
     public void toMilliseconds()
     {

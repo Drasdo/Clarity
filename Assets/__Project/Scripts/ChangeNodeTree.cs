@@ -9,7 +9,6 @@ public class ChangeNodeTree : MonoBehaviour {
 
     private NodeTree correctNodeTree;
 
-	// Use this for initialization
 	void Start () {
         NodeTree[] NTs = treeStructure.GetComponents<NodeTree>();
         foreach (NodeTree tree in NTs)
@@ -20,11 +19,6 @@ public class ChangeNodeTree : MonoBehaviour {
             }
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void OnClick()
     {

@@ -138,7 +138,14 @@ public class BranchingStoryController : MonoBehaviour {
             setBlurOptions(leftBranchSelected);
             //we need to check if the element number of choice is -1 because that means we need to end)
             //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
-            currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
+            if (addBlur.currentBlur < 0.9f)
+            {
+                currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
+            }
+            else
+            {
+                currentNode = videoStructure[currentNode.blurExceedsMaxMoveTo];
+            }
             sceneTimer.ResetOrCancelTimer();
             assignEnvironmentProperties();
             //is there anything else that needs to be reset?
@@ -166,7 +173,7 @@ public class BranchingStoryController : MonoBehaviour {
         {
             addBlur.updateBlurValues(-1);
         }
-        if(currentNode.choicesSecondsToShow == 0)
+        if(currentNode.endingVideo)
         {
             finalScene = true;
         }
@@ -192,6 +199,7 @@ public class BranchingStoryController : MonoBehaviour {
                 
             }
         }
+        //if
     }
 
     void LoadInTreeStructure()
@@ -244,7 +252,7 @@ public class BranchingStoryController : MonoBehaviour {
 
     IEnumerator delayFade()
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1f);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
         AudioListener.volume = 1.0f;
     }

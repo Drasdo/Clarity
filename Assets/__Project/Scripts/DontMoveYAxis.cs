@@ -12,5 +12,6 @@ public class DontMoveYAxis : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position = new Vector3(transform.position.x, startingPosition.y, transform.position.z);
-	}
+        transform.position = (transform.position - Vector3.zero).normalized * startingPosition.z + Vector3.zero;
+    }
 }

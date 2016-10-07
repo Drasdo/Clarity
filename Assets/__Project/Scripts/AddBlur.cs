@@ -6,6 +6,8 @@ public class AddBlur : MonoBehaviour {
     public Shader blurShader;
     public float blurIntensity = 0.3f;
 
+    public float currentBlur = 0f;
+
     private GameObject eyeLeft;
     private GameObject eyeRight;
     private StereoController SC;
@@ -58,12 +60,11 @@ public class AddBlur : MonoBehaviour {
         //if addBlurIntensity is -1 lets make the number 0 so we have a safe reset)
         if(addBlurIntensity == -1)
         {
-            addBlurIntensity = -eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount;
+            currentBlur = 0;
         }
-        //eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
-        eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount += addBlurIntensity;
-        //eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
-        eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount += addBlurIntensity;
+        currentBlur += addBlurIntensity;
+        eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = currentBlur;
+        eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = currentBlur;
     }
 
     void SwitchOffDirectRender()
