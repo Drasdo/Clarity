@@ -24,6 +24,7 @@ public class DownloadVideo : MonoBehaviour
 
     private bool areWeChecking = true;
     private int checkingNumber = 0;
+    private int timesRound = 0;
 
     private NodeTree nodeTree;
     private string VideoSizeToDownload;
@@ -55,10 +56,10 @@ public class DownloadVideo : MonoBehaviour
         if(videosComplete && soundsComplete)
         {
             downloadingComplete = true;//relax, dont do it, when you wanna pursue it
+            nodeTree.everythingReady = true;
         }
         else
         {
-            downloadingComplete = false;
             if (request != null)
             {
                 print("Downloaded: " + request.progress * 100 + " percent");
@@ -165,25 +166,36 @@ public class DownloadVideo : MonoBehaviour
 
     public string GetProgress()
     {
-        if (downloadingComplete)
+        if(videos != null)
         {
-            return "Videos Ready";
-        }
-        else if (request != null)
-        {
-            int temp = (int)(request.progress * 100);
-            return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; " + temp + "% Complete";
-        }
-        else
-        {
-            if (currentDownload + 1 > videos.Count)
+            if(downloadingComplete)
             {
-                return "Checking for Files";
+                return "Videos Ready";
+            }
+            else if(request != null)
+            {
+                int temp = (int)(request.progress * 100);
+                return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; " + temp + "% Complete";
             }
             else
             {
-                return " ";
+                if(!soundsComplete)
+                {
+                    return "Checking for Files";
+                }
             }
+        }
+        else
+        {
+            return " ";
+        }
+        if(timesRound >= 1)
+        {
+            return " ";
+        }
+        else
+        {
+            return " ";
         }
     }
 
@@ -382,14 +394,23 @@ public class DownloadVideo : MonoBehaviour
 
     public void assignNodeTree(NodeTree newNodeTree)
     {
-        if (nodeTree != newNodeTree)//not the node already selected?
+        if (nodeTree != newNodeTree)
         {
-            Start(); //reset values like downloads and stuff because we might have fresh bacon to download
-            nodeTree = newNodeTree;
-            setVideoSizeString();
-            setVideosToDownload();
-            setSoundsToDownload();
-            checkForLocalFiles();
+                Start(); //reset values like downloads and stuff because we might have fresh bacon to download
+                nodeTree = newNodeTree;
+            if(!nodeTree.everythingReady)
+            {
+                setVideoSizeString();
+                setVideosToDownload();
+                setSoundsToDownload();
+                checkForLocalFiles();
+            }
+            else
+            {
+                downloadingComplete = true;
+                soundsComplete = true;
+                videosComplete = true;
+            }
         }
     }
 

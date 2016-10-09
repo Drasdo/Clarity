@@ -10,6 +10,7 @@ public class NodeTree : MonoBehaviour
     public string onlineFileLocation;
     public List<Node> videoStructure = new List<Node>();
     public float initializationTime;
+    public bool everythingReady = false;
 
     void Awake()
     {

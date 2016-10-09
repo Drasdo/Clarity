@@ -23,10 +23,14 @@ public class BranchingStoryController : MonoBehaviour {
     private AudioClip tailendClip;
     private NodeTree nodeTree;
     private bool fadingOut = false;
+    private bool fadingIn = false;
+    private bool moveStraightToNextClip = false;
     private bool leftBranchSelected = false;
     private AddBlur addBlur;
 
     private BasicTimer timer;       //for fade
+    private BasicTimer timerIn;       //for fadein
+    private BasicTimer timerFadeWaiter;  
     private BasicTimer sceneTimer;  //for scene length and playing audio
     private bool mainSceneComplete = false;
     private bool tryPlaySound = false;
@@ -39,7 +43,9 @@ public class BranchingStoryController : MonoBehaviour {
         changeVideo = TextSelector.GetComponent<ChangeVideo>();
         reticle = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject;
         timer = gameObject.AddComponent<BasicTimer>();
+        timerIn = gameObject.AddComponent<BasicTimer>();
         sceneTimer = gameObject.AddComponent<BasicTimer>();
+        timerFadeWaiter = gameObject.AddComponent<BasicTimer>();
         addBlur = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AddBlur>();
 
         choiceGameObject = new GameObject[2];
@@ -64,21 +70,35 @@ public class BranchingStoryController : MonoBehaviour {
         //are we assuming the video is playing? lets go with that now
         if (!finalScene)
         {
-            if (notRevealedChoices && spherePlayer.GetSeekPosition() > currentNode.choicesSecondsToShow)
+            if(!moveStraightToNextClip)
             {
-                revealTextChoices();
-                notRevealedChoices = false;
+                if(notRevealedChoices && spherePlayer.GetSeekPosition() > currentNode.choicesSecondsToShow)
+                {
+                    revealTextChoices();
+                    notRevealedChoices = false;
+                }
             }
         }
+
         float duration = spherePlayer.GetDuration() / 1000f;
         if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
         {
+            //start scene timer
             sceneTimer.StartTimer(duration - 0.5f); //start timer of length of video
-            StartCoroutine(delayFade());
+            //StartCoroutine(delayFade());
+            //begin fading back in
         }
         else if (sceneTimer.IsTimerFinished())
         {
-            tryPlaySound = true;
+            if(!moveStraightToNextClip)
+            {
+                tryPlaySound = true;
+            }
+            else
+            {
+                notRevealedChoices = false;
+                fadeOut(true);
+            }
             sceneTimer.ResetOrCancelTimer();
             mainSceneComplete = true;
             spherePlayer.Pause();
@@ -87,17 +107,19 @@ public class BranchingStoryController : MonoBehaviour {
                 fadeOut(true);
             }
         }
-
-        if (tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
-            {
-            if (!GetComponent<AudioSource>().isPlaying && GetComponent<AudioSource>().clip.loadState == AudioDataLoadState.Loaded)
-            {
-                GetComponent<AudioSource>().Play();
-            } else
+        if(!finalScene)
+        {
+            if (tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
                 {
-                    tryPlaySound = true;
-                }
-           }
+                if (!GetComponent<AudioSource>().isPlaying && GetComponent<AudioSource>().clip.loadState == AudioDataLoadState.Loaded)
+                {
+                    GetComponent<AudioSource>().Play();
+                } else
+                    {
+                        tryPlaySound = true;
+                    }
+               }
+        }
         if (fadingOut)
         {
             FadeOutMusic();
@@ -105,12 +127,40 @@ public class BranchingStoryController : MonoBehaviour {
             {
                 if(finalScene)
                 {
+                    addBlur.updateBlurValues(-1);
+                    reticle.GetComponent<GazeLookSelection>().enableReticle();
                     SceneManager.LoadScene(0);
                 }
                 fadingOut = false;
                 UpdateTextSelectorForCurrentBranch();
                 timer.ResetOrCancelTimer();
-                
+                //reset orientation of camera so that we are looking the right way
+                GameObject.FindGameObjectWithTag("MainCamera").transform.rotation = Quaternion.identity;
+            }
+        }
+        if(fadingIn)
+        {
+            if(sceneTimer.IsTimerTicking() && !timerFadeWaiter.IsTimerTicking())
+            {
+                timerFadeWaiter.StartTimer(currentNode.waitTime);
+            }
+            if(timerFadeWaiter.IsTimerFinished())
+            {
+                if(!timerIn.IsTimerTicking())
+                {
+                    timerIn.StartTimer(fadeTimerLength);
+                }
+                else
+                {
+                    FadeIn();
+                    if(timerIn.IsTimerFinished()) //fading in is over
+                    {
+                        timerIn.ResetOrCancelTimer();
+                        timerFadeWaiter.ResetOrCancelTimer();
+                        fadingIn = false;
+                        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
+                    }
+                }
             }
         }
     }
@@ -119,6 +169,12 @@ public class BranchingStoryController : MonoBehaviour {
     {
         AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(1.0f, 0.0f, timer.timeRemaining() / fadeTimerLength)));
+    }
+
+    void FadeIn()
+    {
+        //AudioListener.volume = Mathf.Lerp(1.0f, 0.0f, timerIn.timeRemaining() / fadeTimerLength);
+        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(0.0f, 1.0f, timerIn.timeRemaining() / fadeTimerLength)));
     }
 
     public void fadeOut(bool leftBranchSel)
@@ -178,6 +234,18 @@ public class BranchingStoryController : MonoBehaviour {
             finalScene = true;
         }
         notRevealedChoices = true;
+        if(currentNode.choicesSecondsToShow <= -0.5f)
+        {
+            moveStraightToNextClip = true;
+        }
+        else
+        {
+            moveStraightToNextClip = false;
+        }
+        if(currentNode.nodeTitle != "1_1")
+        {
+            fadingIn = true;
+        }
     }
 
     void revealTextChoices()
@@ -248,13 +316,6 @@ public class BranchingStoryController : MonoBehaviour {
             choiceGameObject[0].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoRight; //set the text for the choice
             choiceGameObject[1].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = currentNode.choiceVideoLeft; //this is such bad code i am so sorry
         }
-    }
-
-    IEnumerator delayFade()
-    {
-        yield return new WaitForSeconds(1f);
-        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
-        AudioListener.volume = 1.0f;
     }
 
     void getCorrectNodeTree()

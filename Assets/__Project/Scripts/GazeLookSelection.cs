@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GazeLookSelection : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GazeLookSelection : MonoBehaviour
     public bool hasBeenClicked = false;
     private Renderer retMaterial; //Renderer for the reticle
 
+    private bool reAddedRet = false;
+
     void Start()
     {
         retMaterial = GetComponent<Renderer>();
@@ -23,7 +26,18 @@ public class GazeLookSelection : MonoBehaviour
     }
 
     void Update()
-    {
+    {/*
+        if(!reAddedRet && SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            //it is the first scene, so lets readd the gvr reticle
+            Destroy(GetComponent<GvrReticle>());
+            gameObject.AddComponent<GvrReticle>();
+            reAddedRet = true;
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            reAddedRet = false;
+        }*/
         if (isLookedAt && !hasBeenClicked) // are we looking at something?
         {
             if (lookTimer / timerDuration2 < timerDuration2) //before a 1/10th of the duration has passed, size up to the right size
@@ -64,9 +78,14 @@ public class GazeLookSelection : MonoBehaviour
         hasBeenClicked = false;
         isLookedAt = gazedAt; // Set the local bool to the one passed from Event Trigger
         currentGazeObject = currentGUI.GetComponent<EventTrigger>();
-        if (!gazedAt)
+        if(!gazedAt)
         {
             GetComponent<GvrReticle>().OnGazeExit(null, currentGUI);
         }
+    }
+
+    public void enableReticle()
+    {
+        GetComponent<Renderer>().enabled = true;
     }
 }

@@ -4,12 +4,13 @@ using System.Collections;
 public class ChangeNodeTree : MonoBehaviour {
 
     public DownloadVideo DV;
-    public GameObject treeStructure;
+    private GameObject treeStructure;
     public string assignedStructure;
 
     private NodeTree correctNodeTree;
 
 	void Start () {
+        treeStructure = GameObject.FindGameObjectWithTag("NodeTree");
         NodeTree[] NTs = treeStructure.GetComponents<NodeTree>();
         foreach (NodeTree tree in NTs)
         {
@@ -19,6 +20,7 @@ public class ChangeNodeTree : MonoBehaviour {
             }
         }
     }
+        
 
     public void OnClick()
     {

@@ -13,7 +13,7 @@ public class DontDestroy : MonoBehaviour {
 
         foreach (GameObject dontDoIt in DontDestroys)
         {
-            if (dontDoIt.tag == gameObject.tag)
+            if (dontDoIt.name == gameObject.name)
             {
                 DestroyImmediate(gameObject);
                 return;

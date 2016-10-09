@@ -10,6 +10,8 @@ TagManager:
   - CardboardViewer
   - GvrViewerMain
   - SelectionOption
+  - Rotator
+  - StartCamera
   layers:
   - Default
   - TransparentFX
