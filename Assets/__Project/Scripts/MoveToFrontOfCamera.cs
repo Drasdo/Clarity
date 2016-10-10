@@ -13,14 +13,14 @@ public class MoveToFrontOfCamera : MonoBehaviour {
     private float timeForTimer = 2.0f;
     private float yAxisVal;
 
-    private Vector3 desiredLocation;
+    private Quaternion desiredRotation;
 
     // Use this for initialization
     void Start () {
         timer = gameObject.AddComponent<BasicTimer>();
         yAxisVal = transform.position.y;
         moveToHere = GameObject.FindGameObjectWithTag("SelectionOption");
-        desiredLocation = Vector3.zero;
+        desiredRotation = Quaternion.identity;
     }
 	
 	// Update is called once per frame
@@ -29,8 +29,8 @@ public class MoveToFrontOfCamera : MonoBehaviour {
         StartMoving();
         if (currentlyMoving)
         {
-            transform.position = Vector3.Slerp(transform.position, desiredLocation, speed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, yAxisVal, transform.position.z);
+            transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0), Quaternion.Euler(0, desiredRotation.eulerAngles.y, 0), speed * Time.deltaTime);
+            //transform.position = new Vector3(transform.position.x, yAxisVal, transform.position.z);
             //now need to see if we are close enough to stop
             if (currentlyMoving)
             {
@@ -66,12 +66,12 @@ public class MoveToFrontOfCamera : MonoBehaviour {
                     //we are done with timer for now so reset the values
                     //timer.ResetOrCancelTimer();
                     //set currently moving as well as return value so we know that is done for next time
-                    desiredLocation = moveToHere.transform.position;
+                    desiredRotation = moveToHere.transform.rotation;
                     return currentlyMoving = true;
                 }
                 else if (timer.IsTimerTicking()) //timer isn't finished, but maybe we are currently counting down?
                 {
-                    desiredLocation = Vector3.zero;
+                    desiredRotation = Quaternion.identity;
                 }
                 else //we should probably start the timer
                 {
@@ -85,22 +85,24 @@ public class MoveToFrontOfCamera : MonoBehaviour {
     bool CheckIfBackInPosition()
     {   
         //we want to ignore the Y axis because we aren't moving the object along the Y axis. Otherwise it will never be close.
-        if (Vector3Compare.V3EqualWithoutY(transform.position, moveToHere.transform.position, 2, yAxisVal))
+        if(((transform.rotation.eulerAngles.y < desiredRotation.eulerAngles.y) ? (desiredRotation.eulerAngles.y - transform.rotation.eulerAngles.y) : (transform.rotation.eulerAngles.y - desiredRotation.eulerAngles.y)) <= 1f)
+        //if (Mathf.Approximately(transform.rotation.eulerAngles.y, desiredRotation.eulerAngles.y))
         {
             //We are back in the right position! isn't that nice. reset everything
             currentlyMoving = false;
             timer.ResetOrCancelTimer();
-            desiredLocation = Vector3.zero;
+            desiredRotation = Quaternion.identity;
             return true;
         }
         return false;
     }
 
-    void OnDisable()
+    public void childDisabled()
     {
         currentlyMoving = false;
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.localRotation = Quaternion.identity;
         finishedReveal = false;
+        timer.ResetOrCancelTimer();
     }
 
     public void finishedRevealing()
@@ -108,5 +110,8 @@ public class MoveToFrontOfCamera : MonoBehaviour {
         finishedReveal = true;
     }
 
-
+    void OnEnable()
+    {
+        currentlyMoving = false;
+    }
 }

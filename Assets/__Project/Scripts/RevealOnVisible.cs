@@ -61,7 +61,7 @@ public class RevealOnVisible : MonoBehaviour
             endTime = 0.0f;
             t = 0.0f;
             transform.localScale = endSize;
-            SendMessage("finishedRevealing");
+            SendMessageUpwards("finishedRevealing");
         }
     }
 
@@ -109,5 +109,10 @@ public class RevealOnVisible : MonoBehaviour
         gameObject.SetActive(false);
 
         //transform.localScale = startSize; //reset the size after it is hidden so that the player doesn't see
+    }
+
+    void OnDisable()
+    {
+        SendMessageUpwards("childDisabled");
     }
 }
