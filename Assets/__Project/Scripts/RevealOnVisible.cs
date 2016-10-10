@@ -61,6 +61,7 @@ public class RevealOnVisible : MonoBehaviour
             endTime = 0.0f;
             t = 0.0f;
             transform.localScale = endSize;
+            SendMessage("finishedRevealing");
         }
     }
 

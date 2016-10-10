@@ -1972,8 +1972,8 @@ MonoBehaviour:
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
     choicesSecondsToShow: 2
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: -5
+    startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
@@ -1992,8 +1992,8 @@ MonoBehaviour:
     choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
     choicesSecondsToShow: 2
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: -5
+    startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
