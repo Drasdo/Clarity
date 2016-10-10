@@ -20,6 +20,8 @@ public class Node : System.Object {
     public bool resetBlur;                      //should this video reset the blur that has been applied?
     public bool choiceLeftAddBlur;              //does the left choice here mean adding blur to the scene?
     public bool choiceRightAddBlur;             //does the right choice [[[as above]]]
+    public bool reduceBlurLeft = false;
+    public bool reduceBlurRight = false;
 
     public int leftChoiceElementNumber;
     public int rightChoiceElementNumber;

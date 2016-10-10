@@ -1948,8 +1948,8 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    choiceVideoLeft: Yes
+    choiceVideoRight: No
     choiceIsVideo: 0
     choicesSecondsToShow: 2
     choiceRotationToSummonAt: 53
@@ -1957,6 +1957,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 1
     rightChoiceElementNumber: 1
     blurExceedsMaxMoveTo: -1
@@ -1968,15 +1970,17 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    choiceVideoLeft: Yes
+    choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 10
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 2
     rightChoiceElementNumber: 2
     blurExceedsMaxMoveTo: -1
@@ -1988,15 +1992,17 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Skull Sparkling
-    choiceVideoRight: Refuse Drink
+    choiceVideoLeft: Yes
+    choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 10
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 3
     rightChoiceElementNumber: 3
     blurExceedsMaxMoveTo: 4
@@ -2008,8 +2014,8 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Left Choice
-    choiceVideoRight: Right Choice
+    choiceVideoLeft: 
+    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 2
@@ -2017,6 +2023,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 5
     rightChoiceElementNumber: 5
     blurExceedsMaxMoveTo: -1
@@ -2037,10 +2045,12 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
-    waitTime: 1
+    waitTime: 0.8
   - nodeTitle: 2_5
     nodeID: A(5)
     sphereVideo: 
@@ -2048,15 +2058,17 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Go With Zoe
+    choiceVideoRight: Go With Hannah
     choiceIsVideo: 0
     choicesSecondsToShow: 37
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 1
+    resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2068,15 +2080,17 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Alcohol
+    choiceVideoRight: Water
     choiceIsVideo: 1
     choicesSecondsToShow: 43
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
-    choiceLeftAddBlur: 0
+    choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 1
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2088,8 +2102,8 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Go Upstairs
+    choiceVideoRight: Stay at Party
     choiceIsVideo: 1
     choicesSecondsToShow: 25
     choiceRotationToSummonAt: 0
@@ -2097,6 +2111,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2117,6 +2133,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2137,6 +2155,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2157,6 +2177,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2168,8 +2190,8 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Dance
+    choiceVideoRight: Don't Dance
     choiceIsVideo: 1
     choicesSecondsToShow: 103
     choiceRotationToSummonAt: 0
@@ -2177,6 +2199,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2197,6 +2221,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2217,6 +2243,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2228,8 +2256,8 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Go With Ty
+    choiceVideoRight: Find Friends
     choiceIsVideo: 1
     choicesSecondsToShow: 20
     choiceRotationToSummonAt: 0
@@ -2237,6 +2265,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2257,6 +2287,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2268,15 +2300,17 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
+    choiceVideoLeft: Take Drink
+    choiceVideoRight: Don't Take Drink
     choiceIsVideo: 1
     choicesSecondsToShow: 20
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
-    choiceLeftAddBlur: 0
+    choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2297,6 +2331,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: -1
     rightChoiceElementNumber: -1
     blurExceedsMaxMoveTo: -1
@@ -2359,6 +2395,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 1
     rightChoiceElementNumber: 1
     blurExceedsMaxMoveTo: -1

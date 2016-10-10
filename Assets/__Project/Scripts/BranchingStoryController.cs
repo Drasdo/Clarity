@@ -288,6 +288,14 @@ public class BranchingStoryController : MonoBehaviour {
         {
             addBlur.updateBlurValues(addBlur.blurIntensity);
         }
+        if(currentNode.reduceBlurRight && !leftSelected)
+        {
+            addBlur.updateBlurValues(-addBlur.blurIntensity);
+        }
+        else if (currentNode.reduceBlurLeft && leftSelected)
+        {
+            addBlur.updateBlurValues(-addBlur.blurIntensity);
+        }
     }
 
     void setupTextSelectOptions()
