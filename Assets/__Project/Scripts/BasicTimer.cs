@@ -6,16 +6,20 @@ public class BasicTimer : MonoBehaviour
     public float targetTime = 60.0f;
     private bool timerCurrentlyOn = false;
     private bool timerIsDone = false;
+    private bool pauseTimer = false;
 
     void Update()
     {
-        if (timerCurrentlyOn)
+        if (!pauseTimer)
         {
-            targetTime -= Time.deltaTime;
-            if (targetTime <= 0.0f)
+            if (timerCurrentlyOn)
             {
-                timerIsDone = true;
-                timerCurrentlyOn = false;
+                targetTime -= Time.deltaTime;
+                if (targetTime <= 0.0f)
+                {
+                    timerIsDone = true;
+                    timerCurrentlyOn = false;
+                }
             }
         }
     }
@@ -46,5 +50,10 @@ public class BasicTimer : MonoBehaviour
     public float timeRemaining()
     {
         return targetTime;
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        pauseTimer = pauseStatus;
     }
 }

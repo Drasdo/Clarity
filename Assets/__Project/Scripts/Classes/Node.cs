@@ -26,7 +26,7 @@ public class Node : System.Object {
     public int leftChoiceElementNumber;
     public int rightChoiceElementNumber;
     public int blurExceedsMaxMoveTo = -1;
-    public float waitTime = 1.0f;
+    public float waitTime = 0.8f;
 
     public void toMilliseconds()
     {

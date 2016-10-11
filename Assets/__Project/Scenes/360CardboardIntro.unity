@@ -1951,7 +1951,7 @@ MonoBehaviour:
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 40
     choiceRotationToSummonAt: 53
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1973,7 +1973,7 @@ MonoBehaviour:
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 10
+    choicesSecondsToShow: 30
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
@@ -1995,7 +1995,7 @@ MonoBehaviour:
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 10
+    choicesSecondsToShow: 41
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
@@ -2018,8 +2018,8 @@ MonoBehaviour:
     choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
-    choiceRotationToSummonAt: 2
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
@@ -2039,9 +2039,9 @@ MonoBehaviour:
     choiceVideoLeft: 
     choiceVideoRight: 
     choiceIsVideo: 0
-    choicesSecondsToShow: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
@@ -2063,37 +2063,37 @@ MonoBehaviour:
     choiceIsVideo: 0
     choicesSecondsToShow: 37
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: -90
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    reduceBlurLeft: 1
+    reduceBlurRight: 1
+    leftChoiceElementNumber: 11
+    rightChoiceElementNumber: 6
     blurExceedsMaxMoveTo: -1
-    waitTime: 5
+    waitTime: 0.8
   - nodeTitle: 3_6
     nodeID: AB(6)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
-    isThereEndAudio: 0
+    isThereEndAudio: 1
     TailendAudio: {fileID: 0}
     endingVideo: 0
     choiceVideoLeft: Alcohol
     choiceVideoRight: Water
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 43
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: 3
+    startingRotationOfVideoDegrees: -80
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 1
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
+    leftChoiceElementNumber: 7
+    rightChoiceElementNumber: 7
+    blurExceedsMaxMoveTo: 7
     waitTime: 1
   - nodeTitle: 4_7
     nodeID: AB(7)
@@ -2104,18 +2104,18 @@ MonoBehaviour:
     endingVideo: 0
     choiceVideoLeft: Go Upstairs
     choiceVideoRight: Stay at Party
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 25
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: -60
+    startingRotationOfVideoDegrees: -145
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
+    leftChoiceElementNumber: 10
+    rightChoiceElementNumber: 8
+    blurExceedsMaxMoveTo: 10
     waitTime: 1
   - nodeTitle: 4_8
     nodeID: ABA(8)
@@ -2127,16 +2127,16 @@ MonoBehaviour:
     choiceVideoLeft: 
     choiceVideoRight: 
     choiceIsVideo: 1
-    choicesSecondsToShow: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: -160
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    leftChoiceElementNumber: 9
+    rightChoiceElementNumber: 9
     blurExceedsMaxMoveTo: -1
     waitTime: 1
   - nodeTitle: 7_11
@@ -2151,7 +2151,7 @@ MonoBehaviour:
     choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 230
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
@@ -2165,22 +2165,22 @@ MonoBehaviour:
     nodeID: ABB(10)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
-    choicesSecondsToShow: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: -180
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    leftChoiceElementNumber: 9
+    rightChoiceElementNumber: 9
     blurExceedsMaxMoveTo: -1
     waitTime: 1
   - nodeTitle: 10_14
@@ -2192,17 +2192,17 @@ MonoBehaviour:
     endingVideo: 0
     choiceVideoLeft: Dance
     choiceVideoRight: Don't Dance
-    choiceIsVideo: 1
-    choicesSecondsToShow: 103
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: 63
+    choiceRotationToSummonAt: -84
+    startingRotationOfVideoDegrees: -95
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    leftChoiceElementNumber: 14
+    rightChoiceElementNumber: 12
     blurExceedsMaxMoveTo: -1
     waitTime: 1
   - nodeTitle: 10_15
@@ -2214,17 +2214,17 @@ MonoBehaviour:
     endingVideo: 1
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
-    choicesSecondsToShow: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 200
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    leftChoiceElementNumber: 13
+    rightChoiceElementNumber: 13
     blurExceedsMaxMoveTo: -1
     waitTime: 1
   - nodeTitle: 14_2
@@ -2236,7 +2236,7 @@ MonoBehaviour:
     endingVideo: 1
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
@@ -2258,32 +2258,32 @@ MonoBehaviour:
     endingVideo: 0
     choiceVideoLeft: Go With Ty
     choiceVideoRight: Find Friends
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 20
-    choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    choiceRotationToSummonAt: -100
+    startingRotationOfVideoDegrees: -202
     resetBlur: 0
-    choiceLeftAddBlur: 0
+    choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
+    leftChoiceElementNumber: 16
+    rightChoiceElementNumber: 15
     blurExceedsMaxMoveTo: -1
     waitTime: 1
   - nodeTitle: 16_22
     nodeID: AAAB(15)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
+    endingVideo: 1
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
-    choicesSecondsToShow: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 75
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
@@ -2302,7 +2302,7 @@ MonoBehaviour:
     endingVideo: 0
     choiceVideoLeft: Take Drink
     choiceVideoRight: Don't Take Drink
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 20
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
@@ -2311,9 +2311,9 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     reduceBlurLeft: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
+    leftChoiceElementNumber: 17
+    rightChoiceElementNumber: 17
+    blurExceedsMaxMoveTo: 17
     waitTime: 1
   - nodeTitle: 19_25
     nodeID: AAAAB(17)
@@ -2324,7 +2324,7 @@ MonoBehaviour:
     endingVideo: 1
     choiceVideoLeft: 
     choiceVideoRight: 
-    choiceIsVideo: 1
+    choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
