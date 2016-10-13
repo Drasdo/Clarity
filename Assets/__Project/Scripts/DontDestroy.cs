@@ -23,4 +23,9 @@ public class DontDestroy : MonoBehaviour {
         DontDestroys.Add(gameObject);
         DontDestroyOnLoad(gameObject);
     }
+
+    void OnDestroy()
+    {
+        DontDestroys.Remove(gameObject);
+    }
 }

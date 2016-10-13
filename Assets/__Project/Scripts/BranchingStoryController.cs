@@ -130,6 +130,7 @@ public class BranchingStoryController : MonoBehaviour {
                     addBlur.updateBlurValues(-1);
                     reticle.GetComponent<GazeLookSelection>().enableReticle();
                     SceneManager.LoadScene(0);
+                    fadingIn = true;
                 }
                 fadingOut = false;
                 UpdateTextSelectorForCurrentBranch();
@@ -140,7 +141,7 @@ public class BranchingStoryController : MonoBehaviour {
         }
         if(fadingIn)
         {
-            if(sceneTimer.IsTimerTicking() && !timerFadeWaiter.IsTimerTicking())
+            if(!timerFadeWaiter.IsTimerTicking())
             {
                 timerFadeWaiter.StartTimer(currentNode.waitTime);
             }
@@ -159,6 +160,11 @@ public class BranchingStoryController : MonoBehaviour {
                         timerFadeWaiter.ResetOrCancelTimer();
                         fadingIn = false;
                         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", blackAllAlpha);
+                        if(SceneManager.GetActiveScene().buildIndex == 0) //if we are menu
+                        {
+                            Destroy(fadeSphere);
+                            Destroy(gameObject);
+                        }
                     }
                 }
             }

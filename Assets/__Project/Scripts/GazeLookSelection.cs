@@ -23,6 +23,7 @@ public class GazeLookSelection : MonoBehaviour
         retMaterial = GetComponent<Renderer>();
         timerDuration2 = timerDuration / 10;
         timerDuration -= timerDuration2;
+        this.enabled = false;
     }
 
     void Update()
@@ -76,12 +77,15 @@ public class GazeLookSelection : MonoBehaviour
     public void SetGazedAt(bool gazedAt, GameObject currentGUI)
     {
         hasBeenClicked = false;
+        this.enabled = gazedAt;
         isLookedAt = gazedAt; // Set the local bool to the one passed from Event Trigger
         currentGazeObject = currentGUI.GetComponent<EventTrigger>();
         if(!gazedAt)
         {
             GetComponent<GvrReticle>().OnGazeExit(null, currentGUI);
         }
+        lookTimer = 0f; // Reset timer
+        lookTimer2 = 0f;
     }
 
     public void enableReticle()
