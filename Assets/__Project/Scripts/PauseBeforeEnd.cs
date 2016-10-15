@@ -15,7 +15,7 @@ public class PauseBeforeEnd : MonoBehaviour {
 
 	    if(spherePlayer.GetDuration() > 0 && spherePlayer.GetSeekPosition() >= spherePlayer.GetDuration())
         {
-            spherePlayer.Pause();
+            //spherePlayer.Pause();
         }
 	}
 }

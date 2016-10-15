@@ -14,7 +14,10 @@ public class ChangeVideo : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        if(SphereMediaPlayer.GetSeekPosition() > 100f) //if the video is playing
+        {
+            this.enabled = false;
+        }
     }
 
     public void ChangeToNewVideo()
@@ -23,7 +26,10 @@ public class ChangeVideo : MonoBehaviour {
         {
             Start();
         }
-        SphereMediaPlayer.Load(videoToChangeTo);
+        this.enabled = true;
+        SphereMediaPlayer.UnLoad();
+        SphereMediaPlayer.Load(videoToChangeTo); 
+        SphereMediaPlayer.Play();  
         print("Playing Video " + videoToChangeTo);
     }
 }

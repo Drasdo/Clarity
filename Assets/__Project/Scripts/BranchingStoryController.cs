@@ -38,6 +38,9 @@ public class BranchingStoryController : MonoBehaviour {
     private ChangeVideo changeVideo;
     private Color blackAllAlpha;
 
+    private int previousNodeDuration = 0;
+    private int previousNodeSeekPos = 0;
+
 	void Start () {
         spherePlayer = videoSphere.GetComponent<MediaPlayerCtrl>();
         changeVideo = TextSelector.GetComponent<ChangeVideo>();
@@ -72,10 +75,25 @@ public class BranchingStoryController : MonoBehaviour {
         {
             if(!moveStraightToNextClip)
             {
-                if(notRevealedChoices && spherePlayer.GetSeekPosition() > currentNode.choicesSecondsToShow)
+                int temp5000 = spherePlayer.GetSeekPosition();
+                int temp4999 = spherePlayer.GetDuration();
+                if(spherePlayer.GetSeekPosition() != previousNodeSeekPos)
                 {
-                    revealTextChoices();
-                    notRevealedChoices = false;
+                    if(notRevealedChoices && spherePlayer.GetSeekPosition() > currentNode.choicesSecondsToShow)
+                    {
+                        revealTextChoices();
+                        notRevealedChoices = false;
+                    }
+                }
+            }
+            if (tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
+            {
+                if (!GetComponent<AudioSource>().isPlaying && GetComponent<AudioSource>().clip.loadState == AudioDataLoadState.Loaded)
+                {
+                    GetComponent<AudioSource>().Play();
+                } else
+                {
+                    tryPlaySound = true;
                 }
             }
         }
@@ -83,10 +101,7 @@ public class BranchingStoryController : MonoBehaviour {
         float duration = spherePlayer.GetDuration() / 1000f;
         if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
         {
-            //start scene timer
             sceneTimer.StartTimer(duration - 0.5f); //start timer of length of video
-            //StartCoroutine(delayFade());
-            //begin fading back in
         }
         else if (sceneTimer.IsTimerFinished())
         {
@@ -101,29 +116,16 @@ public class BranchingStoryController : MonoBehaviour {
             }
             sceneTimer.ResetOrCancelTimer();
             mainSceneComplete = true;
-            spherePlayer.Pause();
+            //spherePlayer.Pause();
             if(finalScene)
             {
                 fadeOut(true);
             }
         }
-        if(!finalScene)
-        {
-            if (tryPlaySound) //so because playing the audio was being a turd im just gonna keep trying until IT FUCKING PLAYs
-                {
-                if (!GetComponent<AudioSource>().isPlaying && GetComponent<AudioSource>().clip.loadState == AudioDataLoadState.Loaded)
-                {
-                    GetComponent<AudioSource>().Play();
-                } else
-                    {
-                        tryPlaySound = true;
-                    }
-               }
-        }
         if (fadingOut)
         {
             FadeOutMusic();
-            if (timer.IsTimerFinished()) //3 second timer because all the fades are 3 seconds
+            if (timer.IsTimerFinished())
             {
                 if(finalScene)
                 {
@@ -195,6 +197,8 @@ public class BranchingStoryController : MonoBehaviour {
     {
         if (!notRevealedChoices) //why did I make this variable so confusing? if Not Not Revealed Choices... so if the choices have been revealed
         {
+            previousNodeDuration = spherePlayer.GetDuration();
+            previousNodeSeekPos = spherePlayer.GetSeekPosition();
             //BEFORE WE DO THAT, LETS MAKE SURE THAT BLUR IS ADDED
             reticle.GetComponent<Renderer>().enabled = false; //disable reticle
             setBlurOptions(leftBranchSelected);
@@ -224,7 +228,6 @@ public class BranchingStoryController : MonoBehaviour {
         mainSceneComplete = false;
         tryPlaySound = false;
 
-        changeVideo.ChangeToNewVideo();
         notRevealedChoices = false;
         spherePlayer.transform.rotation = Quaternion.identity;
         spherePlayer.transform.Rotate(new Vector3(0, currentNode.startingRotationOfVideoDegrees, 0)); //rotate the video to correct orientation if need be. Hopefully this doesn't actually have to be used, but nice to have anyway.
@@ -252,6 +255,8 @@ public class BranchingStoryController : MonoBehaviour {
         {
             fadingIn = true;
         }
+        spherePlayer.Load(currentNode.sphereVideo);
+        //changeVideo.ChangeToNewVideo();
     }
 
     void revealTextChoices()
