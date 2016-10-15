@@ -38,7 +38,7 @@ public class BranchingStoryController : MonoBehaviour {
     private ChangeVideo changeVideo;
     private Color blackAllAlpha;
 
-    private int previousNodeDuration = 0;
+    //private int previousNodeDuration = 0;
     private int previousNodeSeekPos = 0;
 
 	void Start () {
@@ -75,8 +75,6 @@ public class BranchingStoryController : MonoBehaviour {
         {
             if(!moveStraightToNextClip)
             {
-                int temp5000 = spherePlayer.GetSeekPosition();
-                int temp4999 = spherePlayer.GetDuration();
                 if(spherePlayer.GetSeekPosition() != previousNodeSeekPos)
                 {
                     if(notRevealedChoices && spherePlayer.GetSeekPosition() > currentNode.choicesSecondsToShow)
@@ -197,7 +195,6 @@ public class BranchingStoryController : MonoBehaviour {
     {
         if (!notRevealedChoices) //why did I make this variable so confusing? if Not Not Revealed Choices... so if the choices have been revealed
         {
-            previousNodeDuration = spherePlayer.GetDuration();
             previousNodeSeekPos = spherePlayer.GetSeekPosition();
             //BEFORE WE DO THAT, LETS MAKE SURE THAT BLUR IS ADDED
             reticle.GetComponent<Renderer>().enabled = false; //disable reticle
@@ -215,6 +212,7 @@ public class BranchingStoryController : MonoBehaviour {
             sceneTimer.ResetOrCancelTimer();
             assignEnvironmentProperties();
             //is there anything else that needs to be reset?
+
         }
     }
 
@@ -255,8 +253,9 @@ public class BranchingStoryController : MonoBehaviour {
         {
             fadingIn = true;
         }
-        spherePlayer.Load(currentNode.sphereVideo);
-        //changeVideo.ChangeToNewVideo();
+        //spherePlayer.Load(currentNode.sphereVideo);
+        changeVideo.ChangeToNewVideo();
+        reticle.GetComponent<Renderer>().enabled = false;
     }
 
     void revealTextChoices()

@@ -2764,6 +2764,22 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &749278317 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011611548588, guid: 22559b520e5f4447ebe87a855172066b,
+    type: 2}
+  m_PrefabInternal: {fileID: 946975180}
+--- !u!114 &749278320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749278317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b1aee4100ec42dd8cdcb4af5541614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753770174
 GameObject:
   m_ObjectHideFlags: 0
