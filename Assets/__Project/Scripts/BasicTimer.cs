@@ -8,6 +8,8 @@ public class BasicTimer : MonoBehaviour
     private bool timerIsDone = false;
     private bool pauseTimer = false;
 
+    private float timerLen = 0.0f;
+
     void Update()
     {
         if (!pauseTimer)
@@ -37,6 +39,7 @@ public class BasicTimer : MonoBehaviour
     public void StartTimer(float timerLength)
     {
         targetTime = timerLength;
+        timerLen = timerLength;
         timerCurrentlyOn = true;
     }
 
@@ -55,5 +58,10 @@ public class BasicTimer : MonoBehaviour
     void OnApplicationPause(bool pauseStatus)
     {
         pauseTimer = pauseStatus;
+    }
+
+    public float lerpVal()
+    {
+        return targetTime / timerLen;
     }
 }

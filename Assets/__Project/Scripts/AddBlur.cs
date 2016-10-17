@@ -76,4 +76,18 @@ public class AddBlur : MonoBehaviour {
             SC.UpdateStereoValues();
         }
     }
+
+    public void setCurrentBlur(float blurValue)
+    {
+        eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = blurValue;
+        eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = blurValue;
+    }
+
+    public void setCurrentFinalBlur(float blur)
+    {
+        if(blur == -1)
+            currentBlur = 0;
+        else
+        currentBlur = blur;
+    }
 }

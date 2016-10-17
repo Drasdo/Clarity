@@ -40,6 +40,11 @@ public class NodeTree : MonoBehaviour
     {
         foreach(Node node in videoStructure)
         {
+            if(localFiles)
+            {
+                //structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_";
+                node.SphVidOnlineLoc = structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_HD.mp4";
+            }
             if(node.SphVidOnlineLoc == "")
             {
                 node.SphVidOnlineLoc = node.sphereVideo;
