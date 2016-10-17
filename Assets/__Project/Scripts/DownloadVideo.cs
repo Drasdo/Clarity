@@ -175,13 +175,13 @@ public class DownloadVideo : MonoBehaviour
             else if(request != null)
             {
                 int temp = (int)(request.progress * 100);
-                return "Downloading Video " + (currentDownload) + " of " + videos.Count + "; " + temp + "% Complete";
+                return "Downloading Video " + (currentDownload+1) + " of " + videos.Count + "; " + temp + "% Complete";
             }
             else
             {
                 if(!soundsComplete)
                 {
-                    return "Checking for Files";
+                    return "Loading";
                 }
             }
         }
@@ -294,10 +294,22 @@ public class DownloadVideo : MonoBehaviour
     {
         videos = new List<string>();
         videoID = new List<string>();
-        foreach (Node videoNode in nodeTree.videoStructure)
+        if(nodeTree.localFiles)
         {
-            videos.Add(videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4");
-            videoID.Add(videoNode.nodeTitle);
+            foreach(Node videoNode in nodeTree.videoStructure)
+            {
+                //structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_";
+                videos.Add(nodeTree.structureName + "/" + videoNode.nodeTitle + "/" + videoNode.nodeTitle + "_" + VideoSizeToDownload + ".mp4");
+                videoID.Add(videoNode.nodeTitle);
+            }
+        }
+        else
+        {
+            foreach(Node videoNode in nodeTree.videoStructure)
+            {
+                videos.Add(videoNode.SphVidOnlineLoc + VideoSizeToDownload + ".mp4");
+                videoID.Add(videoNode.nodeTitle);
+            }
         }
     }
 
@@ -305,15 +317,28 @@ public class DownloadVideo : MonoBehaviour
     {
         sounds = new List<string>();
         soundID = new List<string>();
-        foreach (Node videoNode in nodeTree.videoStructure)
+        if(nodeTree.localFiles)
         {
-            if (videoNode.isThereEndAudio)
+            foreach(Node videoNode in nodeTree.videoStructure)
             {
-                sounds.Add(videoNode.SphVidOnlineLoc + "tailend" + ".wav");
-                soundID.Add(videoNode.nodeTitle + "tailend");
-            } else
+                //structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_";
+                videos.Add(nodeTree.structureName + "/" + videoNode.nodeTitle + "/" + videoNode.nodeTitle + "tailend" + ".wav");
+                videoID.Add(videoNode.nodeTitle);
+            }
+        }
+        else
+        {
+            foreach(Node videoNode in nodeTree.videoStructure)
             {
-                skipLogger++;
+                if(videoNode.isThereEndAudio)
+                {
+                    sounds.Add(videoNode.SphVidOnlineLoc + "tailend" + ".wav");
+                    soundID.Add(videoNode.nodeTitle + "tailend");
+                }
+                else
+                {
+                    skipLogger++;
+                }
             }
         }
         skipLoggerTotal = skipLogger;

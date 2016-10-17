@@ -7,6 +7,7 @@ public class NodeTree : MonoBehaviour
 {
     public static string currentTree;
     public string structureName;
+    public bool localFiles = false;
     public string onlineFileLocation;
     public List<Node> videoStructure = new List<Node>();
     public float initializationTime;
