@@ -27,6 +27,7 @@ public class BranchingStoryController : MonoBehaviour {
     private bool moveStraightToNextClip = false;
     private bool leftBranchSelected = false;
     private AddBlur addBlur;
+    private BACLevel bac;
 
     private BasicTimer timer;       //for fade
     private BasicTimer timerIn;       //for fadein
@@ -50,6 +51,7 @@ public class BranchingStoryController : MonoBehaviour {
         sceneTimer = gameObject.AddComponent<BasicTimer>();
         timerFadeWaiter = gameObject.AddComponent<BasicTimer>();
         addBlur = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AddBlur>();
+        //bac = GameObject.FindGameObjectWithTag("BACLevel").GetComponent<BACLevel>();
 
         choiceGameObject = new GameObject[2];
         MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
@@ -201,7 +203,7 @@ public class BranchingStoryController : MonoBehaviour {
             setBlurOptions(leftBranchSelected);
             //we need to check if the element number of choice is -1 because that means we need to end)
             //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
-            if (addBlur.currentBlur < 0.9f)
+            if (bac.getCurrentBAC() < 3) //high or extreme
             {
                 currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
             }
@@ -235,6 +237,8 @@ public class BranchingStoryController : MonoBehaviour {
         if(currentNode.resetBlur)
         {
             addBlur.updateBlurValues(-1);
+            //this shouldnt happen 
+
         }
         if(currentNode.endingVideo)
         {
@@ -290,21 +294,29 @@ public class BranchingStoryController : MonoBehaviour {
 
     void setBlurOptions(bool leftSelected)
     {
+        if(bac == null)
+        {
+            bac = BACLevel.BAC;
+        }
         if(currentNode.choiceLeftAddBlur && leftSelected)
         {
-            addBlur.updateBlurValues(addBlur.blurIntensity);
+            //addBlur.updateBlurValues(addBlur.blurIntensity);
+            bac.increaseBAC();
         }
         else if (currentNode.choiceRightAddBlur && !leftSelected)
         {
-            addBlur.updateBlurValues(addBlur.blurIntensity);
+            //addBlur.updateBlurValues(addBlur.blurIntensity);
+            bac.increaseBAC();
         }
         if(currentNode.reduceBlurRight && !leftSelected)
         {
-            addBlur.updateBlurValues(-addBlur.blurIntensity);
+            bac.decreaseBAC();
+            //addBlur.updateBlurValues(-addBlur.blurIntensity);
         }
         else if (currentNode.reduceBlurLeft && leftSelected)
         {
-            addBlur.updateBlurValues(-addBlur.blurIntensity);
+            //addBlur.updateBlurValues(-addBlur.blurIntensity);
+            bac.decreaseBAC();
         }
     }
 

@@ -24,7 +24,7 @@ public class ChangeNodeTree : MonoBehaviour {
 
     public void OnClick()
     {
-        DV.assignNodeTree(correctNodeTree);
+        //DV.assignNodeTree(correctNodeTree);
         NodeTree.currentTree = correctNodeTree.structureName;
     }
 }

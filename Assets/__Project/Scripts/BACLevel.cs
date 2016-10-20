@@ -3,7 +3,9 @@ using System.Collections;
 
 public class BACLevel : MonoBehaviour {
 
-    public AddBlur addBlur;
+    public static BACLevel BAC;
+
+    private AddBlur addBlur;
     public string videoLocations;
 
     private MediaPlayerCtrl BACplayer;
@@ -20,13 +22,21 @@ public class BACLevel : MonoBehaviour {
 
     private BasicTimer timer;
 
+    private Vector3 startPosition;
+    private Vector3 endPosition;
+
 	// Use this for initialization
 	void Start () {
         timer = gameObject.AddComponent<BasicTimer>();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         BACplayer = gameObject.GetComponent<MediaPlayerCtrl>();
         ren = gameObject.GetComponent<Renderer>();
-	}
+        addBlur = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AddBlur>();
+        BAC = this;
+        startPosition = new Vector3(0, 1, 8);
+        endPosition = transform.localPosition;
+        playCorrectVideo();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,12 +54,12 @@ public class BACLevel : MonoBehaviour {
             else if(showingBAC && !fadingBAC)
             {
                 //lerp the blur up to an inflated number
-                addBlur.setCurrentBlur(Mathf.Lerp(fromBlur, toBlur+addBlur.blurIntensity, timer.lerpVal()));
+                addBlur.setCurrentBlur(Mathf.Lerp(toBlur + addBlur.blurIntensity, fromBlur, timer.lerpVal()));
                 if(timer.IsTimerFinished())
                 {
                     fadingBAC = true;
                     timer.ResetOrCancelTimer();
-                    timer.StartTimer(2.0f); //start the fade timer
+                    timer.StartTimer(10.0f); //start the move timer
                 }
                 //we are currently holding the new BAC level
 
@@ -58,17 +68,15 @@ public class BACLevel : MonoBehaviour {
             {
                 //we are fading the bac away
                 //lerp the blur back down to the appropriate level
-                addBlur.setCurrentBlur(Mathf.Lerp(toBlur+addBlur.blurIntensity, toBlur, timer.lerpVal()));
+                addBlur.setCurrentBlur(Mathf.Lerp(toBlur, toBlur + addBlur.blurIntensity, timer.lerpVal()));
                 //lerp fade away this renderer
-                ren.material.SetColor("_MainTex", new Color(0, 0, 0, Mathf.Lerp(0, 255, timer.lerpVal())));
+                transform.localPosition = Vector3.Lerp(endPosition, transform.localPosition, timer.lerpVal());
                 if(timer.IsTimerFinished())
                 {
                     resetValues();
-                    gameObject.SetActive(false); //check if you can reset the values afterwards (may not run)
+                    //gameObject.SetActive(false); //check if you can reset the values afterwards (may not run)
                 }
-
             }
-
         }
 	}
 
@@ -77,22 +85,21 @@ public class BACLevel : MonoBehaviour {
         switch(currentLevel)
         {
             case 0:
-                //set video string
+                BACplayer.Load(videoLocations + "/zer.mp4");
                 break;
             case 1:
-                //something
+                BACplayer.Load(videoLocations + "/low.mp4");
                 break;
             case 2:
-                //do something
+                BACplayer.Load(videoLocations + "/med.mp4");
                 break;
             case 3:
-                //do something
+                BACplayer.Load(videoLocations + "/hig.mp4");
                 break;
             default:
-                //lets be honest, probably an error
+                BACplayer.Load(videoLocations + "/ext.mp4");
                 break;
         }
-        
     }
 
     void resetValues()
@@ -101,22 +108,35 @@ public class BACLevel : MonoBehaviour {
         showingBAC = false;
         fadingBAC = false;
         timer.ResetOrCancelTimer();
-        ren.material.SetColor("_MainTex", new Color(0, 0, 0, 1));
+        gameObject.transform.localPosition = endPosition;
     }
 
     public void increaseBAC()
     {
+        resetValues();
         increasingBAC = true;
+        transform.localPosition = startPosition;
+        transform.parent.GetComponent<MoveToFrontOfCamera>().moveImmediatelyToHere();
+        currentLevel++;
     }
 
     public void decreaseBAC()
     {
         currentLevel--;
+        playCorrectVideo();
+        BACplayer.Pause();
+        addBlur.updateBlurValues(-addBlur.blurIntensity);
+        //BACplayer.SeekTo(BACplayer.GetDuration() - 1);
     }
 
-    public void enableGameObject()
+    public int getCurrentBAC()
     {
-        gameObject.SetActive(true);
+        return currentLevel;
+        // 0 = none
+        // 1 = low
+        // 2 = medium
+        // 3 = high
+        // 4 = high
     }
 
     //TODO: something needs to turn this on at the right time once increaseBAC has been set so shit happens

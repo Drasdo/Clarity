@@ -44,8 +44,9 @@ public class NodeTree : MonoBehaviour
             {
                 //structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_";
                 node.SphVidOnlineLoc = structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_HD.mp4";
+                node.sphereVideo = node.SphVidOnlineLoc;
             }
-            if(node.SphVidOnlineLoc == "")
+            else if(node.SphVidOnlineLoc == "")
             {
                 node.SphVidOnlineLoc = node.sphereVideo;
             }

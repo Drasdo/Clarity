@@ -551,7 +551,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &189422636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ Transform:
   m_Children:
   - {fileID: 1926979981}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &360067178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &399243892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structureName: Elle
-  localFiles: 0
+  localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
   videoStructure:
   - nodeTitle: 1_1
@@ -1947,12 +1947,12 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: c54c83b39c16b644ab5211a5a9051d74, type: 3}
     endingVideo: 0
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 40
+    choicesSecondsToShow: 2
     choiceRotationToSummonAt: 53
     startingRotationOfVideoDegrees: 0
     resetBlur: 0
@@ -1969,12 +1969,12 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_2_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 477610c9a888680408aad4fb01367a99, type: 3}
     endingVideo: 0
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 30
+    choicesSecondsToShow: 2
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
@@ -1984,19 +1984,19 @@ MonoBehaviour:
     reduceBlurRight: 0
     leftChoiceElementNumber: 2
     rightChoiceElementNumber: 2
-    blurExceedsMaxMoveTo: -1
+    blurExceedsMaxMoveTo: 2
     waitTime: 0.8
   - nodeTitle: 1_3
     nodeID: A(2)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/1_3_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 1339692b1331f9d4093d0b373269d00f, type: 3}
     endingVideo: 0
     choiceVideoLeft: Yes
     choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 41
+    choicesSecondsToShow: 2
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
     resetBlur: 0
@@ -2024,8 +2024,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
+    reduceBlurLeft: 1
+    reduceBlurRight: 1
     leftChoiceElementNumber: 5
     rightChoiceElementNumber: 5
     blurExceedsMaxMoveTo: -1
@@ -2057,7 +2057,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: e326a9eee3bbe444ba55b78cd398a2e9, type: 3}
     endingVideo: 0
     choiceVideoLeft: Go With Zoe
     choiceVideoRight: Go With Hannah
@@ -2068,8 +2068,8 @@ MonoBehaviour:
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
-    reduceBlurLeft: 1
-    reduceBlurRight: 1
+    reduceBlurLeft: 0
+    reduceBlurRight: 0
     leftChoiceElementNumber: 11
     rightChoiceElementNumber: 6
     blurExceedsMaxMoveTo: -1
@@ -2079,7 +2079,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: ff2018b939d14544e8f881dfaecbd286, type: 3}
     endingVideo: 0
     choiceVideoLeft: Alcohol
     choiceVideoRight: Water
@@ -2101,7 +2101,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 7410d180ed7a83a48a5474ebffe50cf2, type: 3}
     endingVideo: 0
     choiceVideoLeft: Go Upstairs
     choiceVideoRight: Stay at Party
@@ -2167,7 +2167,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 0
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 935e9db671488844bb5087c7c14dd45d, type: 3}
     endingVideo: 0
     choiceVideoLeft: 
     choiceVideoRight: 
@@ -2189,7 +2189,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 0f53dbe60cc04a944aa51bfd7118a94b, type: 3}
     endingVideo: 0
     choiceVideoLeft: Dance
     choiceVideoRight: Don't Dance
@@ -2255,7 +2255,7 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 2ec5474399f95fc4d9d23ce89b58accf, type: 3}
     endingVideo: 0
     choiceVideoLeft: Go With Ty
     choiceVideoRight: Find Friends
@@ -2299,14 +2299,14 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: a2895c61dc74c5044abc5ba0856b1232, type: 3}
     endingVideo: 0
     choiceVideoLeft: Take Drink
     choiceVideoRight: Don't Take Drink
     choiceIsVideo: 0
     choicesSecondsToShow: 20
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 180
     resetBlur: 0
     choiceLeftAddBlur: 1
     choiceRightAddBlur: 0
@@ -2328,7 +2328,7 @@ MonoBehaviour:
     choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 180
     resetBlur: 0
     choiceLeftAddBlur: 0
     choiceRightAddBlur: 0
@@ -3292,7 +3292,7 @@ RectTransform:
   m_Children:
   - {fileID: 564964841}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3495,7 +3495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010078674872, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1000013661639846, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
       propertyPath: m_Name
@@ -3603,7 +3603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011137449332, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
@@ -3777,7 +3777,7 @@ Transform:
   - {fileID: 670031843}
   - {fileID: 399243893}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1108549296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +3842,7 @@ MonoBehaviour:
   triggerNewUI: 0
   newUI: {fileID: 0}
   isEnabled: 1
-  disableUntilDownloaded: 1
+  disableUntilDownloaded: 0
   isCurrentSelection: 0
 --- !u!114 &1108549299
 MonoBehaviour:
@@ -4767,83 +4767,6 @@ Prefab:
     - {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1383365302
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013992186556, guid: cea60bf2d44b24ecf9029820104a0b75,
-        type: 2}
-      propertyPath: m_strFileName
-      value: ed_1024_512kb
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &1383365303 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000012210852914, guid: cea60bf2d44b24ecf9029820104a0b75,
-    type: 2}
-  m_PrefabInternal: {fileID: 1383365302}
---- !u!114 &1383365304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1383365303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafef9a13cf3b486988aa26e2f9d3c3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addBlur: {fileID: 0}
-  videoLocations: 
 --- !u!1 &1515010032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,7 +5460,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1862956648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe84860e2812bc44086e20e043c40d26, type: 3}
   m_Name: 
@@ -5660,7 +5583,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012971754378, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}

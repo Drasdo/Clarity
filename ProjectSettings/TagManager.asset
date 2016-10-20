@@ -12,6 +12,7 @@ TagManager:
   - SelectionOption
   - Rotator
   - StartCamera
+  - BACLevel
   layers:
   - Default
   - TransparentFX

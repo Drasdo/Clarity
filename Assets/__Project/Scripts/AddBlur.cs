@@ -61,6 +61,9 @@ public class AddBlur : MonoBehaviour {
         if(addBlurIntensity == -1)
         {
             currentBlur = 0;
+        } else if(addBlurIntensity < 0)
+        {
+            addBlurIntensity = 0;
         }
         currentBlur += addBlurIntensity;
         eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = currentBlur;

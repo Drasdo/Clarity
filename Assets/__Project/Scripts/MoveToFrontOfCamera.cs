@@ -8,9 +8,9 @@ public class MoveToFrontOfCamera : MonoBehaviour {
 
     private GameObject moveToHere;
     private bool currentlyMoving = false;
-    private bool finishedReveal = false;
+    public bool finishedReveal = false;
     private BasicTimer timer;
-    private float timeForTimer = 2.0f;
+    public float timeForTimer = 2.0f;
     private float yAxisVal;
 
     private Quaternion desiredRotation;
@@ -113,5 +113,10 @@ public class MoveToFrontOfCamera : MonoBehaviour {
     void OnEnable()
     {
         currentlyMoving = false;
+    }
+
+    public void moveImmediatelyToHere()
+    {
+        transform.rotation = moveToHere.transform.rotation;
     }
 }

@@ -6,7 +6,7 @@ public class Node : System.Object {
     public string nodeTitle;
     public string nodeID;
     public string sphereVideo;                  //where the spherevideo is located locally, either as it always been or downloaded
-    [HideInInspector]
+   // [HideInInspector]
     public string SphVidOnlineLoc;              //online location of video
     public bool isThereEndAudio = true;
     public AudioClip TailendAudio;                 //audio to play while the user makes a choice
