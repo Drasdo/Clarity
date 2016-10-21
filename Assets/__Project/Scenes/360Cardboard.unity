@@ -1410,7 +1410,7 @@ Prefab:
     - target: {fileID: 114000013992186556, guid: cea60bf2d44b24ecf9029820104a0b75,
         type: 2}
       propertyPath: m_strFileName
-      value: EasyMovieTexture.mp4
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013992186556, guid: cea60bf2d44b24ecf9029820104a0b75,
         type: 2}
