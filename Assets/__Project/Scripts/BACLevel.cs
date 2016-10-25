@@ -54,7 +54,7 @@ public class BACLevel : MonoBehaviour {
             else if(showingBAC && !fadingBAC)
             {
                 //lerp the blur up to an inflated number
-                addBlur.setCurrentBlur(Mathf.Lerp(toBlur + addBlur.blurIntensity, fromBlur, timer.lerpVal()));
+                addBlur.setCurrentBlur(Mathf.Lerp(toBlur + addBlur.blurIntensity/2, fromBlur, timer.lerpVal()));
                 if(timer.IsTimerFinished())
                 {
                     fadingBAC = true;
@@ -68,7 +68,7 @@ public class BACLevel : MonoBehaviour {
             {
                 //we are fading the bac away
                 //lerp the blur back down to the appropriate level
-                addBlur.setCurrentBlur(Mathf.Lerp(toBlur, toBlur + addBlur.blurIntensity, timer.lerpVal()));
+                addBlur.setCurrentBlur(Mathf.Lerp(toBlur, toBlur + addBlur.blurIntensity/2, timer.lerpVal()));
                 //lerp fade away this renderer
                 transform.localPosition = Vector3.Lerp(endPosition, transform.localPosition, timer.lerpVal());
                 if(timer.IsTimerFinished())
@@ -138,6 +138,4 @@ public class BACLevel : MonoBehaviour {
         // 3 = high
         // 4 = high
     }
-
-    //TODO: something needs to turn this on at the right time once increaseBAC has been set so shit happens
 }
