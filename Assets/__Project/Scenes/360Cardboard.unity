@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &389255505
 Light:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1251871862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,6 +1447,11 @@ Prefab:
     - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013955652562, guid: cea60bf2d44b24ecf9029820104a0b75,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012918899988, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
