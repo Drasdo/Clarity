@@ -1715,7 +1715,7 @@ MonoBehaviour:
   videoSphere: {fileID: 2041604286}
   choiceRotator: {fileID: 299966348}
   fadeSphere: {fileID: 1693322914}
-  fadeTimerLength: 0.6
+  fadeTimerLength: 0.5
 --- !u!4 &1602218887
 Transform:
   m_ObjectHideFlags: 0
