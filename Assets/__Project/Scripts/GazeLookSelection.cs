@@ -27,18 +27,7 @@ public class GazeLookSelection : MonoBehaviour
     }
 
     void Update()
-    {/*
-        if(!reAddedRet && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            //it is the first scene, so lets readd the gvr reticle
-            Destroy(GetComponent<GvrReticle>());
-            gameObject.AddComponent<GvrReticle>();
-            reAddedRet = true;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            reAddedRet = false;
-        }*/
+    {
         if (isLookedAt && !hasBeenClicked) // are we looking at something?
         {
             if (lookTimer / timerDuration2 < timerDuration2) //before a 1/10th of the duration has passed, size up to the right size
@@ -82,6 +71,24 @@ public class GazeLookSelection : MonoBehaviour
         currentGazeObject = currentGUI.GetComponent<EventTrigger>();
         if(!gazedAt)
         {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             GetComponent<GvrReticle>().OnGazeExit(null, currentGUI);
         }
         lookTimer = 0f; // Reset timer

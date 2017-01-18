@@ -4,17 +4,20 @@ using System.Collections;
 public class AddBlur : MonoBehaviour {
 
     public Shader blurShader;
-    public float blurIntensity = 0.3f;
+    public float blurIntensity = 0.16f;
 
     public float currentBlur = 0f;
 
     private GameObject eyeLeft;
     private GameObject eyeRight;
     private StereoController SC;
+    public bool blinking = false;
 
-	// Use this for initialization
-	void Start () {
+    private BasicTimer timer;
 
+    // Use this for initialization
+    void Start () {
+        timer = gameObject.AddComponent<BasicTimer>();
     }
 	
 	// Update is called once per frame
@@ -28,7 +31,11 @@ public class AddBlur : MonoBehaviour {
             FindEyes();
             AddBlurToEyes();
         }
-
+		if(blinking)
+		{
+			Debug.Log (AudioListener.volume);
+			AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / 6.5f);
+		}
 	}
 
     void FindEyes()
@@ -47,6 +54,11 @@ public class AddBlur : MonoBehaviour {
 
     void AddBlurToEyes()
     {
+        PostProcess.BlinkEffect eyeL = eyeLeft.AddComponent<PostProcess.BlinkEffect>();
+        PostProcess.BlinkEffect eyeR = eyeRight.AddComponent<PostProcess.BlinkEffect>();
+        //eyeLeft.AddComponent<Blinker>();
+        //eyeRight.AddComponent<Blinker>();
+
         eyeLeft.AddComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
         eyeRight.AddComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
         eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().shader = blurShader;
@@ -61,11 +73,12 @@ public class AddBlur : MonoBehaviour {
         if(addBlurIntensity == -1)
         {
             currentBlur = 0;
-        } else if(addBlurIntensity < 0)
-        {
-            addBlurIntensity = 0;
         }
         currentBlur += addBlurIntensity;
+        if(currentBlur < 0)
+        {
+            currentBlur = 0;
+        }
         eyeLeft.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = currentBlur;
         eyeRight.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>().blurAmount = currentBlur;
     }
@@ -92,5 +105,25 @@ public class AddBlur : MonoBehaviour {
             currentBlur = 0;
         else
         currentBlur = blur;
+    }
+
+    public void makeBlink(System.Action action)
+    {
+        eyeLeft.GetComponent<PostProcess.BlinkEffect>().Blink(null, action);
+        eyeRight.GetComponent<PostProcess.BlinkEffect>().Blink();
+        turnDownVolume();
+    }
+
+    public void makeBlink()
+    {
+        eyeLeft.GetComponent<PostProcess.BlinkEffect>().Blink();
+        eyeRight.GetComponent<PostProcess.BlinkEffect>().Blink();
+        turnDownVolume();
+    }
+
+    private void turnDownVolume()
+    {
+        blinking = true;
+        timer.StartTimer(6.5f);
     }
 }

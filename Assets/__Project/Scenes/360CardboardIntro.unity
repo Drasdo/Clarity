@@ -568,6 +568,22 @@ MonoBehaviour:
   videosComplete: 0
   soundsComplete: 0
   downloadingComplete: 0
+--- !u!1 &238868581 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012535903150, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+    type: 2}
+  m_PrefabInternal: {fileID: 929915290}
+--- !u!114 &238868586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238868581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddf9476813683e41adb364670100bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &250185370
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +733,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1603382801}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!212 &281279988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -747,7 +763,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ddde3354666e8c04f800ee6e0c710b67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27382f6e0cd82d1439d6935c12c090bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1920,6 +1936,7 @@ GameObject:
   - 114: {fileID: 639039154}
   - 114: {fileID: 639039156}
   - 114: {fileID: 639039157}
+  - 114: {fileID: 639039158}
   m_Layer: 0
   m_Name: TreeStructure
   m_TagString: NodeTree
@@ -1938,6 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortenChoiceSecs: 0
   structureName: Elle
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
@@ -1949,21 +1967,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: c54c83b39c16b644ab5211a5a9051d74, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Yes
-    choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 40
     choiceRotationToSummonAt: 53
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Have Cruiser
+    leftChoiceID: 0100000001000000010000000100000001000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: I'm Good, Thanks
+    rightChoiceID: 0100000001000000010000000100000001000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_2
     nodeID: A(1)
     sphereVideo: 
@@ -1971,21 +1999,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: 477610c9a888680408aad4fb01367a99, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Yes
-    choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 30
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 2
-    rightChoiceElementNumber: 2
-    blurExceedsMaxMoveTo: 2
     waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Take a Drink
+    leftChoiceID: 0200000002000000020000000200000002000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Sit it Out
+    rightChoiceID: 0200000002000000020000000200000002000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_3
     nodeID: A(2)
     sphereVideo: 
@@ -1993,21 +2031,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: 1339692b1331f9d4093d0b373269d00f, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Yes
-    choiceVideoRight: No
     choiceIsVideo: 0
-    choicesSecondsToShow: 2
+    choicesSecondsToShow: 41
     choiceRotationToSummonAt: -5
     startingRotationOfVideoDegrees: -90
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 3
-    rightChoiceElementNumber: 3
-    blurExceedsMaxMoveTo: 4
     waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 1
+    choiceVideoLeft: Skull
+    leftChoiceID: 0300000003000000030000000300000004000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Pass
+    rightChoiceID: 0300000003000000030000000300000004000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_4
     nodeID: A(3)
     sphereVideo: 
@@ -2015,21 +2063,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: -90
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 1
-    reduceBlurRight: 1
-    leftChoiceElementNumber: 5
-    rightChoiceElementNumber: 5
-    blurExceedsMaxMoveTo: -1
     waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0500000005000000050000000500000005000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0500000005000000050000000500000005000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_4-5
     nodeID: A(4)
     sphereVideo: 
@@ -2037,21 +2095,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: -90
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
     waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 2_5
     nodeID: A(5)
     sphereVideo: 
@@ -2059,21 +2127,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: e326a9eee3bbe444ba55b78cd398a2e9, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Go With Zoe
-    choiceVideoRight: Go With Hannah
     choiceIsVideo: 0
     choicesSecondsToShow: 37
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: -90
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 11
-    rightChoiceElementNumber: 6
-    blurExceedsMaxMoveTo: -1
     waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Get Drink With Jess
+    leftChoiceID: 0b0000000b0000000b0000000b00000012000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Go With Hannah
+    rightChoiceID: 0600000006000000060000000600000006000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 3_6
     nodeID: AB(6)
     sphereVideo: 
@@ -2081,21 +2159,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: ff2018b939d14544e8f881dfaecbd286, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Alcohol
-    choiceVideoRight: Water
     choiceIsVideo: 0
     choicesSecondsToShow: 43
     choiceRotationToSummonAt: 3
     startingRotationOfVideoDegrees: -80
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 1
-    leftChoiceElementNumber: 7
-    rightChoiceElementNumber: 7
-    blurExceedsMaxMoveTo: 7
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Take Drink
+    leftChoiceID: 0700000007000000070000001500000013000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Have some Water
+    rightChoiceID: 0700000007000000130000000700000007000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 1
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 4_7
     nodeID: AB(7)
     sphereVideo: 
@@ -2103,21 +2191,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: 7410d180ed7a83a48a5474ebffe50cf2, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Go Upstairs
-    choiceVideoRight: Stay at Party
     choiceIsVideo: 0
     choicesSecondsToShow: 25
     choiceRotationToSummonAt: -60
     startingRotationOfVideoDegrees: -145
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 10
-    rightChoiceElementNumber: 8
-    blurExceedsMaxMoveTo: 10
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Go Upstairs
+    leftChoiceID: 0a0000000a0000000a0000000a0000000a000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: Stay at Party
+    rightChoiceID: 1600000016000000160000001600000016000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 4_8
     nodeID: ABA(8)
     sphereVideo: 
@@ -2125,21 +2223,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 1
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: -160
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 9
-    rightChoiceElementNumber: 9
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0900000009000000090000000900000009000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0900000009000000090000000900000009000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 7_11
     nodeID: ABAA(9)
     sphereVideo: 
@@ -2147,21 +2255,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 230
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 8_12
     nodeID: ABB(10)
     sphereVideo: 
@@ -2169,21 +2287,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 8300000, guid: 935e9db671488844bb5087c7c14dd45d, type: 3}
     endingVideo: 0
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: -180
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 9
-    rightChoiceElementNumber: 9
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0900000009000000090000000900000009000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0900000009000000090000000900000009000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 10_14
     nodeID: AA(11)
     sphereVideo: 
@@ -2191,21 +2319,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: 0f53dbe60cc04a944aa51bfd7118a94b, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Dance
-    choiceVideoRight: Don't Dance
     choiceIsVideo: 0
     choicesSecondsToShow: 63
     choiceRotationToSummonAt: -84
     startingRotationOfVideoDegrees: -95
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 14
-    rightChoiceElementNumber: 12
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Dance with Ty
+    leftChoiceID: 0e0000000e000000140000001400000014000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: Don't Dance
+    rightChoiceID: 0c0000000c0000000c000000180000000c000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 10_15
     nodeID: AAB(12)
     sphereVideo: 
@@ -2213,21 +2351,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 200
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 13
-    rightChoiceElementNumber: 13
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0d0000000d0000000d0000000d0000000d000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0d0000000d0000000d0000000d0000000d000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 14_2
     nodeID: AABA(13)
     sphereVideo: 
@@ -2235,21 +2383,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 15_21
     nodeID: AAA(14)
     sphereVideo: 
@@ -2257,21 +2415,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: 2ec5474399f95fc4d9d23ce89b58accf, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Go With Ty
-    choiceVideoRight: Find Friends
     choiceIsVideo: 0
     choicesSecondsToShow: 20
     choiceRotationToSummonAt: -100
     startingRotationOfVideoDegrees: -202
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 16
-    rightChoiceElementNumber: 15
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 1
+    reduceBlurAtTime: 0
+    TimeForChange: 9
+    resetBlur: 0
+    doubleBlur: 1
+    choiceVideoLeft: Go With Ty
+    leftChoiceID: 1000000010000000100000001000000010000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: Find Hannah
+    rightChoiceID: 0f0000000f0000000f0000000f0000000f000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 1
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 16_22
     nodeID: AAAB(15)
     sphereVideo: 
@@ -2279,21 +2447,31 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
-    choiceVideoLeft: 
-    choiceVideoRight: 
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 75
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 18_24
     nodeID: AAAA(16)
     sphereVideo: 
@@ -2301,21 +2479,31 @@ MonoBehaviour:
     isThereEndAudio: 1
     TailendAudio: {fileID: 8300000, guid: a2895c61dc74c5044abc5ba0856b1232, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Take Drink
-    choiceVideoRight: Don't Take Drink
     choiceIsVideo: 0
     choicesSecondsToShow: 20
-    choiceRotationToSummonAt: 0
+    choiceRotationToSummonAt: -90
     startingRotationOfVideoDegrees: 180
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 17
-    rightChoiceElementNumber: 17
-    blurExceedsMaxMoveTo: 17
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Finish Drink
+    leftChoiceID: 1100000011000000110000001100000017000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Have a Sip
+    rightChoiceID: 1100000011000000110000001100000011000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 19_25
     nodeID: AAAAB(17)
     sphereVideo: 
@@ -2323,21 +2511,415 @@ MonoBehaviour:
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 180
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
     choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
     choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 10_14
+    nodeID: AA(18)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
     choiceIsVideo: 0
     choicesSecondsToShow: 0
     choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 0
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: -1
-    rightChoiceElementNumber: -1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 12
+  - nodeTitle: 4_8
+    nodeID: AB(19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: -160
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0d0000000d0000000d0000000d0000000d000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0d0000000d0000000d0000000d0000000d000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 1
+    endEarlyTime: 51
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 4
+  - nodeTitle: 15_21
+    nodeID: AAA(20)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: -202
+    waitTime: 1
+    increaseBlurAtTime: 1
+    reduceBlurAtTime: 0
+    TimeForChange: 9
+    resetBlur: 0
+    doubleBlur: 1
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 11
+  - nodeTitle: 4_8
+    nodeID: AB(21)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: -160
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 1
+    endEarlyTime: 51
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 4_8
+    nodeID: AB(22)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: -160
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0900000009000000090000000900000009000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0900000009000000090000000900000009000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 1
+    endEarlyTime: 51
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 19_25
+    nodeID: AAAAB(23)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 180
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 22
+  - nodeTitle: 10_15
+    nodeID: AAB(24)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 200
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 44
+  - nodeTitle: 19_25
+    nodeID: AAAAB(17)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 19_25
+    nodeID: AAAAB(17)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 19_25
+    nodeID: AAAAB(17)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 19_25
+    nodeID: AAAAB(17)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 19_25
+    nodeID: AAAAB(17)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 0
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   initializationTime: 0
   everythingReady: 0
 --- !u!4 &639039155
@@ -2377,8 +2959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortenChoiceSecs: 1
   structureName: Tom
-  localFiles: 0
+  localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
   videoStructure:
   - nodeTitle: 1_1
@@ -2386,355 +2969,974 @@ MonoBehaviour:
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 26ff22cbcf69a744bb6233176901de71, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: 39
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Take a Drink
+    leftChoiceID: 0100000001000000010000000100000001000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Sit it Out
+    rightChoiceID: 0100000001000000010000000100000001000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_2
     nodeID: A(1)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 82c03691c47a8814b99d25b603bd39c1, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: 63
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 1
+    choiceVideoLeft: Take Shots
+    leftChoiceID: 0200000002000000020000000200000002000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Thanks, I'm Good
+    rightChoiceID: 0200000002000000020000000200000002000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
   - nodeTitle: 1_3
     nodeID: A(2)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
+    waitTime: 0.8
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
     resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0400000004000000040000000400000004000000
+    choiceLeftAddBlur: 0
     reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0400000004000000040000000400000004000000
+    choiceRightAddBlur: 0
     reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
-    waitTime: 1
-  - nodeTitle: 1_4
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 1_3-5
     nodeID: A(3)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_4-5
-    nodeID: A(4)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 2_4
+    nodeID: 4
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 031e8e5b314fab44c93125b684cc0610, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: 23
+    choiceRotationToSummonAt: 55
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Get Drink with Luke
+    leftChoiceID: 0c0000000c0000000c0000000c0000000c000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: Go with Dylan
+    rightChoiceID: 0500000005000000050000000500000005000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 3_5
+    nodeID: (5)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 4a289caef525f9b489ab02e41d6b4ec1, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: 49
+    choiceRotationToSummonAt: 55
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Have some Water
+    leftChoiceID: 0b0000000b000000140000001400000014000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 1
+    choiceVideoRight: Take Drink
+    rightChoiceID: 0b00000014000000140000001400000006000000
+    choiceRightAddBlur: 1
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 4_6
+    nodeID: (6)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
+    TailendAudio: {fileID: 8300000, guid: e315730668011d145946fa2dd55b2591, type: 3}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: 16
+    choiceRotationToSummonAt: 55
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0b0000000b0000000b0000000b0000000b000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0b0000000b0000000b0000000b0000000b000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 5
+  - nodeTitle: 5_7
+    nodeID: (7)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0900000009000000090000000900000009000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0900000009000000090000000900000009000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 6_8
+    nodeID: (8)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
+    TailendAudio: {fileID: 8300000, guid: 43dc3c1fe9198da4aa3e1edac3ddee46, type: 3}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 1000000010000000100000001000000010000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 1000000010000000100000001000000010000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 7_9
+    nodeID: (9)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0a0000000a0000000a0000000a0000000a000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0a0000000a0000000a0000000a0000000a000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 8_10
+    nodeID: (10)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 9_11
+    nodeID: (11)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0700000007000000070000000700000007000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0700000007000000070000000700000007000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 1
+    endEarlyTime: 45
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 11_13
+    nodeID: (12)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
+    TailendAudio: {fileID: 8300000, guid: 974cec394bd092845918d3db5d8c387c, type: 3}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: 55
+    choiceRotationToSummonAt: 55
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Dance with Sophie
+    leftChoiceID: 0e0000000e0000000e0000000e0000000e000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: Don't Dance
+    rightChoiceID: 0d0000000d0000000d0000000d0000000d000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 11
+  - nodeTitle: 11_14
+    nodeID: (13)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 0f0000000f0000000f0000000f0000000f000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 0f0000000f0000000f0000000f0000000f000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 11_18
+    nodeID: (14)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 1100000011000000110000001100000011000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 1100000011000000110000001100000011000000
+    choiceRightAddBlur: 1
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 12_16
+    nodeID: (15)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 0
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 1000000010000000100000001000000010000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 1000000010000000100000001000000010000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 13_17
+    nodeID: (16)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 14_19
+    nodeID: (17)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 1
-    TailendAudio: {fileID: 0}
+    TailendAudio: {fileID: 8300000, guid: 90ef5d75f9d8df94284622fb75db5e4a, type: 3}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: 18
+    choiceRotationToSummonAt: 90
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: Smoke Weed
+    leftChoiceID: 1200000012000000120000001200000012000000
+    choiceLeftAddBlur: 1
+    reduceBlurLeft: 0
+    choiceVideoRight: I'll Pass
+    rightChoiceID: 1200000012000000120000001200000012000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 3
+  - nodeTitle: 14_22
+    nodeID: (18)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 1300000013000000130000001300000013000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 1300000013000000130000001300000013000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 2
+  - nodeTitle: 16_23
+    nodeID: (19)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 9_11
+    nodeID: (20)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: 1000000010000000100000001000000010000000
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: 1000000010000000100000001000000010000000
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: -1
+  - nodeTitle: 16_23
+    nodeID: (19)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
-  - nodeTitle: 1_1
-    nodeID: A(0)
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 0
-    choiceVideoLeft: Have a Drink
-    choiceVideoRight: Refuse Drink
+    endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 1
-    choiceRotationToSummonAt: 53
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
-    resetBlur: 0
-    choiceLeftAddBlur: 1
-    choiceRightAddBlur: 0
-    reduceBlurLeft: 0
-    reduceBlurRight: 0
-    leftChoiceElementNumber: 1
-    rightChoiceElementNumber: 1
-    blurExceedsMaxMoveTo: -1
     waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
+  - nodeTitle: 16_23
+    nodeID: (19)
+    sphereVideo: 
+    SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
+    isThereEndAudio: 0
+    TailendAudio: {fileID: 0}
+    endingVideo: 1
+    choiceIsVideo: 0
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
+    startingRotationOfVideoDegrees: 0
+    waitTime: 1
+    increaseBlurAtTime: 0
+    reduceBlurAtTime: 0
+    TimeForChange: 0
+    resetBlur: 0
+    doubleBlur: 0
+    choiceVideoLeft: 
+    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceLeftAddBlur: 0
+    reduceBlurLeft: 0
+    choiceVideoRight: 
+    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    choiceRightAddBlur: 0
+    reduceBlurRight: 0
+    playbackType: 0
+    endEarlyTime: -1
+    startLateTime: -1
+    skipAtTime: -1
+    skipToTime: -1
+    endToBlack: 0
+    earlyVideoEndAt: 0
   initializationTime: 0
   everythingReady: 0
+--- !u!114 &639039158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 639039153}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbd0ecaa00fc4b48a26d5735c0eac8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670031842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,86 +4500,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &909245866
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 909245867}
-  - 23: {fileID: 909245869}
-  - 102: {fileID: 909245868}
-  m_Layer: 0
-  m_Name: Coming Soon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &909245867
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 909245866}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.897, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1603382801}
-  m_RootOrder: 1
---- !u!102 &909245868
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 909245866}
-  m_Text: (Coming Soon)
-  m_OffsetZ: 0
-  m_CharacterSize: 0.025
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 0
-  m_TabSize: 4
-  m_FontSize: 60
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4286348412
---- !u!23 &909245869
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 909245866}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!1 &929021594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,6 +4626,103 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &929915291 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013661639846, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+    type: 2}
+  m_PrefabInternal: {fileID: 929915290}
+--- !u!114 &929915292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929915291}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7f7761cf7666445a06dff449d9442a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &929915302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929915291}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a017a2e025c1c74080d6fbd05d706b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkey: {fileID: 0}
+--- !u!114 &929915303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929915291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3d7095525224b47957952aeb8f1f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standard: {fileID: 4800000, guid: 0587a73312ddb437389523f13dc5dc1e, type: 3}
+  curved: {fileID: 4800000, guid: 830702ece31434f4aad50d6eed366162, type: 3}
+  smoothness: 0.96
+  curvature: 1
+  time: 0
+  fadeOutDelay: 0
+  fadeInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1.5
+      value: 0.698
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 2.5
+      value: 0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 4
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 5
+      value: 0.327
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 6.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fadeOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &932699035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,6 +4823,11 @@ Prefab:
     - target: {fileID: 4000011137449332, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012315298358, guid: 22559b520e5f4447ebe87a855172066b,
+        type: 2}
+      propertyPath: vrModeEnabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
@@ -4325,7 +5549,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4286348412
+    rgba: 4292328382
 --- !u!23 &1187892854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4851,7 +6075,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1187892851}
-  - {fileID: 909245867}
   - {fileID: 281279987}
   m_Father: {fileID: 1088496867}
   m_RootOrder: 2
@@ -4867,13 +6090,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setName: Character
-  normal: {fileID: 21300000, guid: ddde3354666e8c04f800ee6e0c710b67, type: 3}
-  hover: {fileID: 21300000, guid: ddde3354666e8c04f800ee6e0c710b67, type: 3}
-  select: {fileID: 21300000, guid: ddde3354666e8c04f800ee6e0c710b67, type: 3}
-  selectHover: {fileID: 0}
-  off: {fileID: 0}
+  normal: {fileID: 21300000, guid: 27382f6e0cd82d1439d6935c12c090bd, type: 3}
+  hover: {fileID: 21300000, guid: 1eac99e7f766ab14db30b5fded5142ea, type: 3}
+  select: {fileID: 21300000, guid: 1a5e9eb4798426f4ca72b437dc0022af, type: 3}
+  selectHover: {fileID: 21300000, guid: 32d06c6368cacb947b2537830095a606, type: 3}
+  off: {fileID: 21300000, guid: ddde3354666e8c04f800ee6e0c710b67, type: 3}
   isMovieSprite: 0
-  moveToPositionOnSelect: 0
+  moveToPositionOnSelect: 1
   moveToPosition: {x: 1.5, y: 2, z: 0}
   moveToScaler: 0.8
   triggerNewUI: 1
@@ -4931,7 +6154,40 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1603382802}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1960242514}
+          m_MethodName: changeTexture
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1603382805}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates:
@@ -5606,7 +6862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initTexture: {fileID: 2800000, guid: 75f202ffed0c346499615e62312198f7, type: 3}
   leftChoice: {fileID: 2800000, guid: 3cca09ef0ae9cd2428c030a047becb08, type: 3}
-  rightChoice: {fileID: 2800000, guid: 3cca09ef0ae9cd2428c030a047becb08, type: 3}
+  rightChoice: {fileID: 2800000, guid: 349ed73c82f450e4898cfea17d0d9820, type: 3}
   duration: 2.5
 --- !u!114 &1960242515
 MonoBehaviour:

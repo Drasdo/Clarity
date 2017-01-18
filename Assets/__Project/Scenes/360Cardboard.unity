@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 63055145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.77777773, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1442921137}
@@ -539,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 785424835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8999999, y: 0.7, z: 0.7}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1633995194}
@@ -1219,7 +1219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1251871862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ Prefab:
     - target: {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
         type: 2}
       propertyPath: m_bSupportRockchip
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95000012867442420, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
         type: 2}
@@ -1423,11 +1423,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
       propertyPath: m_LocalScale.z
@@ -1438,9 +1438,24 @@ Prefab:
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012210852914, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013955652562, guid: cea60bf2d44b24ecf9029820104a0b75,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013955652562, guid: cea60bf2d44b24ecf9029820104a0b75,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58ab912139453a945af7cf339cac2b5c, type: 2}
     m_RemovedComponents:
     - {fileID: 114000012918899988, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
     - {fileID: 114000011176900950, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
+    - {fileID: 114000013992186556, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cea60bf2d44b24ecf9029820104a0b75, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1422832528 stripped
@@ -1465,6 +1480,666 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012086217954, guid: cea60bf2d44b24ecf9029820104a0b75,
     type: 2}
   m_PrefabInternal: {fileID: 1422832527}
+--- !u!114 &1422832531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422832528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217eb0fa35ebca247a7001f0e79a4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceFolder: __Project/Resources/
+  sequenceFolder: BAC/Low
+  FPS: 25
+  loadOnAwake: 1
+  playOnAwake: 0
+  loop: 0
+  mode: 0
+  playbackMat: {fileID: 2100000, guid: 58ab912139453a945af7cf339cac2b5c, type: 2}
+  rawImage: {fileID: 0}
+  startDelay: 0
+  asyncLoading: 1
+  resourceFiles:
+  - BAC/Low/Low BAC000
+  - BAC/Low/Low BAC001
+  - BAC/Low/Low BAC002
+  - BAC/Low/Low BAC003
+  - BAC/Low/Low BAC004
+  - BAC/Low/Low BAC005
+  - BAC/Low/Low BAC006
+  - BAC/Low/Low BAC007
+  - BAC/Low/Low BAC008
+  - BAC/Low/Low BAC009
+  - BAC/Low/Low BAC010
+  - BAC/Low/Low BAC011
+  - BAC/Low/Low BAC012
+  - BAC/Low/Low BAC013
+  - BAC/Low/Low BAC014
+  - BAC/Low/Low BAC015
+  - BAC/Low/Low BAC016
+  - BAC/Low/Low BAC017
+  - BAC/Low/Low BAC018
+  - BAC/Low/Low BAC019
+  - BAC/Low/Low BAC020
+  - BAC/Low/Low BAC021
+  - BAC/Low/Low BAC022
+  - BAC/Low/Low BAC023
+  - BAC/Low/Low BAC024
+  - BAC/Low/Low BAC025
+  - BAC/Low/Low BAC026
+  - BAC/Low/Low BAC027
+  - BAC/Low/Low BAC028
+  - BAC/Low/Low BAC029
+  - BAC/Low/Low BAC030
+  - BAC/Low/Low BAC031
+  - BAC/Low/Low BAC032
+  - BAC/Low/Low BAC033
+  - BAC/Low/Low BAC034
+  - BAC/Low/Low BAC035
+  - BAC/Low/Low BAC036
+  - BAC/Low/Low BAC037
+  - BAC/Low/Low BAC038
+  - BAC/Low/Low BAC039
+  - BAC/Low/Low BAC040
+  - BAC/Low/Low BAC041
+  - BAC/Low/Low BAC042
+  - BAC/Low/Low BAC043
+  - BAC/Low/Low BAC044
+  - BAC/Low/Low BAC045
+  - BAC/Low/Low BAC046
+  - BAC/Low/Low BAC047
+  - BAC/Low/Low BAC048
+  - BAC/Low/Low BAC049
+  - BAC/Low/Low BAC050
+  - BAC/Low/Low BAC051
+  - BAC/Low/Low BAC052
+  - BAC/Low/Low BAC053
+  - BAC/Low/Low BAC054
+  - BAC/Low/Low BAC055
+  - BAC/Low/Low BAC056
+  - BAC/Low/Low BAC057
+  - BAC/Low/Low BAC058
+  - BAC/Low/Low BAC059
+  - BAC/Low/Low BAC060
+  - BAC/Low/Low BAC061
+  - BAC/Low/Low BAC062
+  - BAC/Low/Low BAC063
+  - BAC/Low/Low BAC064
+  - BAC/Low/Low BAC065
+  - BAC/Low/Low BAC066
+  - BAC/Low/Low BAC067
+  - BAC/Low/Low BAC068
+  - BAC/Low/Low BAC069
+  - BAC/Low/Low BAC070
+  - BAC/Low/Low BAC071
+  - BAC/Low/Low BAC072
+  - BAC/Low/Low BAC073
+  - BAC/Low/Low BAC074
+  - BAC/Low/Low BAC075
+  - BAC/Low/Low BAC076
+  - BAC/Low/Low BAC077
+  - BAC/Low/Low BAC078
+  - BAC/Low/Low BAC079
+  - BAC/Low/Low BAC080
+  - BAC/Low/Low BAC081
+  - BAC/Low/Low BAC082
+  - BAC/Low/Low BAC083
+  - BAC/Low/Low BAC084
+  - BAC/Low/Low BAC085
+  - BAC/Low/Low BAC086
+  - BAC/Low/Low BAC087
+  - BAC/Low/Low BAC088
+  - BAC/Low/Low BAC089
+  - BAC/Low/Low BAC090
+  - BAC/Low/Low BAC091
+  - BAC/Low/Low BAC092
+  - BAC/Low/Low BAC093
+  - BAC/Low/Low BAC094
+  - BAC/Low/Low BAC095
+  - BAC/Low/Low BAC096
+  - BAC/Low/Low BAC097
+  - BAC/Low/Low BAC098
+  - BAC/Low/Low BAC099
+  - BAC/Low/Low BAC100
+  - BAC/Low/Low BAC101
+  - BAC/Low/Low BAC102
+  - BAC/Low/Low BAC103
+  - BAC/Low/Low BAC104
+  - BAC/Low/Low BAC105
+  - BAC/Low/Low BAC106
+  - BAC/Low/Low BAC107
+  - BAC/Low/Low BAC108
+  - BAC/Low/Low BAC109
+  - BAC/Low/Low BAC110
+  - BAC/Low/Low BAC111
+  - BAC/Low/Low BAC112
+  - BAC/Low/Low BAC113
+  - BAC/Low/Low BAC114
+  - BAC/Low/Low BAC115
+  - BAC/Low/Low BAC116
+  - BAC/Low/Low BAC117
+  - BAC/Low/Low BAC118
+  - BAC/Low/Low BAC119
+  - BAC/Low/Low BAC120
+  - BAC/Low/Low BAC121
+  - BAC/Low/Low BAC122
+  - BAC/Low/Low BAC123
+  - BAC/Low/Low BAC124
+  - BAC/Low/Low BAC125
+  - BAC/Low/Low BAC126
+  - BAC/Low/Low BAC127
+  - BAC/Low/Low BAC128
+  - BAC/Low/Low BAC129
+  - BAC/Low/Low BAC130
+  - BAC/Low/Low BAC131
+  - BAC/Low/Low BAC132
+  multiOut: 0
+  uiOutList: []
+  matOutList: []
+  playAudio: 0
+  source: {fileID: 0}
+  clip: {fileID: 0}
+  clipBaseFps: 25
+  showDebug: 0
+  time: 0
+--- !u!114 &1422832532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422832528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217eb0fa35ebca247a7001f0e79a4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceFolder: __Project/Resources/
+  sequenceFolder: BAC/Med
+  FPS: 25
+  loadOnAwake: 1
+  playOnAwake: 0
+  loop: 0
+  mode: 0
+  playbackMat: {fileID: 2100000, guid: 58ab912139453a945af7cf339cac2b5c, type: 2}
+  rawImage: {fileID: 0}
+  startDelay: 0
+  asyncLoading: 1
+  resourceFiles:
+  - BAC/Med/Med BAC000
+  - BAC/Med/Med BAC001
+  - BAC/Med/Med BAC002
+  - BAC/Med/Med BAC003
+  - BAC/Med/Med BAC004
+  - BAC/Med/Med BAC005
+  - BAC/Med/Med BAC006
+  - BAC/Med/Med BAC007
+  - BAC/Med/Med BAC008
+  - BAC/Med/Med BAC009
+  - BAC/Med/Med BAC010
+  - BAC/Med/Med BAC011
+  - BAC/Med/Med BAC012
+  - BAC/Med/Med BAC013
+  - BAC/Med/Med BAC014
+  - BAC/Med/Med BAC015
+  - BAC/Med/Med BAC016
+  - BAC/Med/Med BAC017
+  - BAC/Med/Med BAC018
+  - BAC/Med/Med BAC019
+  - BAC/Med/Med BAC020
+  - BAC/Med/Med BAC021
+  - BAC/Med/Med BAC022
+  - BAC/Med/Med BAC023
+  - BAC/Med/Med BAC024
+  - BAC/Med/Med BAC025
+  - BAC/Med/Med BAC026
+  - BAC/Med/Med BAC027
+  - BAC/Med/Med BAC028
+  - BAC/Med/Med BAC029
+  - BAC/Med/Med BAC030
+  - BAC/Med/Med BAC031
+  - BAC/Med/Med BAC032
+  - BAC/Med/Med BAC033
+  - BAC/Med/Med BAC034
+  - BAC/Med/Med BAC035
+  - BAC/Med/Med BAC036
+  - BAC/Med/Med BAC037
+  - BAC/Med/Med BAC038
+  - BAC/Med/Med BAC039
+  - BAC/Med/Med BAC040
+  - BAC/Med/Med BAC041
+  - BAC/Med/Med BAC042
+  - BAC/Med/Med BAC043
+  - BAC/Med/Med BAC044
+  - BAC/Med/Med BAC045
+  - BAC/Med/Med BAC046
+  - BAC/Med/Med BAC047
+  - BAC/Med/Med BAC048
+  - BAC/Med/Med BAC049
+  - BAC/Med/Med BAC050
+  - BAC/Med/Med BAC051
+  - BAC/Med/Med BAC052
+  - BAC/Med/Med BAC053
+  - BAC/Med/Med BAC054
+  - BAC/Med/Med BAC055
+  - BAC/Med/Med BAC056
+  - BAC/Med/Med BAC057
+  - BAC/Med/Med BAC058
+  - BAC/Med/Med BAC059
+  - BAC/Med/Med BAC060
+  - BAC/Med/Med BAC061
+  - BAC/Med/Med BAC062
+  - BAC/Med/Med BAC063
+  - BAC/Med/Med BAC064
+  - BAC/Med/Med BAC065
+  - BAC/Med/Med BAC066
+  - BAC/Med/Med BAC067
+  - BAC/Med/Med BAC068
+  - BAC/Med/Med BAC069
+  - BAC/Med/Med BAC070
+  - BAC/Med/Med BAC071
+  - BAC/Med/Med BAC072
+  - BAC/Med/Med BAC073
+  - BAC/Med/Med BAC074
+  - BAC/Med/Med BAC075
+  - BAC/Med/Med BAC076
+  - BAC/Med/Med BAC077
+  - BAC/Med/Med BAC078
+  - BAC/Med/Med BAC079
+  - BAC/Med/Med BAC080
+  - BAC/Med/Med BAC081
+  - BAC/Med/Med BAC082
+  - BAC/Med/Med BAC083
+  - BAC/Med/Med BAC084
+  - BAC/Med/Med BAC085
+  - BAC/Med/Med BAC086
+  - BAC/Med/Med BAC087
+  - BAC/Med/Med BAC088
+  - BAC/Med/Med BAC089
+  - BAC/Med/Med BAC090
+  - BAC/Med/Med BAC091
+  - BAC/Med/Med BAC092
+  - BAC/Med/Med BAC093
+  - BAC/Med/Med BAC094
+  - BAC/Med/Med BAC095
+  - BAC/Med/Med BAC096
+  - BAC/Med/Med BAC097
+  - BAC/Med/Med BAC098
+  - BAC/Med/Med BAC099
+  - BAC/Med/Med BAC100
+  - BAC/Med/Med BAC101
+  - BAC/Med/Med BAC102
+  - BAC/Med/Med BAC103
+  - BAC/Med/Med BAC104
+  - BAC/Med/Med BAC105
+  - BAC/Med/Med BAC106
+  - BAC/Med/Med BAC107
+  - BAC/Med/Med BAC108
+  - BAC/Med/Med BAC109
+  - BAC/Med/Med BAC110
+  - BAC/Med/Med BAC111
+  - BAC/Med/Med BAC112
+  - BAC/Med/Med BAC113
+  - BAC/Med/Med BAC114
+  - BAC/Med/Med BAC115
+  - BAC/Med/Med BAC116
+  - BAC/Med/Med BAC117
+  - BAC/Med/Med BAC118
+  - BAC/Med/Med BAC119
+  - BAC/Med/Med BAC120
+  - BAC/Med/Med BAC121
+  - BAC/Med/Med BAC122
+  - BAC/Med/Med BAC123
+  - BAC/Med/Med BAC124
+  - BAC/Med/Med BAC125
+  - BAC/Med/Med BAC126
+  - BAC/Med/Med BAC127
+  - BAC/Med/Med BAC128
+  - BAC/Med/Med BAC129
+  - BAC/Med/Med BAC130
+  - BAC/Med/Med BAC131
+  - BAC/Med/Med BAC132
+  multiOut: 0
+  uiOutList: []
+  matOutList: []
+  playAudio: 0
+  source: {fileID: 0}
+  clip: {fileID: 0}
+  clipBaseFps: 25
+  showDebug: 0
+  time: 0
+--- !u!114 &1422832533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422832528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217eb0fa35ebca247a7001f0e79a4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceFolder: __Project/Resources/
+  sequenceFolder: BAC/Hig
+  FPS: 25
+  loadOnAwake: 1
+  playOnAwake: 0
+  loop: 0
+  mode: 0
+  playbackMat: {fileID: 2100000, guid: 58ab912139453a945af7cf339cac2b5c, type: 2}
+  rawImage: {fileID: 0}
+  startDelay: 0
+  asyncLoading: 1
+  resourceFiles:
+  - BAC/Hig/Hi BAC000
+  - BAC/Hig/Hi BAC001
+  - BAC/Hig/Hi BAC002
+  - BAC/Hig/Hi BAC003
+  - BAC/Hig/Hi BAC004
+  - BAC/Hig/Hi BAC005
+  - BAC/Hig/Hi BAC006
+  - BAC/Hig/Hi BAC007
+  - BAC/Hig/Hi BAC008
+  - BAC/Hig/Hi BAC009
+  - BAC/Hig/Hi BAC010
+  - BAC/Hig/Hi BAC011
+  - BAC/Hig/Hi BAC012
+  - BAC/Hig/Hi BAC013
+  - BAC/Hig/Hi BAC014
+  - BAC/Hig/Hi BAC015
+  - BAC/Hig/Hi BAC016
+  - BAC/Hig/Hi BAC017
+  - BAC/Hig/Hi BAC018
+  - BAC/Hig/Hi BAC019
+  - BAC/Hig/Hi BAC020
+  - BAC/Hig/Hi BAC021
+  - BAC/Hig/Hi BAC022
+  - BAC/Hig/Hi BAC023
+  - BAC/Hig/Hi BAC024
+  - BAC/Hig/Hi BAC025
+  - BAC/Hig/Hi BAC026
+  - BAC/Hig/Hi BAC027
+  - BAC/Hig/Hi BAC028
+  - BAC/Hig/Hi BAC029
+  - BAC/Hig/Hi BAC030
+  - BAC/Hig/Hi BAC031
+  - BAC/Hig/Hi BAC032
+  - BAC/Hig/Hi BAC033
+  - BAC/Hig/Hi BAC034
+  - BAC/Hig/Hi BAC035
+  - BAC/Hig/Hi BAC036
+  - BAC/Hig/Hi BAC037
+  - BAC/Hig/Hi BAC038
+  - BAC/Hig/Hi BAC039
+  - BAC/Hig/Hi BAC040
+  - BAC/Hig/Hi BAC041
+  - BAC/Hig/Hi BAC042
+  - BAC/Hig/Hi BAC043
+  - BAC/Hig/Hi BAC044
+  - BAC/Hig/Hi BAC045
+  - BAC/Hig/Hi BAC046
+  - BAC/Hig/Hi BAC047
+  - BAC/Hig/Hi BAC048
+  - BAC/Hig/Hi BAC049
+  - BAC/Hig/Hi BAC050
+  - BAC/Hig/Hi BAC051
+  - BAC/Hig/Hi BAC052
+  - BAC/Hig/Hi BAC053
+  - BAC/Hig/Hi BAC054
+  - BAC/Hig/Hi BAC055
+  - BAC/Hig/Hi BAC056
+  - BAC/Hig/Hi BAC057
+  - BAC/Hig/Hi BAC058
+  - BAC/Hig/Hi BAC059
+  - BAC/Hig/Hi BAC060
+  - BAC/Hig/Hi BAC061
+  - BAC/Hig/Hi BAC062
+  - BAC/Hig/Hi BAC063
+  - BAC/Hig/Hi BAC064
+  - BAC/Hig/Hi BAC065
+  - BAC/Hig/Hi BAC066
+  - BAC/Hig/Hi BAC067
+  - BAC/Hig/Hi BAC068
+  - BAC/Hig/Hi BAC069
+  - BAC/Hig/Hi BAC070
+  - BAC/Hig/Hi BAC071
+  - BAC/Hig/Hi BAC072
+  - BAC/Hig/Hi BAC073
+  - BAC/Hig/Hi BAC074
+  - BAC/Hig/Hi BAC075
+  - BAC/Hig/Hi BAC076
+  - BAC/Hig/Hi BAC077
+  - BAC/Hig/Hi BAC078
+  - BAC/Hig/Hi BAC079
+  - BAC/Hig/Hi BAC080
+  - BAC/Hig/Hi BAC081
+  - BAC/Hig/Hi BAC082
+  - BAC/Hig/Hi BAC083
+  - BAC/Hig/Hi BAC084
+  - BAC/Hig/Hi BAC085
+  - BAC/Hig/Hi BAC086
+  - BAC/Hig/Hi BAC087
+  - BAC/Hig/Hi BAC088
+  - BAC/Hig/Hi BAC089
+  - BAC/Hig/Hi BAC090
+  - BAC/Hig/Hi BAC091
+  - BAC/Hig/Hi BAC092
+  - BAC/Hig/Hi BAC093
+  - BAC/Hig/Hi BAC094
+  - BAC/Hig/Hi BAC095
+  - BAC/Hig/Hi BAC096
+  - BAC/Hig/Hi BAC097
+  - BAC/Hig/Hi BAC098
+  - BAC/Hig/Hi BAC099
+  - BAC/Hig/Hi BAC100
+  - BAC/Hig/Hi BAC101
+  - BAC/Hig/Hi BAC102
+  - BAC/Hig/Hi BAC103
+  - BAC/Hig/Hi BAC104
+  - BAC/Hig/Hi BAC105
+  - BAC/Hig/Hi BAC106
+  - BAC/Hig/Hi BAC107
+  - BAC/Hig/Hi BAC108
+  - BAC/Hig/Hi BAC109
+  - BAC/Hig/Hi BAC110
+  - BAC/Hig/Hi BAC111
+  - BAC/Hig/Hi BAC112
+  - BAC/Hig/Hi BAC113
+  - BAC/Hig/Hi BAC114
+  - BAC/Hig/Hi BAC115
+  - BAC/Hig/Hi BAC116
+  - BAC/Hig/Hi BAC117
+  - BAC/Hig/Hi BAC118
+  - BAC/Hig/Hi BAC119
+  - BAC/Hig/Hi BAC120
+  - BAC/Hig/Hi BAC121
+  - BAC/Hig/Hi BAC122
+  - BAC/Hig/Hi BAC123
+  - BAC/Hig/Hi BAC124
+  - BAC/Hig/Hi BAC125
+  - BAC/Hig/Hi BAC126
+  - BAC/Hig/Hi BAC127
+  - BAC/Hig/Hi BAC128
+  - BAC/Hig/Hi BAC129
+  - BAC/Hig/Hi BAC130
+  - BAC/Hig/Hi BAC131
+  - BAC/Hig/Hi BAC132
+  multiOut: 0
+  uiOutList: []
+  matOutList: []
+  playAudio: 0
+  source: {fileID: 0}
+  clip: {fileID: 0}
+  clipBaseFps: 25
+  showDebug: 0
+  time: 0
+--- !u!114 &1422832534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422832528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217eb0fa35ebca247a7001f0e79a4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceFolder: __Project/Resources/
+  sequenceFolder: BAC/Xtrm
+  FPS: 25
+  loadOnAwake: 1
+  playOnAwake: 0
+  loop: 0
+  mode: 0
+  playbackMat: {fileID: 2100000, guid: 58ab912139453a945af7cf339cac2b5c, type: 2}
+  rawImage: {fileID: 0}
+  startDelay: 0
+  asyncLoading: 1
+  resourceFiles:
+  - BAC/Xtrm/Xtrm BAC000
+  - BAC/Xtrm/Xtrm BAC001
+  - BAC/Xtrm/Xtrm BAC002
+  - BAC/Xtrm/Xtrm BAC003
+  - BAC/Xtrm/Xtrm BAC004
+  - BAC/Xtrm/Xtrm BAC005
+  - BAC/Xtrm/Xtrm BAC006
+  - BAC/Xtrm/Xtrm BAC007
+  - BAC/Xtrm/Xtrm BAC008
+  - BAC/Xtrm/Xtrm BAC009
+  - BAC/Xtrm/Xtrm BAC010
+  - BAC/Xtrm/Xtrm BAC011
+  - BAC/Xtrm/Xtrm BAC012
+  - BAC/Xtrm/Xtrm BAC013
+  - BAC/Xtrm/Xtrm BAC014
+  - BAC/Xtrm/Xtrm BAC015
+  - BAC/Xtrm/Xtrm BAC016
+  - BAC/Xtrm/Xtrm BAC017
+  - BAC/Xtrm/Xtrm BAC018
+  - BAC/Xtrm/Xtrm BAC019
+  - BAC/Xtrm/Xtrm BAC020
+  - BAC/Xtrm/Xtrm BAC021
+  - BAC/Xtrm/Xtrm BAC022
+  - BAC/Xtrm/Xtrm BAC023
+  - BAC/Xtrm/Xtrm BAC024
+  - BAC/Xtrm/Xtrm BAC025
+  - BAC/Xtrm/Xtrm BAC026
+  - BAC/Xtrm/Xtrm BAC027
+  - BAC/Xtrm/Xtrm BAC028
+  - BAC/Xtrm/Xtrm BAC029
+  - BAC/Xtrm/Xtrm BAC030
+  - BAC/Xtrm/Xtrm BAC031
+  - BAC/Xtrm/Xtrm BAC032
+  - BAC/Xtrm/Xtrm BAC033
+  - BAC/Xtrm/Xtrm BAC034
+  - BAC/Xtrm/Xtrm BAC035
+  - BAC/Xtrm/Xtrm BAC036
+  - BAC/Xtrm/Xtrm BAC037
+  - BAC/Xtrm/Xtrm BAC038
+  - BAC/Xtrm/Xtrm BAC039
+  - BAC/Xtrm/Xtrm BAC040
+  - BAC/Xtrm/Xtrm BAC041
+  - BAC/Xtrm/Xtrm BAC042
+  - BAC/Xtrm/Xtrm BAC043
+  - BAC/Xtrm/Xtrm BAC044
+  - BAC/Xtrm/Xtrm BAC045
+  - BAC/Xtrm/Xtrm BAC046
+  - BAC/Xtrm/Xtrm BAC047
+  - BAC/Xtrm/Xtrm BAC048
+  - BAC/Xtrm/Xtrm BAC049
+  - BAC/Xtrm/Xtrm BAC050
+  - BAC/Xtrm/Xtrm BAC051
+  - BAC/Xtrm/Xtrm BAC052
+  - BAC/Xtrm/Xtrm BAC053
+  - BAC/Xtrm/Xtrm BAC054
+  - BAC/Xtrm/Xtrm BAC055
+  - BAC/Xtrm/Xtrm BAC056
+  - BAC/Xtrm/Xtrm BAC057
+  - BAC/Xtrm/Xtrm BAC058
+  - BAC/Xtrm/Xtrm BAC059
+  - BAC/Xtrm/Xtrm BAC060
+  - BAC/Xtrm/Xtrm BAC061
+  - BAC/Xtrm/Xtrm BAC062
+  - BAC/Xtrm/Xtrm BAC063
+  - BAC/Xtrm/Xtrm BAC064
+  - BAC/Xtrm/Xtrm BAC065
+  - BAC/Xtrm/Xtrm BAC066
+  - BAC/Xtrm/Xtrm BAC067
+  - BAC/Xtrm/Xtrm BAC068
+  - BAC/Xtrm/Xtrm BAC069
+  - BAC/Xtrm/Xtrm BAC070
+  - BAC/Xtrm/Xtrm BAC071
+  - BAC/Xtrm/Xtrm BAC072
+  - BAC/Xtrm/Xtrm BAC073
+  - BAC/Xtrm/Xtrm BAC074
+  - BAC/Xtrm/Xtrm BAC075
+  - BAC/Xtrm/Xtrm BAC076
+  - BAC/Xtrm/Xtrm BAC077
+  - BAC/Xtrm/Xtrm BAC078
+  - BAC/Xtrm/Xtrm BAC079
+  - BAC/Xtrm/Xtrm BAC080
+  - BAC/Xtrm/Xtrm BAC081
+  - BAC/Xtrm/Xtrm BAC082
+  - BAC/Xtrm/Xtrm BAC083
+  - BAC/Xtrm/Xtrm BAC084
+  - BAC/Xtrm/Xtrm BAC085
+  - BAC/Xtrm/Xtrm BAC086
+  - BAC/Xtrm/Xtrm BAC087
+  - BAC/Xtrm/Xtrm BAC088
+  - BAC/Xtrm/Xtrm BAC089
+  - BAC/Xtrm/Xtrm BAC090
+  - BAC/Xtrm/Xtrm BAC091
+  - BAC/Xtrm/Xtrm BAC092
+  - BAC/Xtrm/Xtrm BAC093
+  - BAC/Xtrm/Xtrm BAC094
+  - BAC/Xtrm/Xtrm BAC095
+  - BAC/Xtrm/Xtrm BAC096
+  - BAC/Xtrm/Xtrm BAC097
+  - BAC/Xtrm/Xtrm BAC098
+  - BAC/Xtrm/Xtrm BAC099
+  - BAC/Xtrm/Xtrm BAC100
+  - BAC/Xtrm/Xtrm BAC101
+  - BAC/Xtrm/Xtrm BAC102
+  - BAC/Xtrm/Xtrm BAC103
+  - BAC/Xtrm/Xtrm BAC104
+  - BAC/Xtrm/Xtrm BAC105
+  - BAC/Xtrm/Xtrm BAC106
+  - BAC/Xtrm/Xtrm BAC107
+  - BAC/Xtrm/Xtrm BAC108
+  - BAC/Xtrm/Xtrm BAC109
+  - BAC/Xtrm/Xtrm BAC110
+  - BAC/Xtrm/Xtrm BAC111
+  - BAC/Xtrm/Xtrm BAC112
+  - BAC/Xtrm/Xtrm BAC113
+  - BAC/Xtrm/Xtrm BAC114
+  - BAC/Xtrm/Xtrm BAC115
+  - BAC/Xtrm/Xtrm BAC116
+  - BAC/Xtrm/Xtrm BAC117
+  - BAC/Xtrm/Xtrm BAC118
+  - BAC/Xtrm/Xtrm BAC119
+  - BAC/Xtrm/Xtrm BAC120
+  - BAC/Xtrm/Xtrm BAC121
+  - BAC/Xtrm/Xtrm BAC122
+  - BAC/Xtrm/Xtrm BAC123
+  - BAC/Xtrm/Xtrm BAC124
+  - BAC/Xtrm/Xtrm BAC125
+  - BAC/Xtrm/Xtrm BAC126
+  - BAC/Xtrm/Xtrm BAC127
+  - BAC/Xtrm/Xtrm BAC128
+  - BAC/Xtrm/Xtrm BAC129
+  - BAC/Xtrm/Xtrm BAC130
+  - BAC/Xtrm/Xtrm BAC131
+  - BAC/Xtrm/Xtrm BAC132
+  multiOut: 0
+  uiOutList: []
+  matOutList: []
+  playAudio: 0
+  source: {fileID: 0}
+  clip: {fileID: 0}
+  clipBaseFps: 25
+  showDebug: 0
+  time: 0
 --- !u!1 &1442921136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +2166,7 @@ Transform:
   m_GameObject: {fileID: 1442921136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.9, y: 0.7, z: 0.7}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 63055146}
@@ -1840,7 +2515,7 @@ Transform:
   m_GameObject: {fileID: 1633995193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7777778, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 785424836}
@@ -2208,3 +2883,14 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000010232025212, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0,
     type: 2}
   m_PrefabInternal: {fileID: 1355762571}
+--- !u!114 &2041604287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041604286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8702e6a35bc3bbd45ad03a7c17c9caba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class NodeTree : MonoBehaviour
 {
+    public bool shortenChoiceSecs = false;
     public static string currentTree;
     public string structureName;
     public bool localFiles = false;
@@ -36,6 +37,14 @@ public class NodeTree : MonoBehaviour
         UpdateFields();
     }
 
+    void Start()
+    {
+        if (shortenChoiceSecs)
+        {
+            makeSecondsToChoiceSmall();
+        }
+    }
+
     void UpdateFields()
     {
         foreach(Node node in videoStructure)
@@ -54,6 +63,16 @@ public class NodeTree : MonoBehaviour
             {
                 node.SphVidOnlineLoc = onlineFileLocation + structureName + "/" + node.nodeTitle + "/" + node.nodeTitle + "_";
             }
+        }
+    }
+
+
+    void makeSecondsToChoiceSmall()
+    {
+        foreach (Node node in videoStructure)
+        {
+            if(node.choicesSecondsToShow > 0)
+            node.choicesSecondsToShow = 2;
         }
     }
 }

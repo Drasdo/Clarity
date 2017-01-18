@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System;
 
 public class BranchingStoryController : MonoBehaviour {
+
 
     public GameObject TextSelector;
     public GameObject videoSphere;
@@ -33,11 +35,16 @@ public class BranchingStoryController : MonoBehaviour {
     private BasicTimer timerIn;       //for fadein
     private BasicTimer timerFadeWaiter;  
     private BasicTimer sceneTimer;  //for scene length and playing audio
+    private BasicTimer blurTimer;
     private bool mainSceneComplete = false;
     private bool tryPlaySound = false;
+    private bool haveSkipped = false;
+    private bool haveIncreasedBlur = false;
                                                 
     private ChangeVideo changeVideo;
     private Color blackAllAlpha;
+
+    Action reloadScene;
 
     //private int previousNodeDuration = 0;
     private int previousNodeSeekPos = 0;
@@ -50,8 +57,9 @@ public class BranchingStoryController : MonoBehaviour {
         timerIn = gameObject.AddComponent<BasicTimer>();
         sceneTimer = gameObject.AddComponent<BasicTimer>();
         timerFadeWaiter = gameObject.AddComponent<BasicTimer>();
+        blurTimer = gameObject.AddComponent<BasicTimer>();
         addBlur = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AddBlur>();
-        //bac = GameObject.FindGameObjectWithTag("BACLevel").GetComponent<BACLevel>();
+        bac = GameObject.FindGameObjectWithTag("BACLevel").GetComponent<BACLevel>();
 
         choiceGameObject = new GameObject[2];
         MediaPlayerCtrl[] temp = changeVideo.GetComponentsInChildren<MediaPlayerCtrl>(); //the assumption is left is first, will need to check
@@ -62,7 +70,6 @@ public class BranchingStoryController : MonoBehaviour {
         //We need to get the correct tree structure and then load it in
         getCorrectNodeTree();
         LoadInTreeStructure();
-
 
         currentNode = videoStructure[0]; ; //0 will be our starting video;
         //reticle.GetComponent<Renderer>().enabled = false;
@@ -99,27 +106,74 @@ public class BranchingStoryController : MonoBehaviour {
         }
 
         float duration = spherePlayer.GetDuration() / 1000f;
-        if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
+        if (sceneTimer.IsTimerFinished())
         {
-            sceneTimer.StartTimer(duration - 0.5f); //start timer of length of video
-        }
-        else if (sceneTimer.IsTimerFinished())
-        {
-            if(!moveStraightToNextClip)
+            if (!moveStraightToNextClip)
             {
                 tryPlaySound = true;
             }
             else
             {
                 notRevealedChoices = false;
-                fadeOut(true);
+                if (currentNode.earlyVideoEndAt == -1)
+                {
+                    fadeOut(true);
+                }
             }
             sceneTimer.ResetOrCancelTimer();
             mainSceneComplete = true;
-            //spherePlayer.Pause();
-            if(finalScene)
+            if (finalScene)
             {
-                fadeOut(true);
+                if (currentNode.earlyVideoEndAt != -1)
+                {
+                    reloadScene = loadMenuScene;
+                    addBlur.makeBlink(reloadScene);
+                }
+                else
+                {
+                    fadeOut(true);
+                }
+            }
+#if UNITY_EDITOR
+			spherePlayer.Pause();   //breaks thigs if not run when using editor
+#endif
+#if UNITY_IOS
+			if(!addBlur.blinking)
+			{
+			spherePlayer.Pause();   //breaks thigs if not run when using editor
+			}
+#endif
+        }
+        else if (!sceneTimer.IsTimerTicking() && duration > 0f && !mainSceneComplete)
+        {
+            //check this first, as most important trump (ehhh) card
+            if (currentNode.earlyVideoEndAt != -1 && finalScene) //we are finishing early at this time, so do the thing
+            {
+                sceneTimer.StartTimer(currentNode.earlyVideoEndAt); //start timer of length of video
+            }
+            else if (currentNode.playbackType == 1) //we need to end early so,
+            {
+                sceneTimer.StartTimer(currentNode.endEarlyTime);
+            }
+            else //otherwise set duration of scene to the end
+            {
+                sceneTimer.StartTimer(duration - 0.5f); //start timer of length of video
+            }
+            //now would be a good time to jump to where the video playback should start if thats a thing
+            if(currentNode.playbackType == 2)
+            {
+                spherePlayer.SeekTo(currentNode.startLateTime*1000);
+            }
+        }
+        else
+        {
+            if(currentNode.playbackType == 3 && !haveSkipped)//we need to check where we are up to, then skip ahead
+            {
+                if (spherePlayer.GetSeekPosition() >= currentNode.skipAtTime*1000)
+                {
+                    spherePlayer.SeekTo(currentNode.skipToTime*1000);
+                    haveSkipped = true;
+                }
             }
         }
         if (fadingOut)
@@ -131,7 +185,10 @@ public class BranchingStoryController : MonoBehaviour {
                 {
                     addBlur.updateBlurValues(-1);
                     reticle.GetComponent<GazeLookSelection>().enableReticle();
+                    reticle.GetComponent<EnsureReticleIsOn>().makeReticleGreatAgain();
+					addBlur.blinking = false;
                     SceneManager.LoadScene(0);
+
                     fadingIn = true;
                 }
                 fadingOut = false;
@@ -147,8 +204,12 @@ public class BranchingStoryController : MonoBehaviour {
             {
                 timerFadeWaiter.StartTimer(currentNode.waitTime);
             }
-            if(timerFadeWaiter.IsTimerFinished())
+			Debug.Log(spherePlayer.GetCurrentState());
+			if(timerFadeWaiter.IsTimerFinished() &&
+				(spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.READY ||
+					spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING))
             {
+				spherePlayer.Play ();
                 if(!timerIn.IsTimerTicking())
                 {
                     timerIn.StartTimer(fadeTimerLength);
@@ -166,8 +227,37 @@ public class BranchingStoryController : MonoBehaviour {
                         {
                             Destroy(fadeSphere);
                             Destroy(gameObject);
+							addBlur.updateBlurValues(-1);
                         }
                     }
+                }
+            }
+        }
+        if (!haveIncreasedBlur && (currentNode.increaseBlurAtTime || currentNode.reduceBlurAtTime))
+        {
+            if (!blurTimer.IsTimerTicking()) //timer isn't on
+            {
+                blurTimer.StartTimer(currentNode.TimeForChange);
+            }
+            else if (blurTimer.IsTimerFinished())
+            {
+                if (currentNode.increaseBlurAtTime)
+                {
+                    if (currentNode.doubleBlur)
+                    {
+                        bac.increaseBAC(true);
+                        haveIncreasedBlur = true;
+                    }
+                    else
+                    {
+                        bac.increaseBAC();
+                        haveIncreasedBlur = true;
+                    }
+                }
+                else
+                {
+                    bac.decreaseBAC();
+                    haveIncreasedBlur = true;
                 }
             }
         }
@@ -175,7 +265,8 @@ public class BranchingStoryController : MonoBehaviour {
 
     void FadeOutMusic()
     {
-        AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
+        //AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
+		spherePlayer.SetVolume(Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength));
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(1.0f, 0.0f, timer.timeRemaining() / fadeTimerLength)));
     }
 
@@ -203,18 +294,25 @@ public class BranchingStoryController : MonoBehaviour {
             setBlurOptions(leftBranchSelected);
             //we need to check if the element number of choice is -1 because that means we need to end)
             //but what if the choice plays a video but then thats the end choice? need to maybe know when the video is loaded and not do the choice options)
-            if (bac.getCurrentBAC() < 3) //high or extreme
+            //before we assign the new current node, we need to check if we should just be ending here
+            if (bac.getCurrentBAC() >= 4 /*extreme*/ && currentNode.endToBlack)
             {
-                currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceElementNumber] : videoStructure[currentNode.rightChoiceElementNumber];
+                //Dont event bother with loading stuff, Kill it off right now
+                reloadScene = loadMenuScene;
+                addBlur.makeBlink(reloadScene);
             }
-            else
+            else //we need to move to the next video, so do the stuff
             {
-                currentNode = videoStructure[currentNode.blurExceedsMaxMoveTo];
+                currentNode = (leftBranchSelected) ? videoStructure[currentNode.leftChoiceID[bac.getCurrentBAC()]] : videoStructure[currentNode.rightChoiceID[bac.getCurrentBAC()]];
+                //we have the new node
+                sceneTimer.ResetOrCancelTimer();
+                assignEnvironmentProperties();
+                if(bac.getCurrentBAC() >= 4)
+                {
+                    //but flag final scene of we are at BAC 4
+                    finalScene = true;
+                }
             }
-            sceneTimer.ResetOrCancelTimer();
-            assignEnvironmentProperties();
-            //is there anything else that needs to be reset?
-
         }
     }
 
@@ -225,8 +323,10 @@ public class BranchingStoryController : MonoBehaviour {
         tailendClip = currentNode.TailendAudio;
         GetComponent<AudioSource>().clip = tailendClip;
         AudioListener.volume = 1.0f;
+		spherePlayer.SetVolume (1.0f);
         mainSceneComplete = false;
         tryPlaySound = false;
+        haveIncreasedBlur = false;
 
         notRevealedChoices = false;
         spherePlayer.transform.rotation = Quaternion.identity;
@@ -234,7 +334,8 @@ public class BranchingStoryController : MonoBehaviour {
         choiceRotator.transform.rotation = Quaternion.identity;
         choiceRotator.transform.Rotate(new Vector3(0, currentNode.choiceRotationToSummonAt, 0));
         currentNode.toMilliseconds();
-        if(currentNode.resetBlur)
+        haveSkipped = false;
+        if (currentNode.resetBlur)
         {
             addBlur.updateBlurValues(-1);
             //this shouldnt happen 
@@ -301,12 +402,26 @@ public class BranchingStoryController : MonoBehaviour {
         if(currentNode.choiceLeftAddBlur && leftSelected)
         {
             //addBlur.updateBlurValues(addBlur.blurIntensity);
-            bac.increaseBAC();
+
+            if(currentNode.doubleBlur)
+            {
+                bac.increaseBAC(true);
+            } else
+            {
+                bac.increaseBAC();
+            }
         }
         else if (currentNode.choiceRightAddBlur && !leftSelected)
         {
             //addBlur.updateBlurValues(addBlur.blurIntensity);
-            bac.increaseBAC();
+            if (currentNode.doubleBlur)
+            {
+                bac.increaseBAC(true);
+            }
+            else
+            {
+                bac.increaseBAC();
+            }
         }
         if(currentNode.reduceBlurRight && !leftSelected)
         {
@@ -360,5 +475,18 @@ public class BranchingStoryController : MonoBehaviour {
             }
         }
 
+    }
+
+    void loadMenuScene()
+    {
+        fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, 100f));
+        fadingIn = true;
+        addBlur.updateBlurValues(-1);
+        reticle.GetComponent<GazeLookSelection>().enableReticle();
+        reticle.GetComponent<EnsureReticleIsOn>().makeReticleGreatAgain();
+		AudioListener.volume = 1.0f;
+		spherePlayer.SetVolume (1.0f);
+		addBlur.blinking = false;
+        SceneManager.LoadScene(0);
     }
 }

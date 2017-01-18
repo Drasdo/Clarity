@@ -54,7 +54,7 @@ public class RevealOnVisible : MonoBehaviour
         currentSize = Vector3.Lerp(startSize, endSize, Mathf.Sin(t * Mathf.PI / speed)); //current size
         transform.localScale = currentSize;
 
-        if (Vector3Compare.V3Equal(currentSize, endSize, 0.000001f))
+        if (Vector3Compare.V3Equal(currentSize, endSize, 0.0001f))
         {
             shouldReveal = false;
             startTime = 0.0f;
