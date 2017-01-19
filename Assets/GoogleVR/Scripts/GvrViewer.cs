@@ -320,8 +320,8 @@ public class GvrViewer : MonoBehaviour {
   // Optional.  Set to a URI obtained from the Google Cardboard profile generator at
   //   https://www.google.com/get/cardboard/viewerprofilegenerator/
   // Example: Cardboard I/O 2015 viewer profile
-  //public Uri DefaultDeviceProfile = new Uri("http://google.com/cardboard/cfg?p=CgZHb29nbGUSEkNhcmRib2FyZCBJL08gMjAxNR0J-SA9JQHegj0qEAAAcEIAAHBCAABwQgAAcEJYADUpXA89OghX8as-YrENP1AAYAM");
-  public Uri DefaultDeviceProfile = null;
+	public Uri DefaultDeviceProfile = new Uri("https://vr.google.com/cardboard/download/?p=Cg1Tb21lIEN1c3RvbWVyEgZWUiBCb3gdrkdhPSWPwnU9KhAAAEhCAABIQgAASEIAAEhCWAE1KVwPPToIzcxMvc3MTD1QAGAA");
+  //public Uri DefaultDeviceProfile = null;
   /// @endcond
 
   private void InitDevice() {

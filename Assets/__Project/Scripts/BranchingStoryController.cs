@@ -40,6 +40,7 @@ public class BranchingStoryController : MonoBehaviour {
     private bool tryPlaySound = false;
     private bool haveSkipped = false;
     private bool haveIncreasedBlur = false;
+	private bool readyToPlay = false;
                                                 
     private ChangeVideo changeVideo;
     private Color blackAllAlpha;
@@ -127,7 +128,7 @@ public class BranchingStoryController : MonoBehaviour {
                 if (currentNode.earlyVideoEndAt != -1)
                 {
                     reloadScene = loadMenuScene;
-                    addBlur.makeBlink(reloadScene);
+                    addBlur.makeBlink(reloadScene, spherePlayer);
                 }
                 else
                 {
@@ -181,6 +182,7 @@ public class BranchingStoryController : MonoBehaviour {
             FadeOutMusic();
             if (timer.IsTimerFinished())
             {
+				spherePlayer.SetVolume (1.0f);
                 if(finalScene)
                 {
                     addBlur.updateBlurValues(-1);
@@ -204,10 +206,7 @@ public class BranchingStoryController : MonoBehaviour {
             {
                 timerFadeWaiter.StartTimer(currentNode.waitTime);
             }
-			Debug.Log(spherePlayer.GetCurrentState());
-			if(timerFadeWaiter.IsTimerFinished() &&
-				(spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.READY ||
-					spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING))
+			if(timerFadeWaiter.IsTimerFinished())
             {
 				spherePlayer.Play ();
                 if(!timerIn.IsTimerTicking())
@@ -261,18 +260,26 @@ public class BranchingStoryController : MonoBehaviour {
                 }
             }
         }
+		if(readyToPlay == true)
+		{
+			if(spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.READY ||
+				spherePlayer.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING || 
+				SceneManager.GetActiveScene().buildIndex == 0)
+			{
+				fadingIn = true;
+				spherePlayer.Play ();
+				readyToPlay = false;
+			}
+		}
     }
 
     void FadeOutMusic()
     {
-        //AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength);
-		spherePlayer.SetVolume(Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / fadeTimerLength));
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(1.0f, 0.0f, timer.timeRemaining() / fadeTimerLength)));
     }
 
     void FadeIn()
     {
-        //AudioListener.volume = Mathf.Lerp(1.0f, 0.0f, timerIn.timeRemaining() / fadeTimerLength);
         fadeSphere.GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0, 0, Mathf.Lerp(0.0f, 1.0f, timerIn.timeRemaining() / fadeTimerLength)));
     }
 
@@ -299,7 +306,7 @@ public class BranchingStoryController : MonoBehaviour {
             {
                 //Dont event bother with loading stuff, Kill it off right now
                 reloadScene = loadMenuScene;
-                addBlur.makeBlink(reloadScene);
+                addBlur.makeBlink(reloadScene, spherePlayer);
             }
             else //we need to move to the next video, so do the stuff
             {
@@ -322,8 +329,6 @@ public class BranchingStoryController : MonoBehaviour {
         setupTextSelectOptions();
         tailendClip = currentNode.TailendAudio;
         GetComponent<AudioSource>().clip = tailendClip;
-        AudioListener.volume = 1.0f;
-		spherePlayer.SetVolume (1.0f);
         mainSceneComplete = false;
         tryPlaySound = false;
         haveIncreasedBlur = false;
@@ -356,7 +361,7 @@ public class BranchingStoryController : MonoBehaviour {
         }
         if(currentNode.nodeTitle != "1_1")
         {
-            fadingIn = true;
+			readyToPlay = true;
         }
         //spherePlayer.Load(currentNode.sphereVideo);
         changeVideo.ChangeToNewVideo();
@@ -484,9 +489,8 @@ public class BranchingStoryController : MonoBehaviour {
         addBlur.updateBlurValues(-1);
         reticle.GetComponent<GazeLookSelection>().enableReticle();
         reticle.GetComponent<EnsureReticleIsOn>().makeReticleGreatAgain();
-		AudioListener.volume = 1.0f;
-		spherePlayer.SetVolume (1.0f);
 		addBlur.blinking = false;
         SceneManager.LoadScene(0);
+
     }
 }

@@ -61,7 +61,7 @@ public class RevealOnVisible : MonoBehaviour
             endTime = 0.0f;
             t = 0.0f;
             transform.localScale = endSize;
-            SendMessageUpwards("finishedRevealing");
+			SendMessageUpwards("finishedRevealing", SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -113,6 +113,6 @@ public class RevealOnVisible : MonoBehaviour
 
     void OnDisable()
     {
-        SendMessageUpwards("childDisabled");
+		SendMessageUpwards("childDisabled", SendMessageOptions.DontRequireReceiver);
     }
 }

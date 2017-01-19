@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortenChoiceSecs: 1
+  shortenChoiceSecs: 0
   structureName: Tom
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
@@ -4424,7 +4424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &892995907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4622,6 +4622,10 @@ Prefab:
     - target: {fileID: 1000013661639846, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013661639846, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
@@ -4828,6 +4832,20 @@ Prefab:
         type: 2}
       propertyPath: vrModeEnabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011611548588, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012315298358, guid: 22559b520e5f4447ebe87a855172066b,
+        type: 2}
+      propertyPath: distortionCorrection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012315298358, guid: 22559b520e5f4447ebe87a855172066b,
+        type: 2}
+      propertyPath: screenSize
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22559b520e5f4447ebe87a855172066b, type: 2}
@@ -5987,6 +6005,10 @@ Prefab:
       propertyPath: m_TagString
       value: ImageSphere
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010232025212, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011782047230, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 406cb45cc013c2b44aa66c3cb9c0f0c0, type: 2}
@@ -6840,6 +6862,10 @@ Prefab:
     - target: {fileID: 4000012971754378, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012021040568, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}

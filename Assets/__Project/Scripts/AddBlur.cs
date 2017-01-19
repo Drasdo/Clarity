@@ -12,6 +12,7 @@ public class AddBlur : MonoBehaviour {
     private GameObject eyeRight;
     private StereoController SC;
     public bool blinking = false;
+	private MediaPlayerCtrl spherePlayer;
 
     private BasicTimer timer;
 
@@ -33,8 +34,9 @@ public class AddBlur : MonoBehaviour {
         }
 		if(blinking)
 		{
-			Debug.Log (AudioListener.volume);
-			AudioListener.volume = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / 6.5f);
+			spherePlayer.SetVolume(Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / 6.5f));
+			float vol = Mathf.Lerp(0.0f, 1.0f, timer.timeRemaining() / 6.5f);
+			Debug.Log (vol);
 		}
 	}
 
@@ -107,22 +109,23 @@ public class AddBlur : MonoBehaviour {
         currentBlur = blur;
     }
 
-    public void makeBlink(System.Action action)
+    public void makeBlink(System.Action action, MediaPlayerCtrl sP)
     {
         eyeLeft.GetComponent<PostProcess.BlinkEffect>().Blink(null, action);
         eyeRight.GetComponent<PostProcess.BlinkEffect>().Blink();
-        turnDownVolume();
+        turnDownVolume(sP);
     }
 
-    public void makeBlink()
+	public void makeBlink(MediaPlayerCtrl sP)
     {
         eyeLeft.GetComponent<PostProcess.BlinkEffect>().Blink();
         eyeRight.GetComponent<PostProcess.BlinkEffect>().Blink();
-        turnDownVolume();
+        turnDownVolume(sP);
     }
 
-    private void turnDownVolume()
+	private void turnDownVolume(MediaPlayerCtrl sP)
     {
+		spherePlayer = sP;
         blinking = true;
         timer.StartTimer(6.5f);
     }
