@@ -4,7 +4,7 @@ using System.Collections;
 public class AddBlur : MonoBehaviour {
 
     public Shader blurShader;
-    public float blurIntensity = 0.16f;
+    public float blurIntensity = 0.10f;
 
     public float currentBlur = 0f;
 

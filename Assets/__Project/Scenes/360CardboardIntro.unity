@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortenChoiceSecs: 0
+  shortenChoiceSecs: 1
   structureName: Tom
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
@@ -4627,6 +4627,30 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010254503958, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000010278947210, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010773827248, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012535903150, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010254503958, guid: 5d6a06a5a7b294cb7b6671619f1c4578,
+        type: 2}
+      propertyPath: blurIntensity
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d6a06a5a7b294cb7b6671619f1c4578, type: 2}
   m_IsPrefabParent: 0
@@ -4652,7 +4676,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929915291}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a017a2e025c1c74080d6fbd05d706b0, type: 3}
   m_Name: 
@@ -4664,7 +4688,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929915291}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e3d7095525224b47957952aeb8f1f3b, type: 3}
   m_Name: 
@@ -4840,7 +4864,7 @@ Prefab:
     - target: {fileID: 114000012315298358, guid: 22559b520e5f4447ebe87a855172066b,
         type: 2}
       propertyPath: distortionCorrection
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000012315298358, guid: 22559b520e5f4447ebe87a855172066b,
         type: 2}
@@ -6864,6 +6888,10 @@ Prefab:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000012021040568, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011486376514, guid: 91db51f6f9fcc4e41b79a5465025a497, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
