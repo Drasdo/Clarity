@@ -323,7 +323,7 @@ public class GvrViewer : MonoBehaviour {
     #if UNITY_IOS
     public Uri DefaultDeviceProfile = null;
     #else
-	public Uri DefaultDeviceProfile = new Uri("https://vr.google.com/cardboard/download/?p=Cg1Tb21lIEN1c3RvbWVyEgZWUiBCb3gdrkdhPSWPwnU9KhAAAEhCAABIQgAASEIAAEhCWAE1KVwPPToIzcxMvc3MTD1QAGAA");
+	public Uri DefaultDeviceProfile = new Uri("http://google.com/cardboard/cfg?p=Cg1CbHVycmVkIE1pbmRzEgZWUiBCb3gd1XhpPSX0_VQ9KhAAAHBCAABIQgAASEIAAEhCWAA1nu8nPToIj8L1PI_C9TxQAGAA");
     #endif
   /// @endcond
 
