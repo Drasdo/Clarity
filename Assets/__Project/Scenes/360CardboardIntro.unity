@@ -1856,7 +1856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &564964839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortenChoiceSecs: 1
+  shortenChoiceSecs: 0
   structureName: Tom
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
