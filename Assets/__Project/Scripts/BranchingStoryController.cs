@@ -116,7 +116,7 @@ public class BranchingStoryController : MonoBehaviour {
             else
             {
                 notRevealedChoices = false;
-                if (currentNode.earlyVideoEndAt == -1)
+				if (!finalScene || currentNode.earlyVideoEndAt == -1)
                 {
                     fadeOut(true);
                 }
