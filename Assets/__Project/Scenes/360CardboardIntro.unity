@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortenChoiceSecs: 0
+  shortenChoiceSecs: 1
   structureName: Elle
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
@@ -2170,7 +2170,7 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: Take Drink
-    leftChoiceID: 0700000007000000070000001500000013000000
+    leftChoiceID: 0700000007000000160000001500000013000000
     choiceLeftAddBlur: 1
     reduceBlurLeft: 0
     choiceVideoRight: Have some Water
@@ -2682,15 +2682,15 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: 
-    leftChoiceID: 0900000009000000090000000900000009000000
+    leftChoiceID: 0d0000000d0000000d0000000d0000000d000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 0
     choiceVideoRight: 
-    rightChoiceID: 0900000009000000090000000900000009000000
+    rightChoiceID: 0d0000000d0000000d0000000d0000000d000000
     choiceRightAddBlur: 0
     reduceBlurRight: 0
-    playbackType: 1
-    endEarlyTime: 51
+    playbackType: 0
+    endEarlyTime: -1
     startLateTime: -1
     skipAtTime: -1
     skipToTime: -1
@@ -2760,17 +2760,17 @@ MonoBehaviour:
     skipToTime: -1
     endToBlack: 0
     earlyVideoEndAt: 44
-  - nodeTitle: 19_25
-    nodeID: AAAAB(17)
+  - nodeTitle: 4_8
+    nodeID: AB(25)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/8_12_
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
     endingVideo: 1
     choiceIsVideo: 0
-    choicesSecondsToShow: 0
+    choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
-    startingRotationOfVideoDegrees: 0
+    startingRotationOfVideoDegrees: 160
     waitTime: 1
     increaseBlurAtTime: 0
     reduceBlurAtTime: 0
@@ -2778,11 +2778,11 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: 
-    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    leftChoiceID: 0d0000000d0000000d0000000d0000000d000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 0
     choiceVideoRight: 
-    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    rightChoiceID: 0d0000000d0000000d0000000d0000000d000000
     choiceRightAddBlur: 0
     reduceBlurRight: 0
     playbackType: 0

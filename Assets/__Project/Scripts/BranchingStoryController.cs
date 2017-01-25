@@ -164,6 +164,7 @@ public class BranchingStoryController : MonoBehaviour {
             if(currentNode.playbackType == 2)
             {
                 spherePlayer.SeekTo(currentNode.startLateTime*1000);
+				sceneTimer.StartTimer(duration - currentNode.startLateTime);
             }
         }
         else
