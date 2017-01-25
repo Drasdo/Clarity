@@ -3146,7 +3146,7 @@ MonoBehaviour:
     choiceLeftAddBlur: 0
     reduceBlurLeft: 1
     choiceVideoRight: Take Drink
-    rightChoiceID: 0b00000014000000140000001400000006000000
+    rightChoiceID: 0b0000000b000000140000001400000006000000
     choiceRightAddBlur: 1
     reduceBlurRight: 0
     playbackType: 0

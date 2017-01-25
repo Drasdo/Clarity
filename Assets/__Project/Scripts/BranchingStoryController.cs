@@ -115,7 +115,6 @@ public class BranchingStoryController : MonoBehaviour {
             }
             else
             {
-                notRevealedChoices = false;
 				if (!finalScene || currentNode.earlyVideoEndAt == -1)
                 {
                     fadeOut(true);
@@ -333,8 +332,11 @@ public class BranchingStoryController : MonoBehaviour {
         mainSceneComplete = false;
         tryPlaySound = false;
         haveIncreasedBlur = false;
-
-        notRevealedChoices = false;
+		if (currentNode.choicesSecondsToShow <= -0.5f) {
+			notRevealedChoices = false;
+		} else {
+			notRevealedChoices = true;
+		}
         spherePlayer.transform.rotation = Quaternion.identity;
         spherePlayer.transform.Rotate(new Vector3(0, currentNode.startingRotationOfVideoDegrees, 0)); //rotate the video to correct orientation if need be. Hopefully this doesn't actually have to be used, but nice to have anyway.
         choiceRotator.transform.rotation = Quaternion.identity;
@@ -351,7 +353,6 @@ public class BranchingStoryController : MonoBehaviour {
         {
             finalScene = true;
         }
-        notRevealedChoices = true;
         if(currentNode.choicesSecondsToShow <= -0.5f)
         {
             moveStraightToNextClip = true;
