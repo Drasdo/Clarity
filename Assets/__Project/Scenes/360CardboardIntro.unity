@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c008f866b50d7ce47bd6b443a6a1b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortenChoiceSecs: 0
+  shortenChoiceSecs: 1
   structureName: Tom
   localFiles: 1
   onlineFileLocation: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/
@@ -3142,11 +3142,11 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: Have some Water
-    leftChoiceID: 0b0000000b000000140000001400000014000000
+    leftChoiceID: 0600000006000000060000000600000006000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 1
     choiceVideoRight: Take Drink
-    rightChoiceID: 0b0000000b000000140000001400000006000000
+    rightChoiceID: 0600000006000000060000000600000006000000
     choiceRightAddBlur: 1
     reduceBlurRight: 0
     playbackType: 0
@@ -3160,12 +3160,12 @@ MonoBehaviour:
     nodeID: (6)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
-    isThereEndAudio: 1
+    isThereEndAudio: 0
     TailendAudio: {fileID: 8300000, guid: e315730668011d145946fa2dd55b2591, type: 3}
-    endingVideo: 1
+    endingVideo: 0
     choiceIsVideo: 0
-    choicesSecondsToShow: 16
-    choiceRotationToSummonAt: 55
+    choicesSecondsToShow: -1
+    choiceRotationToSummonAt: 0
     startingRotationOfVideoDegrees: 0
     waitTime: 1
     increaseBlurAtTime: 0
@@ -3174,11 +3174,11 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: 
-    leftChoiceID: 0b0000000b0000000b0000000b0000000b000000
+    leftChoiceID: 0b0000000b000000150000001400000014000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 0
     choiceVideoRight: 
-    rightChoiceID: 0b0000000b0000000b0000000b0000000b000000
+    rightChoiceID: 0b0000000b000000150000001400000014000000
     choiceRightAddBlur: 0
     reduceBlurRight: 0
     playbackType: 0
@@ -3342,7 +3342,7 @@ MonoBehaviour:
     choiceRightAddBlur: 0
     reduceBlurRight: 0
     playbackType: 1
-    endEarlyTime: 45
+    endEarlyTime: 46
     startLateTime: -1
     skipAtTime: -1
     skipToTime: -1
@@ -3636,13 +3636,13 @@ MonoBehaviour:
     skipToTime: -1
     endToBlack: 0
     earlyVideoEndAt: -1
-  - nodeTitle: 16_23
-    nodeID: (19)
+  - nodeTitle: 9_11
+    nodeID: (21)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 1
+    endingVideo: 0
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
@@ -3654,27 +3654,27 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: 
-    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    leftChoiceID: 1600000016000000160000001600000016000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 0
     choiceVideoRight: 
-    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    rightChoiceID: 1600000016000000160000001600000016000000
     choiceRightAddBlur: 0
     reduceBlurRight: 0
-    playbackType: 0
-    endEarlyTime: -1
+    playbackType: 1
+    endEarlyTime: 31
     startLateTime: -1
     skipAtTime: -1
     skipToTime: -1
     endToBlack: 0
     earlyVideoEndAt: 0
-  - nodeTitle: 16_23
-    nodeID: (19)
+  - nodeTitle: 7_9
+    nodeID: (22)
     sphereVideo: 
     SphVidOnlineLoc: https://s3-ap-southeast-2.amazonaws.com/videosblurredminds/Elle/1_1_
     isThereEndAudio: 0
     TailendAudio: {fileID: 0}
-    endingVideo: 1
+    endingVideo: 0
     choiceIsVideo: 0
     choicesSecondsToShow: -1
     choiceRotationToSummonAt: 0
@@ -3686,11 +3686,11 @@ MonoBehaviour:
     resetBlur: 0
     doubleBlur: 0
     choiceVideoLeft: 
-    leftChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    leftChoiceID: 1000000010000000100000001000000010000000
     choiceLeftAddBlur: 0
     reduceBlurLeft: 0
     choiceVideoRight: 
-    rightChoiceID: ffffffffffffffffffffffffffffffffffffffff
+    rightChoiceID: 1000000010000000100000001000000010000000
     choiceRightAddBlur: 0
     reduceBlurRight: 0
     playbackType: 0
