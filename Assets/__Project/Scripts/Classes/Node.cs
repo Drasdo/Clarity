@@ -74,7 +74,11 @@ public class Node : System.Object {
 
     public void toMilliseconds()
     {
-        if(choicesSecondsToShow <= 1000)
+        if (choicesSecondsToShow < 0)
+        {
+            choicesSecondsToShow = -1000;
+        }
+        else if (choicesSecondsToShow <= 1000)
         {  
             choicesSecondsToShow = choicesSecondsToShow * 1000;
         }
