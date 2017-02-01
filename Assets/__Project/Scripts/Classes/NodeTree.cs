@@ -39,10 +39,12 @@ public class NodeTree : MonoBehaviour
 
     void Start()
     {
+		#if UNITY_EDITOR
         if (shortenChoiceSecs)
         {
             makeSecondsToChoiceSmall();
         }
+		#endif
     }
 
     void UpdateFields()
