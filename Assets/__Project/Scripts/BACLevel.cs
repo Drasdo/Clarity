@@ -25,7 +25,12 @@ public class BACLevel : MonoBehaviour {
     private Vector3 startPosition;
     private Vector3 endPosition;
 
-	// Use this for initialization
+    // Use this for initialization
+
+    void Awake()
+    {
+        currentLevel = 0;
+    }
 	void Start () {
         timer = gameObject.AddComponent<BasicTimer>();
         //gameObject.SetActive(false);
